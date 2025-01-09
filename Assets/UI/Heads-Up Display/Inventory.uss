@@ -1,0 +1,18 @@
+.listOfItems {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.52);
+    flex-shrink: 1;
+    flex-direction: row;
+    align-self: auto;
+}
+
+.itemSlot {
+    background-image: url("project://database/Assets/Art/UI/Buttons/Button_Hover.png?fileID=21300000&guid=ab6684e37b364f44e9313cde43ebaf69&type=3#Button_Hover");
+    position: relative;
+    top: 5%;
+    flex-grow: 1;
+    -unity-background-scale-mode: scale-to-fit;
+    width: 128px;
+    height: 128px;
+    flex-direction: row;
+}
