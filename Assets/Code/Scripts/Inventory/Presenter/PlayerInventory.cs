@@ -1,19 +1,20 @@
+using System;
 using UnityEngine;
 
 namespace IntoTheWilds.Inventory
 {
-    public class PlayerInventory : MonoBehaviour
+    public class PlayerInventory
     {
-        private Inventory _inventory;
+        public Inventory Inventory { get; private set; }
 
-        private void Awake()
+        public PlayerInventory()
         {
-            _inventory = new(3);
+            Inventory = new(3);
         }
 
         public bool IsAndTakeItem(ItemSlot itemSlot)
         {
-            if (_inventory.AddItem(itemSlot) == true)
+            if (Inventory.AddItem(itemSlot) == true)
             {
                 return true;
             }
@@ -21,44 +22,25 @@ namespace IntoTheWilds.Inventory
             return false;
         }
 
+#if UNITY_EDITOR   // ----- Ниже тестовые методы ------
 
-
-        // ----- Ниже тестовые методы ------
-
-        public void ThrowOutSlot(int slotIndex)
+        public void ThrowOutSlotIndex(int slotIndex)
         {
-            _inventory.RemoveSlot(slotIndex);
-        }
-
-        public void ThrowOutInt(int slotIndex)
-        {
-            ItemSlot requestedItem = new ItemSlot();
-
-            requestedItem.Add(
-                _inventory.Slots[slotIndex].ItemID,
-                _inventory.Slots[slotIndex].Count,
-                out _);
-
-            ThrowOut(requestedItem);
-        }
-
-        public void ThrowOut(ItemSlot itemSlot)
-        {
-            ItemSlot CretedItem = _inventory.RemoveItem(itemSlot);
+            ItemSlot CretedItem = Inventory.RemoveSlot(slotIndex);
 
             Debug.Log("Выкинут предмет - " + "ID: " + CretedItem.ItemID +
                 " Количество: " + CretedItem.Count);
         }
 
-#if UNITY_EDITOR
-
         public void InventoryToConsole()
         {
-            foreach (var item in _inventory.Slots)
+            ItemSlot slot;
+
+            for (int slotIndex = 0; slotIndex < Inventory.Length; slotIndex++)
             {
-                if (item != null)
+                if ((slot = Inventory.GetSlotData(slotIndex)) != null)
                 {
-                    Debug.Log("ID предмета: " + item.ItemID + " Количество: " + item.Count);
+                    Debug.Log("ID предмета: " + slot.ItemID + " Количество: " + slot.Count);
                 }
             }
         }

@@ -1,19 +1,36 @@
+using System;
 using UnityEngine;
 
 namespace IntoTheWilds.Inventory
 {
     public class Inventory
     {
-        public ItemSlot[] Slots { get; private set; }
+        public int Length { get; private set; }
+
+        public event Action<int> SlotChanged;
+
+        private ItemSlot[] Slots;
 
         public Inventory(int maxCountSlots)
         {
             Slots = new ItemSlot[maxCountSlots];
 
+            Length = maxCountSlots - 1;
+
             for (int i = 0; i < Slots.Length; i++) 
             {
                 Slots[i] = new ItemSlot();
             }
+        }
+
+        public ItemSlot GetSlotData(int slotID)
+        {
+            if (slotID >= 0 && slotID < Slots.Length)
+            {
+                return Slots[slotID];
+            }
+
+            return null;
         }
 
         public bool AddItem(ItemSlot itemSlot)
@@ -27,6 +44,8 @@ namespace IntoTheWilds.Inventory
                 if (slotForAdd != -1)
                 {
                     Slots[slotForAdd].Add(itemSlot.ItemID, itemSlot.Count, out int excessCount);
+
+                    SlotChanged?.Invoke(slotForAdd);
 
                     _ = itemSlot.Remove(itemSlot.Count - excessCount);
 
@@ -78,6 +97,8 @@ namespace IntoTheWilds.Inventory
             {
                 NewItemCount += Slots[findedItemIndexes[i]].Remove(requestedItemSlot.Count - NewItemCount);
 
+                SlotChanged?.Invoke(findedItemIndexes[i]);
+
                 if (NewItemCount == requestedItemSlot.Count)
                 {
                     break;
@@ -98,6 +119,8 @@ namespace IntoTheWilds.Inventory
             newItemSlot.Add(Slots[slotIndex].ItemID, Slots[slotIndex].Count, out _);
 
             Slots[slotIndex].Clear();
+
+            SlotChanged?.Invoke(slotIndex);
 
             return newItemSlot;
         }

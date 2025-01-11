@@ -1,3 +1,4 @@
+using IntoTheWilds.Inventory;
 using Tools.StateMachine;
 using UnityEngine;
 using VContainer;
@@ -14,6 +15,8 @@ namespace IntoTheWilds
         {
             builder.RegisterComponent(_playerRigidbody2D);
             builder.RegisterComponent(_playerInput);
+
+            builder.Register<PlayerInventory>(Lifetime.Singleton);
 
             builder.UseEntryPoints(entryPoints =>
             {

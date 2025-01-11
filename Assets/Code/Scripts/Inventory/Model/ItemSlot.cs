@@ -1,14 +1,10 @@
-using System;
-using UnityEngine;
-
 namespace IntoTheWilds.Inventory
 {
-    [Serializable]
     public class ItemSlot
     {
-        [SerializeField] public int ItemID { get; private set; }
+        public int ItemID { get; private set; }
         
-        [SerializeField] public int Count { get; private set; }
+        public int Count { get; private set; }
         private int _maxCountStack;
 
         public ItemSlot()

@@ -15,4 +15,29 @@
     width: 128px;
     height: 128px;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ItemIcon {
+    width: 128px;
+    height: 128px;
+    justify-content: flex-end;
+    right: 3%;
+    left: auto;
+    bottom: 20%;
+    top: auto;
+    -unity-background-scale-mode: scale-to-fit;
+    background-position-y: center 0;
+}
+
+.ItemCounter {
+    bottom: 7%;
+    right: 15%;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    font-size: 20px;
+    -unity-text-align: upper-right;
 }

@@ -10,7 +10,7 @@ public class PlayerInventoryEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        PlayerInventory playerInventory = (PlayerInventory)target;
+        PlayerInventory playerInventory = new PlayerInventory();
 
         if (GUILayout.Button("Inventory In Console"))
         {
@@ -19,17 +19,17 @@ public class PlayerInventoryEditor : Editor
 
         if (GUILayout.Button("ThrowOut Slot - 0"))
         {
-            playerInventory.ThrowOutInt(0);
+            playerInventory.ThrowOutSlotIndex(0);
         }
 
         if (GUILayout.Button("ThrowOut Slot - 1"))
         {
-            playerInventory.ThrowOutSlot(1);
+            playerInventory.ThrowOutSlotIndex(1);
         }
 
         if (GUILayout.Button("ThrowOut Slot - 2"))
         {
-            playerInventory.ThrowOutInt(2);
+            playerInventory.ThrowOutSlotIndex(2);
         }
     }
 }

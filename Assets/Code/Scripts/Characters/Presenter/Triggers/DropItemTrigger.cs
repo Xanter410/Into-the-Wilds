@@ -1,13 +1,15 @@
 using IntoTheWilds.Inventory;
 using UnityEngine;
+using VContainer;
 
 public class DropItemTrigger : MonoBehaviour
 {
     private PlayerInventory _inventory;
 
-    private void Awake()
+    [Inject]
+    public void Constuct(PlayerInventory inventory)
     {
-        _inventory = GetComponent<PlayerInventory>();
+        _inventory = inventory;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
