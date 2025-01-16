@@ -1,19 +1,26 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Heads-Up%20Display/Inventory.uss?fileID=7433441132597879392&amp;guid=a33b9c9d9d6ac9e4ca17a76bbad3c43c&amp;type=3#Inventory" />
-    <ui:VisualElement name="InventoryList" class="listOfItems" style="position: absolute; bottom: 0; left: 50%; translate: -50% 0;">
-        <ui:VisualElement name="Slot_0" class="itemSlot">
-            <ui:VisualElement name="ItemIcon_0_0" class="ItemIcon" style="background-image: none;">
-                <ui:Label name="ItemCounter_0_1" class="ItemCounter" />
+    <ui:VisualElement name="DraggableArea" style="flex-grow: 1;">
+        <ui:VisualElement name="InventoryGrid" enabled="true" class="listOfItems" style="position: absolute; bottom: 0; left: 50%; translate: -50% 0;">
+            <ui:VisualElement name="Slot_0" class="itemSlot">
+                <ui:VisualElement name="ItemIcon_0_0" class="ItemIcon">
+                    <ui:Label name="ItemCounter_0_1" class="ItemCounter" />
+                </ui:VisualElement>
             </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement name="Slot_1" class="itemSlot">
-            <ui:VisualElement name="ItemIcon_1_0" class="ItemIcon" style="background-image: none;">
-                <ui:Label name="ItemCounter_1_1" class="ItemCounter" />
+            <ui:VisualElement name="Slot_1" class="itemSlot">
+                <ui:VisualElement name="ItemIcon_1_0" class="ItemIcon" style="background-image: none;">
+                    <ui:Label name="ItemCounter_1_1" class="ItemCounter" />
+                </ui:VisualElement>
             </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement name="Slot_2" class="itemSlot">
-            <ui:VisualElement name="ItemIcon_2_0" class="ItemIcon" style="background-image: none;">
-                <ui:Label name="ItemCounter_2_1" class="ItemCounter" />
+            <ui:VisualElement name="Slot_2" class="itemSlot">
+                <ui:VisualElement name="ItemIcon_2_0" class="ItemIcon" style="background-image: none;">
+                    <ui:Label name="ItemCounter_2_1" class="ItemCounter" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Slot_3" class="itemSlot">
+                <ui:VisualElement name="ItemIcon_3_0" class="ItemIcon" style="background-image: none;">
+                    <ui:Label name="ItemCounter_3_1" class="ItemCounter" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

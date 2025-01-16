@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Heads-Up%20Display/Inventory.uss?fileID=7433441132597879392&amp;guid=a33b9c9d9d6ac9e4ca17a76bbad3c43c&amp;type=3#Inventory" />
+    <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: resource(&apos;Meat_Icon&apos;); flex-direction: column-reverse; align-items: flex-end; justify-content: space-between; -unity-background-scale-mode: scale-to-fit; width: 128px; height: 128px; bottom: 7px;">
+        <engine:Label name="Counter" class="draggableItemCounter" />
+    </engine:VisualElement>
+</engine:UXML>

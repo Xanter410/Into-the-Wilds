@@ -12,8 +12,6 @@ namespace IntoTheWilds.Inventory
 
         private void Awake()
         {
-            _items.Add(0, null);
-
             foreach (var item in _listOfItems)
             {
                 _items.Add(item.UniqueID, item);
@@ -32,6 +30,8 @@ namespace IntoTheWilds.Inventory
 
         public Sprite GetInventoryIcon(int ItemID)
         {
+            //Sprite Icon = GetData(ItemID).InventoryIcon;
+            //Debug.Log(ItemID);
             return GetData(ItemID).InventoryIcon;
         }
 

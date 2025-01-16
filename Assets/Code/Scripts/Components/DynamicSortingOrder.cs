@@ -13,7 +13,7 @@ namespace IntoTheWilds
 
         void FixedUpdate()
         {
-            _spriteRenderer.sortingOrder = -(int)(gameObject.transform.position.y * 10);
+            _spriteRenderer.sortingOrder = -(int)(gameObject.transform.position.y * 1000);
         }
     }
 }

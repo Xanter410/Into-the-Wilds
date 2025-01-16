@@ -41,3 +41,14 @@
     font-size: 20px;
     -unity-text-align: upper-right;
 }
+
+.draggableItemCounter {
+    bottom: 7%;
+    right: 15%;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    font-size: 20px;
+    -unity-text-align: upper-right;
+}

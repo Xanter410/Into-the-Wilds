@@ -1,6 +1,8 @@
+using IntoTheWilds.UI;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 
 namespace IntoTheWilds
@@ -10,6 +12,8 @@ namespace IntoTheWilds
     {
         private InputSystem_Actions _inputActions;
         private event Action _attackPressed;
+
+        private InventoryHud _inventoryHud;
 
         private void OnEnable()
         {
@@ -28,6 +32,12 @@ namespace IntoTheWilds
             _inputActions = null;
         }
 
+        [Inject]
+        public void Constuct(InventoryHud inventoryHud)
+        {
+            _inventoryHud = inventoryHud;
+        }
+
         public Vector2 RetrieveMoveInput()
         {
             return _inputActions.Player.Move.ReadValue<Vector2>();
@@ -35,6 +45,11 @@ namespace IntoTheWilds
 
         private void AttackPressed(InputAction.CallbackContext _)
         {
+            if (_inventoryHud.IsUiUnderPointer())
+            {
+                return;
+            }
+
             _attackPressed?.Invoke();
         }
 

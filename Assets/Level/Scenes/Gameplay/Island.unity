@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 555240226}
   - component: {fileID: 555240225}
   - component: {fileID: 555240227}
+  - component: {fileID: 555240228}
   m_Layer: 5
   m_Name: Hud_Inventory
   m_TagString: Untagged
@@ -597,6 +598,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3032b84e72ab11a479cbdddaf74e8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &555240228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555240224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae12fbfb1d797e840994908ad0d65564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _draggableItemAsset: {fileID: 9197481963319205126, guid: 85beeae2ebae8dd4f8d6ec9fec99ddbc, type: 3}
 --- !u!4 &572361665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 903449286530340353, guid: e8125316bf435b54586e0c2ef5f0962f, type: 3}
@@ -830,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listOfItems:
+  - {fileID: 11400000, guid: bf77435eb3a96c249a22c82e71eceb9a, type: 2}
   - {fileID: 11400000, guid: 67f44c9a2605b04458fa074639080e89, type: 2}
   - {fileID: 11400000, guid: d928d0deec1b8f349ad134fcac0e7dd2, type: 2}
   - {fileID: 11400000, guid: 9d043fdd70b94d04eb2cae2e53719770, type: 2}
@@ -1598,6 +1613,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 533770345}
+  - {fileID: 555240226}
   - {fileID: 47452877}
   - {fileID: 1138256285}
   - {fileID: 1362805165}
@@ -1613,4 +1629,3 @@ SceneRoots:
   - {fileID: 992681071}
   - {fileID: 1275845499}
   - {fileID: 1000036224}
-  - {fileID: 555240226}

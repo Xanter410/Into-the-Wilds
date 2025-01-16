@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7278686819729125226}
   - component: {fileID: 7230067569422005146}
   - component: {fileID: 4204882692619629698}
+  - component: {fileID: 4052639585133633846}
   - component: {fileID: 1984268005074870424}
   m_Layer: 7
   m_Name: Resource_Gold
@@ -163,6 +164,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.047813606, y: 0.05971443}
   m_Size: {x: 0.636758, y: 0.6030809}
   m_Direction: 1
+--- !u!114 &4052639585133633846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648809436062204648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e556b358c4a8f8b43bf38e82d0fc5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1984268005074870424
 MonoBehaviour:
   m_ObjectHideFlags: 0

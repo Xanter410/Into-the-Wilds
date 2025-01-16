@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1613045855098580995}
   - component: {fileID: 8462298037603213664}
   - component: {fileID: 7005114349131927407}
+  - component: {fileID: -1705961250779698612}
   - component: {fileID: 7710372984123075063}
   - component: {fileID: 8636954565557637340}
   m_Layer: 7
@@ -126,6 +127,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _AnimationClip: {fileID: 7400000, guid: 8b4751ec519d77c4185b8cbcb5b2c4c5, type: 2}
+--- !u!114 &-1705961250779698612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839309986839900335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e556b358c4a8f8b43bf38e82d0fc5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7710372984123075063
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace IntoTheWilds
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-            spriteRenderer.sortingOrder = -(int)(gameObject.transform.position.y * 10);
+            spriteRenderer.sortingOrder = -(int)(gameObject.transform.position.y * 1000);
         }
     }
 }

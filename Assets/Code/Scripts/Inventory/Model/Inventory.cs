@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace IntoTheWilds.Inventory
 {
@@ -57,13 +56,18 @@ namespace IntoTheWilds.Inventory
                 }
                 else
                 {
-                    Debug.Log("Инвентарь заполнен!");
-
                     return isSuccessfulAdded;
                 }
             }
 
             return isSuccessfulAdded;
+        }
+
+        public void AddSlot(int slotIndex, ItemSlot itemSlot)
+        {
+            Slots[slotIndex].Clear();
+            Slots[slotIndex].Add(itemSlot.ItemID, itemSlot.Count, out _);
+            SlotChanged?.Invoke(slotIndex);
         }
 
         public ItemSlot RemoveItem(ItemSlot requestedItemSlot)

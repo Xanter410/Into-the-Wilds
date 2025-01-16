@@ -1,72 +1,111 @@
 using IntoTheWilds.Inventory;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using VContainer;
 
-public class InventoryHud : MonoBehaviour
+namespace IntoTheWilds.UI
 {
-    private struct SlotHUD
+    public struct HudInventorySlot
     {
         public int ID;
-        public int ItemID;
-        public Label Count;
+        public VisualElement VisualElement;
+        public Label CountLabel;
         public VisualElement Icon;
     }
 
-    private PlayerInventory _playerInventory;
-    private UIDocument _uidocument;
-
-    private Dictionary<int, SlotHUD> _inventoryHud = new Dictionary<int, SlotHUD>();
-
-    [Inject]
-    public void Constuct(PlayerInventory playerInventory)
+    public class InventoryHud : MonoBehaviour
     {
-        _playerInventory = playerInventory;
-    }
+        private PlayerInventory _playerInventory;
 
-    private void OnEnable()
-    {
-        _uidocument = GetComponent<UIDocument>();
+        private UIDocument _uidocument;
+        private VisualElement _inventoryGrid;
 
-        _playerInventory.Inventory.SlotChanged += InventorySlotChanged;
+        private readonly Dictionary<int, HudInventorySlot> _inventoryHud = new();
 
-        for (int slotID = 0; slotID <= _playerInventory.Inventory.Length; slotID++)
+        [Inject]
+        public void Constuct(PlayerInventory playerInventory)
         {
-            ItemSlot slot = _playerInventory.Inventory.GetSlotData(slotID);
+            _playerInventory = playerInventory;
+        }
 
-            _inventoryHud.Add(slotID, new SlotHUD
+        private void OnEnable()
+        {
+            _uidocument = GetComponent<UIDocument>();
+            _inventoryGrid = _uidocument.rootVisualElement.Q<VisualElement>("InventoryGrid");
+
+            _playerInventory.Inventory.SlotChanged += InventorySlotChanged;
+
+            for (int slotID = 0; slotID <= _playerInventory.Inventory.Length; slotID++)
             {
-                ID = slotID,
-                ItemID = slot.ItemID,
-                Count = _uidocument.rootVisualElement.Q<VisualElement>("Slot_" + slotID.ToString()).Q<Label>("ItemCounter_" + slotID.ToString() + "_1"),
-                Icon = _uidocument.rootVisualElement.Q<VisualElement>("Slot_" + slotID.ToString()).Q<VisualElement>("ItemIcon_" + slotID.ToString() + "_0")
-            });
-        }
-    }
+                ItemSlot slot = _playerInventory.Inventory.GetSlotData(slotID);
 
-    private void OnDisable()
-    {
-        _playerInventory.Inventory.SlotChanged -= InventorySlotChanged;
-    }
-
-    private void InventorySlotChanged(int SlotID)
-    {
-        ItemSlot slot = _playerInventory.Inventory.GetSlotData(SlotID);
-        if (slot == null)
-        {
-            Debug.LogWarning("Error: slot не найден в инвентаре PlayerInventory. SlotID = " + SlotID);
+                _inventoryHud.Add(slotID, new HudInventorySlot
+                {
+                    ID = slotID,
+                    VisualElement = _uidocument.rootVisualElement.Q<VisualElement>("Slot_" + slotID.ToString()),
+                    CountLabel = _uidocument.rootVisualElement.Q<VisualElement>("Slot_" + slotID.ToString()).Q<Label>("ItemCounter_" + slotID.ToString() + "_1"),
+                    Icon = _uidocument.rootVisualElement.Q<VisualElement>("Slot_" + slotID.ToString()).Q<VisualElement>("ItemIcon_" + slotID.ToString() + "_0")
+                });
+            }
         }
 
-        if (_inventoryHud.TryGetValue(SlotID, out var hud) == true)
+        private void OnDisable()
         {
-            hud.Count.text = slot.Count.ToString();
-            var sprite = ItemsDatabase.Instance.GetInventoryIcon(slot.ItemID);
-            hud.Icon.style.backgroundImage = new StyleBackground(sprite);
+            _playerInventory.Inventory.SlotChanged -= InventorySlotChanged;
         }
-        else
+
+        public bool IsUiUnderPointer()
         {
-            Debug.LogWarning("Error: slot не найден в словаре InventoryHUD. SlotID = " + SlotID);
+            Vector2 pointerPosition = new(
+                Pointer.current.position.value.x,
+                Screen.height - Pointer.current.position.value.y);
+
+            if (_inventoryGrid.worldBound.Contains(pointerPosition))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public List<HudInventorySlot> GetHudInventorySlots()
+        {
+            List<HudInventorySlot> slots = new();
+            foreach (var slot in _inventoryHud)
+            {
+                slots.Add(slot.Value);
+            }
+
+            return slots;
+        }
+
+        private void InventorySlotChanged(int SlotID)
+        {
+            ItemSlot slot = _playerInventory.Inventory.GetSlotData(SlotID);
+            if (slot == null)
+            {
+                Debug.LogWarning("Error: slot не найден в инвентаре PlayerInventory. SlotID = " + SlotID);
+            }
+
+            if (_inventoryHud.TryGetValue(SlotID, out var hud) == true)
+            {
+                if (slot.ItemID == 0)
+                {
+                    hud.CountLabel.text = "";
+                    hud.Icon.style.backgroundImage = null;
+                    return;
+                }
+
+                hud.CountLabel.text = slot.Count.ToString();
+                var sprite = ItemsDatabase.Instance.GetInventoryIcon(slot.ItemID);
+                hud.Icon.style.backgroundImage = new StyleBackground(sprite);
+            }
+            else
+            {
+                Debug.LogWarning("Error: slot не найден в словаре InventoryHUD. SlotID = " + SlotID);
+            }
         }
     }
 }

@@ -16,6 +16,11 @@ namespace IntoTheWilds.Inventory
             _slot.Add(_itemData.UniqueID, _itemCount, out _);
         }
 
+        public void SetCount(int count)
+        {
+            _itemCount = count;
+        }
+
         public ItemSlot TakeItem()
         {
             return _slot;

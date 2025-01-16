@@ -6,10 +6,12 @@ namespace IntoTheWilds.Inventory
     public class PlayerInventory
     {
         public Inventory Inventory { get; private set; }
+        private readonly Rigidbody2D _playerRigidbody2D;
 
-        public PlayerInventory()
+        public PlayerInventory(Rigidbody2D playerRigidbody2D)
         {
-            Inventory = new(3);
+            Inventory = new(4);
+            _playerRigidbody2D = playerRigidbody2D;
         }
 
         public bool IsAndTakeItem(ItemSlot itemSlot)
@@ -22,29 +24,24 @@ namespace IntoTheWilds.Inventory
             return false;
         }
 
-#if UNITY_EDITOR   // ----- Ниже тестовые методы ------
-
-        public void ThrowOutSlotIndex(int slotIndex)
+        public void RemoveSlot(int slotIndex)
         {
-            ItemSlot CretedItem = Inventory.RemoveSlot(slotIndex);
-
-            Debug.Log("Выкинут предмет - " + "ID: " + CretedItem.ItemID +
-                " Количество: " + CretedItem.Count);
+            _ = Inventory.RemoveSlot(slotIndex);
         }
 
-        public void InventoryToConsole()
+        public void ThrowAwayItem(ItemSlot dropItemModel)
         {
-            ItemSlot slot;
+            var dropItemGameObject = ItemsDatabase.Instance.GetPrefab(dropItemModel.ItemID);
+            var spawnPosition = _playerRigidbody2D.position + Vector2.down;
 
-            for (int slotIndex = 0; slotIndex < Inventory.Length; slotIndex++)
-            {
-                if ((slot = Inventory.GetSlotData(slotIndex)) != null)
-                {
-                    Debug.Log("ID предмета: " + slot.ItemID + " Количество: " + slot.Count);
-                }
-            }
+            GameObject dropItemInstance = GameObject.Instantiate(dropItemGameObject, spawnPosition, Quaternion.identity);
+
+            dropItemInstance.GetComponent<DropItemInstance>().SetCount(dropItemModel.Count);
         }
 
-#endif
+        public void AddItem(ItemSlot itemSlot)
+        {
+            _ = Inventory.AddItem(itemSlot);
+        }
     }
 }

@@ -14,6 +14,13 @@ namespace IntoTheWilds.Inventory
             _maxCountStack = 0;
         }
 
+        public ItemSlot(int itemID, int count)
+        {
+            ItemID = itemID;
+            Count = count;
+            _maxCountStack = ItemsDatabase.Instance.GetMaxStackCount(itemID);
+        }
+
         public void Add(int itemID, int count, out int excessCount)
         {
             if (IsFree() == true)

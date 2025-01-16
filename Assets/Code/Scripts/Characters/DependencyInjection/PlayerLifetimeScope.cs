@@ -1,4 +1,5 @@
 using IntoTheWilds.Inventory;
+using IntoTheWilds.UI;
 using Tools.StateMachine;
 using UnityEngine;
 using VContainer;
@@ -14,9 +15,11 @@ namespace IntoTheWilds
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponent(_playerRigidbody2D);
-            builder.RegisterComponent(_playerInput);
 
             builder.Register<PlayerInventory>(Lifetime.Singleton);
+            builder.RegisterComponentInHierarchy<InventoryHud>();
+
+            builder.RegisterComponent(_playerInput);
 
             builder.UseEntryPoints(entryPoints =>
             {
