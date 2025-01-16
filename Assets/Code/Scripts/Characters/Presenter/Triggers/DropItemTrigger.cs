@@ -6,6 +6,9 @@ public class DropItemTrigger : MonoBehaviour
 {
     private PlayerInventory _inventory;
 
+    private DropItemInstance _dropItemInstance;
+    private bool _isStayOnItem;
+
     [Inject]
     public void Constuct(PlayerInventory inventory)
     {
@@ -16,11 +19,39 @@ public class DropItemTrigger : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("DropItems"))
         {
-            DropItemInstance dropItemInstance = collision.gameObject.GetComponent<DropItemInstance>();
+            _dropItemInstance = collision.gameObject.GetComponent<DropItemInstance>();
 
-            if (_inventory.IsAndTakeItem(dropItemInstance.TakeItem()) == true)
+            if (_dropItemInstance.TryGetItem(out var Item) == true)
             {
-                dropItemInstance.DestroyItem();
+                if (_inventory.IsAndTakeItem(Item) == true)
+                {
+                    _dropItemInstance.DestroyItem();
+
+                    _dropItemInstance = null;
+                    _isStayOnItem = false;
+                }
+            } 
+            else
+            {
+                _isStayOnItem = true;
+            }
+
+        }
+    }
+
+    private void Update()
+    {
+        if (_isStayOnItem)
+        {
+            if (_dropItemInstance.TryGetItem(out var Item) == true)
+            {
+                if (_inventory.IsAndTakeItem(Item) == true)
+                {
+                    _dropItemInstance.DestroyItem();
+
+                    _dropItemInstance = null;
+                    _isStayOnItem = false;
+                }
             }
         }
     }

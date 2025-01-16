@@ -190,3 +190,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 9d043fdd70b94d04eb2cae2e53719770, type: 2}
   _itemCount: 1
+  _timeIgnoreModeBeforeSpawn: 0.6
