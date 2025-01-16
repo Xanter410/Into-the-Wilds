@@ -5,7 +5,6 @@ namespace IntoTheWilds
 {
     public class AI_CheckPlayerInRange : Node
     {
-        private LayerMask _playerLayerMask = LayerMask.GetMask("Player");
         private float _range;
 
         private Transform _transform;

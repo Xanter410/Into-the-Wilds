@@ -45,14 +45,14 @@ namespace IntoTheWilds
                 // "до колизии Physics2D.OverlapCircle(...)"
                 // и
                 // "до центра таргета (distanceToTarget)"
-                // ѕо этому к _rangeAggress добавл€етс€ некоторое рассто€ние.
+                // ѕоэтому к _rangeAggress добавл€етс€ некоторое рассто€ние.
                 if (distanceToTarget <= (_rangeAggress + 1f))
                 {
                     state = NodeState.SUCCESS;
                     return state;
                 }
 
-                ClearData("target");
+                _ = ClearData("target");
 
                 state = NodeState.FAILURE;
                 return state;

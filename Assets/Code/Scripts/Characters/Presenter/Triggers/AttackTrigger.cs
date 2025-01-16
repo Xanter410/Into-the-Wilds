@@ -30,9 +30,7 @@ namespace IntoTheWilds
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            HealthComponent healthComponent;
-
-            if (collision.gameObject.TryGetComponent<HealthComponent>(out healthComponent))
+            if (collision.gameObject.TryGetComponent(out HealthComponent healthComponent))
             {
                 healthComponent.Decrement(_damagePower);
             }

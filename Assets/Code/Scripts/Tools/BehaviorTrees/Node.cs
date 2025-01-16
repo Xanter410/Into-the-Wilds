@@ -15,9 +15,9 @@ namespace Tools.BehaviorTree
         protected NodeState state;
 
         public Node parent;
-        protected List<Node> children = new List<Node>();
+        protected List<Node> children = new();
 
-        private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _dataContext = new();
 
         public Node()
         {
@@ -56,9 +56,7 @@ namespace Tools.BehaviorTree
 
         public object GetData(string key)
         {
-            object value = null;
-
-            if (_dataContext.TryGetValue(key, out value))
+            if (_dataContext.TryGetValue(key, out object value))
             {
                 return value;
             }
@@ -75,6 +73,7 @@ namespace Tools.BehaviorTree
 
                 node = node.parent;
             }
+
             return null;
         }
 
@@ -82,7 +81,7 @@ namespace Tools.BehaviorTree
         {
             if (_dataContext.ContainsKey(key))
             {
-                _dataContext.Remove(key);
+                _ = _dataContext.Remove(key);
                 return true;
             }
 
@@ -98,6 +97,7 @@ namespace Tools.BehaviorTree
 
                 node = node.parent;
             }
+
             return false;
         }
 
