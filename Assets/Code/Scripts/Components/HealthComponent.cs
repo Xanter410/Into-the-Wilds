@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,30 +6,39 @@ namespace IntoTheWilds
 {
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField] 
-        private int _maxHealthPoints;
+        [SerializeField]
+        private int maxHealthPoints;
+
+        public int MaxHealthPoints
+        {
+            get => maxHealthPoints;
+            private set => maxHealthPoints = value;
+        }
 
         [HideInInspector]
         public int HealthPoints { get; private set; }
 
         public UnityEvent _onDead;
         public UnityEvent _onTakeHit;
+        public Action<int> _onHealthChanged;
 
-        private void Start()
+        private void OnEnable()
         {
-            HealthPoints = _maxHealthPoints;
+            HealthPoints = MaxHealthPoints;
         }
 
         public void Increment(int addHealthPoint)
         {
-            if (HealthPoints + addHealthPoint < _maxHealthPoints)
+            if (HealthPoints + addHealthPoint < MaxHealthPoints)
             {
                 HealthPoints += addHealthPoint;
             }
             else
             {
-                HealthPoints = _maxHealthPoints;
+                HealthPoints = MaxHealthPoints;
             }
+
+            _onHealthChanged?.Invoke(HealthPoints);
         }
 
         public void Decrement(int removeHealthPoint)
@@ -45,6 +55,8 @@ namespace IntoTheWilds
 
                 _onDead?.Invoke();
             }
+
+            _onHealthChanged?.Invoke(HealthPoints);
         }
     }
 }

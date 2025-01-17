@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Background" style="flex-grow: 1; -unity-background-image-tint-color: rgba(255, 255, 255, 0); position: absolute; background-size: 100% 100%; background-color: rgba(0, 0, 0, 0.65); -unity-background-scale-mode: stretch-to-fill; width: auto; height: auto; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 20px; border-bottom-left-radius: 0; top: 0; border-top-width: 0;">
+        <engine:VisualElement name="HealthBarBackgroundSprite" style="position: relative; width: 288px; height: 108px; background-image: url(&quot;project://database/Assets/Art/UI/Buttons/Button_Hover_3Slides.png?fileID=21300000&amp;guid=340d7be31593997439eba6021d75e76f&amp;type=3#Button_Hover_3Slides&quot;); background-position-y: center 0; -unity-background-scale-mode: stretch-to-fill; background-size: 288px 96px; top: 5%; left: 0; right: auto; bottom: auto; align-self: flex-start;">
+            <engine:VisualElement name="HealthBarMask" style="position: absolute; width: 100%; height: 100%; overflow: hidden;">
+                <engine:VisualElement name="HealthBarFill" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; width: 288px; height: 100%; top: 0; left: 0; background-image: url(&quot;project://database/Assets/Art/UI/Buttons/HealthBarFill.png?fileID=21300000&amp;guid=5738540663649a6488c214051bd16a24&amp;type=3#HealthBarFill&quot;); background-size: 288px 96px;" />
+            </engine:VisualElement>
+            <engine:Label text="Label" name="HealthLabel" style="position: absolute; width: 100%; -unity-text-align: middle-left; font-size: 22px; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: bold; height: 50%; bottom: auto; top: 10%; left: 10%;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

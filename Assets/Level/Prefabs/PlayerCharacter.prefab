@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 807247805828465076}
   - component: {fileID: 1197901396833620630}
   - component: {fileID: 7162885828377476371}
+  - component: {fileID: 4509543614854592129}
+  - component: {fileID: 1652428133458916122}
   m_Layer: 6
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -140,8 +142,11 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 1514206467781919658}
+  - {fileID: 0}
+  - {fileID: 0}
   _playerRigidbody2D: {fileID: 4933168831940934907}
   _playerInput: {fileID: 11400000, guid: 4034832b2d5b51449ba64ca680cea8f6, type: 2}
+  _healthComponent: {fileID: 1652428133458916122}
 --- !u!114 &4206159712564252077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,9 +241,52 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.06}
-  m_Size: {x: 0.6, y: 0.2}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 0.4}
+  m_Size: {x: 0.6, y: 0.9}
+  m_Direction: 0
+--- !u!114 &4509543614854592129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514206467781919658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7548461c64b1a40a258dc8183613fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1652428133458916122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514206467781919658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 10
+  _onDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1514206467781919658}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onTakeHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3546188922670516840
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +364,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -409,7 +457,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

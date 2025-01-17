@@ -12,8 +12,8 @@
     top: 5%;
     flex-grow: 1;
     -unity-background-scale-mode: scale-to-fit;
-    width: 128px;
-    height: 128px;
+    width: 96px;
+    height: 96px;
     flex-direction: row;
     align-items: center;
     justify-content: center;

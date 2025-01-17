@@ -11,10 +11,12 @@ namespace IntoTheWilds
     {
         [SerializeField] private Rigidbody2D _playerRigidbody2D;
         [SerializeField] private PlayerInput _playerInput;
+        [SerializeField] private HealthComponent _healthComponent;
 
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponent(_playerRigidbody2D);
+            builder.RegisterComponent(_healthComponent);
 
             builder.Register<PlayerInventory>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<InventoryHud>();
@@ -28,4 +30,3 @@ namespace IntoTheWilds
         }
     }
 }
-
