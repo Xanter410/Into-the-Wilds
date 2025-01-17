@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 2873064792126700520}
   - component: {fileID: 3756139434011761406}
   - component: {fileID: 5617012538087762569}
+  - component: {fileID: 1482606103617631390}
+  - component: {fileID: 3740391501921741504}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -64,7 +66,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0edf28d8f4e28b8449501b580c5e8646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 2
+  maxHealthPoints: 3
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -227,10 +229,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5273961700641162929}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1482606103617631390}
+        m_TargetAssemblyTypeName: IntoTheWilds.DestroyComponent, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -255,12 +257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItems:
-  - ItemPrefab: {fileID: 1806853352360183382, guid: 3570af685f23b594595c6eb8a1eb2e2b, type: 3}
+  - ItemPrefab: {fileID: 2839309986839900335, guid: b97647dc2ef54f047bacaabd53d2365e, type: 3}
     minAmount: 1
     maxAmount: 1
     DropChance: 1
   minDropAmount: 1
-  maxDropAmount: 1
+  maxDropAmount: 3
 --- !u!70 &5617012538087762569
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,3 +300,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.22}
   m_Size: {x: 0.72, y: 0.58}
   m_Direction: 1
+--- !u!114 &1482606103617631390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273961700641162929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb353e0fee79f9a4fa74675e06735a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3740391501921741504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273961700641162929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561f4c6abce55104c8fb59717132a661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isStunnedAfterHit: 1
+  _maxAcceleration: 5
+  _stunDuration: 0.4
+  _isFlashingAfterHit: 1
+  _flashDuration: 0.2
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}

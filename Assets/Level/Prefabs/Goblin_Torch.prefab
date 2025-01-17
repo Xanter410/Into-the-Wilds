@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeActive: 0.1
   _damagePower: 1
+  _parent: {fileID: 1662166897839281460}
 --- !u!61 &178979050927430254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -113,6 +114,7 @@ GameObject:
   - component: {fileID: 3927616715648583918}
   - component: {fileID: 6214424896376923074}
   - component: {fileID: 3804958547428252268}
+  - component: {fileID: 7393365729392291619}
   m_Layer: 0
   m_Name: Goblin_Torch
   m_TagString: Untagged
@@ -160,7 +162,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0edf28d8f4e28b8449501b580c5e8646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -309,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 4
+  maxHealthPoints: 5
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -408,6 +410,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.4}
   m_Size: {x: 0.6, y: 1}
   m_Direction: 0
+--- !u!114 &7393365729392291619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662166897839281460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561f4c6abce55104c8fb59717132a661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isStunnedAfterHit: 1
+  _maxAcceleration: 5
+  _stunDuration: 0.25
+  _isFlashingAfterHit: 1
+  _flashDuration: 0.15
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3441763624599397726
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeActive: 0.1
   _damagePower: 1
+  _parent: {fileID: 1662166897839281460}
 --- !u!61 &1417758914182804851
 BoxCollider2D:
   m_ObjectHideFlags: 0

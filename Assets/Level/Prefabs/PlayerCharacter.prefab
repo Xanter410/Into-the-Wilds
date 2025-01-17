@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7162885828377476371}
   - component: {fileID: 4509543614854592129}
   - component: {fileID: 1652428133458916122}
+  - component: {fileID: 7626592699595199649}
   m_Layer: 6
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -66,7 +67,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0edf28d8f4e28b8449501b580c5e8646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -287,6 +288,24 @@ MonoBehaviour:
   _onTakeHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7626592699595199649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514206467781919658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561f4c6abce55104c8fb59717132a661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isStunnedAfterHit: 0
+  _maxAcceleration: 5
+  _stunDuration: 0.25
+  _isFlashingAfterHit: 1
+  _flashDuration: 0.15
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3546188922670516840
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +317,7 @@ GameObject:
   - component: {fileID: 7899554222493462407}
   - component: {fileID: 3952980882750796626}
   - component: {fileID: 8131357574404140876}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RightTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeActive: 0.1
   _damagePower: 1
+  _parent: {fileID: 1514206467781919658}
 --- !u!61 &8131357574404140876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -391,7 +411,7 @@ GameObject:
   - component: {fileID: 3231698918866053637}
   - component: {fileID: 9195787868568631019}
   - component: {fileID: 1482712074597721024}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeActive: 0.1
   _damagePower: 1
+  _parent: {fileID: 1514206467781919658}
 --- !u!61 &1482712074597721024
 BoxCollider2D:
   m_ObjectHideFlags: 0

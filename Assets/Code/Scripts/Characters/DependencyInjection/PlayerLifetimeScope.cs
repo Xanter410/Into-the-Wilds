@@ -21,7 +21,9 @@ namespace IntoTheWilds
             builder.Register<PlayerInventory>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<InventoryHud>();
 
-            builder.RegisterComponent(_playerInput);
+            builder.RegisterComponent(_playerInput)
+                .AsSelf()
+                .AsImplementedInterfaces();
 
             builder.UseEntryPoints(entryPoints =>
             {

@@ -8,7 +8,7 @@ using VContainer;
 namespace IntoTheWilds
 {
     [CreateAssetMenu(fileName = "PlayerInputAction", menuName = "InputPresenter/PlayerInputAction")]
-    public class PlayerInput : ScriptableObject
+    public class PlayerInput : ScriptableObject, IStunble
     {
         private InputSystem_Actions _inputActions;
         private event Action _attackPressed;
@@ -61,6 +61,12 @@ namespace IntoTheWilds
         public void UnRegisterCallbackAttack(Action callbackHandler)
         {
             _attackPressed -= callbackHandler;
+        }
+
+        void IStunble.Stun(bool isStunned)
+        {
+            return; // «аглушка, в данный момент не предполагаетс€
+                    // возможность застанить игрока
         }
     }
 }

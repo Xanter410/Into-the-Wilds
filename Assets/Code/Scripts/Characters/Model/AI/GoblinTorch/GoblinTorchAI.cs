@@ -6,10 +6,11 @@ using VContainer.Unity;
 
 namespace IntoTheWilds
 {
-    public class GoblinTorchAI : BehaviorTree, ITickable, IStartable, IMove, IAttack
+    public class GoblinTorchAI : BehaviorTree, ITickable, IStartable, IMove, IAttack, IStunble
     {
         private readonly Transform _transform;
         private Vector2 _spawnPoint;
+        private bool _isStunned = false;
 
         private Vector2 _moveInput = Vector2.zero;
 
@@ -85,7 +86,23 @@ namespace IntoTheWilds
 
         void ITickable.Tick()
         {
-            Update();
+            if (_isStunned != true)
+            {
+                Update();
+            }
+        }
+
+        void IStunble.Stun(bool isStunned)
+        {
+            if (isStunned == true)
+            {
+                _isStunned = true;
+                SetMoveInput(Vector2.zero);
+            }
+            else
+            {
+                _isStunned = false;
+            }
         }
     }
 }

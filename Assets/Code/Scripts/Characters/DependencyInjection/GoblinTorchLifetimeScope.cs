@@ -15,6 +15,7 @@ namespace IntoTheWilds
             builder.UseEntryPoints(entryPoints =>
             {
                 entryPoints.Add<GoblinTorchAI>().AsSelf();
+
                 entryPoints.Add<GoblinTorchStateMachine>().As<StateMachine>();
             });
         }

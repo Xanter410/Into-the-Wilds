@@ -10,11 +10,11 @@ namespace IntoTheWilds
         public IState MoveState;
         public IState AttackState;
 
-        public GoblinTorchStateMachine(GoblinTorchAI sheepInput, Rigidbody2D rigidbody2D)
+        public GoblinTorchStateMachine(GoblinTorchAI goblinInput, Rigidbody2D rigidbody2D)
         {
-            IdleState = new GoblinTorchIdleState(1, this, sheepInput, rigidbody2D);
-            MoveState = new GoblinTorchMoveState(2, this, sheepInput, rigidbody2D);
-            AttackState = new GoblinTorchAttackState(3, this, sheepInput, rigidbody2D);
+            IdleState = new GoblinTorchIdleState(1, this, goblinInput, rigidbody2D);
+            MoveState = new GoblinTorchMoveState(2, this, goblinInput, rigidbody2D);
+            AttackState = new GoblinTorchAttackState(3, this, goblinInput, rigidbody2D);
         }
 
         void IStartable.Start()

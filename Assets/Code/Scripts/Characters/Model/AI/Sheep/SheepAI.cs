@@ -5,11 +5,12 @@ using System.Collections.Generic;
 
 namespace IntoTheWilds
 {
-    public class SheepAI : BehaviorTree, ITickable, IStartable, IMove
+    public class SheepAI : BehaviorTree, ITickable, IStartable, IMove, IStunble
     {
         private readonly Transform _transform;
 
         private Vector2 _moveInput = Vector2.zero;
+        private bool _isStunned = false;
 
         public SheepAI(Rigidbody2D unitRigidbody2D) 
         {
@@ -48,7 +49,23 @@ namespace IntoTheWilds
 
         void ITickable.Tick()
         {
-            Update();
+            if (_isStunned != true)
+            {
+                Update();
+            }
+        }
+
+        void IStunble.Stun(bool isStunned)
+        {
+            if (isStunned == true)
+            {
+                _isStunned = true;
+                SetMoveInput(Vector2.zero);
+            }
+            else
+            {
+                _isStunned = false;
+            }
         }
     }
 }
