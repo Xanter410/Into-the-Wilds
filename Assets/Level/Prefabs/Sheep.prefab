@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 5617012538087762569}
   - component: {fileID: 1482606103617631390}
   - component: {fileID: 3740391501921741504}
+  - component: {fileID: 2943182309875443781}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -142,7 +143,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5526168472548751252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +280,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -289,16 +290,16 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
+    m_Bits: 0
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.22}
-  m_Size: {x: 0.72, y: 0.58}
+  m_Offset: {x: 0, y: 0.07}
+  m_Size: {x: 0.6, y: 0.2}
   m_Direction: 1
 --- !u!114 &1482606103617631390
 MonoBehaviour:
@@ -330,3 +331,40 @@ MonoBehaviour:
   _isFlashingAfterHit: 1
   _flashDuration: 0.2
   _flashColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!70 &2943182309875443781
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273961700641162929}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.265}
+  m_Size: {x: 0.7, y: 0.6}
+  m_Direction: 1

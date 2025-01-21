@@ -28,7 +28,7 @@ namespace IntoTheWilds.AI
 
             if (!startNode.isWalkable || !targetNode.isWalkable)
             {
-                Debug.LogWarning("Ќевозможно найти путь: стартова€ или конечна€ точка непроходима.");
+                //Ќевозможно найти путь: стартова€ или конечна€ точка непроходима.
                 return null;
             }
 
@@ -86,9 +86,7 @@ namespace IntoTheWilds.AI
                     }
                 }
             }
-
             // ≈сли путь не найден, возвращаем null
-            Debug.LogWarning("ѕуть не найден!");
             return null;
         }
 
