@@ -1,0 +1,218 @@
+.backgroundButtons {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.mainButton {
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_3Slides.png?fileID=2800000&guid=e5538cc0a518b8145a3cf293ad12865e&type=3#Button_Blue_3Slides");
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    background-size: contain;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    right: auto;
+    font-size: 22px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 20px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    transition-property: scale, padding-top;
+    transition-duration: 0.35s, 0s;
+}
+
+.mainButton:hover {
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_3Slides.png?fileID=2800000&guid=e5538cc0a518b8145a3cf293ad12865e&type=3#Button_Blue_3Slides");
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    background-size: contain;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+    right: auto;
+    font-size: 22px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 20px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    scale: 1.02 1.05;
+}
+
+.mainButton:active {
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_3Slides_Pressed.png?fileID=2800000&guid=b371adf2ce2204d4fa5ca30ba852958a&type=3#Button_Blue_3Slides_Pressed");
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    background-size: contain;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+    right: auto;
+    font-size: 22px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 6px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.button_PlusMinus:hover {
+    scale: 1.05 1.02;
+}
+
+.button_PlusMinus {
+    transition-duration: 0.35s;
+    background-image: url("project://database/Assets/Art/UI/Buttons/Button_Blue.png?fileID=2800000&guid=eb523262cb6d57a4a9575fdbefc76ec4&type=3#Button_Blue");
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition-property: scale;
+}
+
+.button_PlusMinus:active {
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_Pressed.png?fileID=2800000&guid=4b72563453becd44db17ecacae5be30e&type=3#Button_Blue_Pressed");
+}
+
+.button_PlusMinus:active > .iconPlus {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Pressed_08.png?fileID=2800000&guid=98abba930feb4a1439f59eef9829b46d&type=3#Pressed_08");
+}
+
+.button_Volume:hover {
+    scale: 1.02 1.02;
+}
+
+.button_Volume {
+    scale: 1 1.02;
+    transition-duration: 0.35s;
+    transition-property: scale;
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_3Slides.png?fileID=2800000&guid=e5538cc0a518b8145a3cf293ad12865e&type=3#Button_Blue_3Slides");
+}
+
+.button_Volume:active {
+    scale: 1.02 1.02;
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_3Slides_Pressed.png?fileID=2800000&guid=b371adf2ce2204d4fa5ca30ba852958a&type=3#Button_Blue_3Slides_Pressed");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.mainButton {
+    background-image: url("project://database/Assets/Art/UI/Buttons%20X3/Button_Blue_3Slides.png?fileID=2800000&guid=e5538cc0a518b8145a3cf293ad12865e&type=3#Button_Blue_3Slides");
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    background-size: contain;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    right: auto;
+    font-size: 22px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 20px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    transition-property: scale, padding-top;
+    transition-duration: 0.35s, 0s;
+}
+
+.SettingsContainer {
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.SettingsContainer:enabled {
+    left: 300px;
+    top: 280px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    position: absolute;
+    transition-timing-function: ease-out-circ;
+    transition-duration: 0.2s;
+}
+
+.SettingsContainer:disabled {
+    position: absolute;
+    left: 630px;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    top: 280px;
+    scale: 0.8 1;
+    transition-timing-function: ease-out-circ;
+    transition-duration: 0.2s;
+}
+
+.iconPlus {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Regular_08.png?fileID=2800000&guid=dccb0db2f2884a242a832c3161d53e4c&type=3#Regular_08");
+}
+
+.button_PlusMinus:active > .iconMinus {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Pressed_09.png?fileID=2800000&guid=4b483954888740e43bc46c994cae0eb7&type=3#Pressed_09");
+}
+
+.iconMinus {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Regular_09.png?fileID=2800000&guid=674ffd54730996f45a5fdb060d3df2ee&type=3#Regular_09");
+}
+
+.button_Volume:active > .volumeLable {
+    padding-bottom: 14px;
+}
+
+.volumeLable {
+    padding-bottom: 25px;
+}
+
+.volumeIconOff {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Regular_03_Off.png?fileID=2800000&guid=f5b033113e6c65e40bdbafe1f8d27db2&type=3#Regular_03_Off");
+}
+
+.button_Volume:active > .volumeIconOn {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Pressed_03_On.png?fileID=2800000&guid=004ca322feec6c049ad46cfb6d8c7569&type=3#Pressed_03_On");
+}
+
+.button_Volume:active > .volumeIconOff {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Pressed_03_Off.png?fileID=2800000&guid=cef54307cd0c24441b4098905a983c61&type=3#Pressed_03_Off");
+}
+
+.volumeIconOn {
+    background-image: url("project://database/Assets/Art/UI/Icons%20X3/Regular_03_On.png?fileID=2800000&guid=5ec87c079a2cb3047935c80f100b726c&type=3#Regular_03_On");
+}

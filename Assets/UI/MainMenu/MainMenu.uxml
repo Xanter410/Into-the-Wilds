@@ -1,0 +1,39 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=b6c481d10c585c345b05fb2aab0054a9&amp;type=3#MainMenu" />
+    <engine:VisualElement name="Menu" style="justify-content: center; width: 100%; height: 100%; align-items: center; position: absolute; top: 0; left: 1px;">
+        <engine:VisualElement name="Settings" class="SettingsContainer" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Banner_Connection_Right.png?fileID=2800000&amp;guid=fd497761bf49c094c8a3b77ef0224762&amp;type=3#Banner_Connection_Right&quot;); background-color: rgba(0, 0, 0, 0); width: 556px; height: 484px; flex-direction: column; align-items: center; padding-top: 143px; padding-right: 104px; padding-bottom: 139px; padding-left: 156px; opacity: 1;">
+            <engine:VisualElement name="Settings_Button_Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Carved_3Slides.png?fileID=2800000&amp;guid=569481d7a921949449ab856ac1a8c699&amp;type=3#Carved_3Slides&quot;); width: 80%; height: 100%; position: relative; left: auto; top: auto; display: flex; visibility: visible; overflow: visible; background-size: 100% 100%; -unity-background-scale-mode: scale-to-fit;">
+                <engine:Button name="Settings_Button_Volume" class="button_Volume" style="-unity-text-align: middle-center; width: 100%; height: 88%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 1px; font-size: 22px; color: rgb(255, 255, 255); -unity-font-style: bold; flex-direction: row; align-self: center; align-items: center; overflow: hidden; background-color: rgba(188, 188, 188, 0);">
+                    <engine:VisualElement name="Volume_Icon" class="volumeIconOn" style="flex-grow: 1; width: 50%; height: 100%; -unity-background-scale-mode: scale-to-fit; flex-direction: column; align-items: flex-start; display: flex; visibility: visible; overflow: visible; right: auto; left: 6px;" />
+                    <engine:Label text="10" name="Volume_Label" class="volumeLable" style="width: 58%; height: 100%; -unity-text-align: middle-left; font-size: 33px;" />
+                </engine:Button>
+            </engine:VisualElement>
+            <engine:VisualElement name="ContainerForButtonPlusAndMinus" style="flex-grow: 1; width: 93%; height: 100%; flex-direction: row; align-items: stretch;">
+                <engine:VisualElement name="Settings_Button_Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Carved_Regular.png?fileID=2800000&amp;guid=98fa9974bd3f26a4ba1cdb20dbce63ec&amp;type=3#Carved_Regular&quot;); -unity-background-scale-mode: scale-to-fit; position: relative; top: auto; left: auto; align-items: center; align-self: auto; flex-direction: column; width: 100px; height: 100px;">
+                    <engine:Button name="Settings_Button_Plus" class="button_PlusMinus">
+                        <engine:VisualElement name="IconPlus" class="iconPlus" style="flex-grow: 1;" />
+                    </engine:Button>
+                </engine:VisualElement>
+                <engine:VisualElement name="Settings_Button_Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Carved_Regular.png?fileID=2800000&amp;guid=98fa9974bd3f26a4ba1cdb20dbce63ec&amp;type=3#Carved_Regular&quot;); -unity-background-scale-mode: scale-to-fit; position: relative; top: auto; left: auto; display: flex; visibility: visible; overflow: visible; align-items: center; width: 100px; height: 100px;">
+                    <engine:Button name="Settings_Button_Minus" class="button_PlusMinus">
+                        <engine:VisualElement name="IconMinus" class="iconMinus" style="flex-grow: 1;" />
+                    </engine:Button>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="Main" style="position: relative; width: 419px; height: 698px; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Banner_Vertical_2.png?fileID=2800000&amp;guid=3b3a44a70856ccb4abb8e62c0841fc67&amp;type=3#Banner_Vertical_2&quot;); top: auto; left: auto; align-items: center; border-top-width: 187px; border-right-width: 53px; border-bottom-width: 151px; border-left-width: 58px; align-self: center; background-size: 163% 100%;">
+            <engine:VisualElement name="BackgroundHeader" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Ribbons%20X3/Ribbon_Red_3Slides.png?fileID=2800000&amp;guid=937c03d4ed00f1a4789472d0a66fe40f&amp;type=3#Ribbon_Red_3Slides&quot;); position: absolute; width: 501px; height: 131px; top: -135px; align-items: center;">
+                <engine:Label text="Into the Wilds" name="HeaderText" style="height: 70%; width: 55%; font-size: 33px; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 1px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Buttons_Background" class="backgroundButtons" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Carved_3Slides.png?fileID=2800000&amp;guid=569481d7a921949449ab856ac1a8c699&amp;type=3#Carved_3Slides&quot;);">
+                <engine:Button text="Играть" usage-hints="-1" name="Button_Play" class="mainButton" style="-unity-text-align: middle-center;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Buttons_Background" class="backgroundButtons" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Carved_3Slides.png?fileID=2800000&amp;guid=569481d7a921949449ab856ac1a8c699&amp;type=3#Carved_3Slides&quot;);">
+                <engine:Button text="Настройки" name="Button_Settings" class="mainButton" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Buttons_Background" class="backgroundButtons" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Banners%20X3/Carved_3Slides.png?fileID=2800000&amp;guid=569481d7a921949449ab856ac1a8c699&amp;type=3#Carved_3Slides&quot;);">
+                <engine:Button text="Выход" name="Button_Exit" class="mainButton" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

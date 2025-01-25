@@ -1,0 +1,33 @@
+.endingStart {
+    top: -50%;
+    left: -160%;
+    position: absolute;
+    display: flex;
+    visibility: visible;
+}
+
+.endingEnd {
+    top: -50%;
+    left: -10%;
+    position: absolute;
+    display: flex;
+    visibility: visible;
+    transition-duration: 1s;
+}
+
+.openingStart {
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    visibility: visible;
+    display: flex;
+}
+
+.openingEnd {
+    position: absolute;
+    top: -50%;
+    left: 120%;
+    visibility: visible;
+    display: flex;
+    transition-duration: 1s;
+}
