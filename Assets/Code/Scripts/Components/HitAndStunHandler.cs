@@ -58,13 +58,13 @@ namespace IntoTheWilds
 
         public void ApplyHitAndStun(Vector2 sourcePosition)
         {
-            if (_isStunned == false)
+            if (_isStunned == false && _isStunnedAfterHit)
             {
                 _ = StartCoroutine(StunCoroutine(sourcePosition));
                 return;
             }
 
-            StunEffects(sourcePosition);
+            StunEffects();
         }
 
         private IEnumerator StunCoroutine(Vector2 sourcePosition)
@@ -80,7 +80,9 @@ namespace IntoTheWilds
                 _unitStateMachine.SetEnable(false);
             }
 
-            StunEffects(sourcePosition);
+            StunEffects();
+
+            _desiredVelocity = (_unitRigidbody2D.position - sourcePosition).normalized;
 
             yield return new WaitForSeconds(_stunDuration);
 
@@ -94,10 +96,8 @@ namespace IntoTheWilds
             _isStunned = false;
         }
 
-        private void StunEffects(Vector2 sourcePosition)
+        private void StunEffects()
         {
-            _desiredVelocity = (_unitRigidbody2D.position - sourcePosition).normalized;
-
             if (_isFlashingAfterHit == true)
             {
                 _ = StartCoroutine(StunFlashEffect());

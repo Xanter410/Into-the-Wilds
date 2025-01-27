@@ -6,6 +6,7 @@ namespace IntoTheWilds
 {
     public class DropComponent : MonoBehaviour
     {
+        [SerializeField] private float _spawnPositionOffsetY = 0f;
         [SerializeField] private List<DropItem> dropItems = new();
 
         [Range(0, 100)]
@@ -43,7 +44,12 @@ namespace IntoTheWilds
 
                         //for (int i = 0; i < amountToDrop && totalDropped < maxDropAmount; i++)
                         //{
-                        droppedItems.Add(Instantiate(dropItem.ItemPrefab, transform.position, Quaternion.identity));
+                        Vector3 spawnPoint = new Vector3(
+                            transform.position.x,
+                            transform.position.y + _spawnPositionOffsetY,
+                            transform.position.z);
+
+                        droppedItems.Add(Instantiate(dropItem.ItemPrefab, spawnPoint, Quaternion.identity));
                         totalDropped++;
                         //}
                     }
