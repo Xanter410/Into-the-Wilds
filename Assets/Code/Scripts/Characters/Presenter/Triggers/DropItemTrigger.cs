@@ -1,9 +1,11 @@
 using IntoTheWilds.Inventory;
+using IntoTheWilds.Quest;
 using UnityEngine;
 using VContainer;
 
 public class DropItemTrigger : MonoBehaviour
 {
+    [SerializeField] private GameEventQuestProgress _questProgressEvent;
     private PlayerInventory _inventory;
 
     private DropItemInstance _dropItemInstance;
@@ -23,19 +25,12 @@ public class DropItemTrigger : MonoBehaviour
 
             if (_dropItemInstance.TryGetItem(out var Item) == true)
             {
-                if (_inventory.IsAndTakeItem(Item) == true)
-                {
-                    _dropItemInstance.DestroyItem();
-
-                    _dropItemInstance = null;
-                    _isStayOnItem = false;
-                }
+                TakeItem(Item);
             } 
             else
             {
                 _isStayOnItem = true;
             }
-
         }
     }
 
@@ -45,14 +40,27 @@ public class DropItemTrigger : MonoBehaviour
         {
             if (_dropItemInstance.TryGetItem(out var Item) == true)
             {
-                if (_inventory.IsAndTakeItem(Item) == true)
-                {
-                    _dropItemInstance.DestroyItem();
-
-                    _dropItemInstance = null;
-                    _isStayOnItem = false;
-                }
+                TakeItem(Item);
             }
+        }
+    }
+
+    private void TakeItem(ItemSlot Item)
+    {
+        if (_inventory.IsAndTakeItem(Item) == true)
+        {
+            _questProgressEvent.TriggerEvent(
+                new QuestProgressData
+                {
+                    ObjectiveType = ObjectiveType.Collect,
+                    ResourceType = _dropItemInstance.GetResourceTypes(),
+                    Amount = _dropItemInstance.GetAmount(),
+                });
+
+            _dropItemInstance.DestroyItem();
+
+            _dropItemInstance = null;
+            _isStayOnItem = false;
         }
     }
 }

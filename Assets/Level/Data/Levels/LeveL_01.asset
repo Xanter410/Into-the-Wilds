@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122ddbbe00bc92b4b9dd7d49bfc8750b, type: 3}
+  m_Name: LeveL_01
+  m_EditorClassIdentifier: 
+  LevelName: "\u041F\u0440\u043E\u043B\u043E\u0433"
+  Quests:
+  - {fileID: 11400000, guid: eabda607e463c114b8a7baa9b158719c, type: 2}
+  - {fileID: 11400000, guid: c91a535495cd18a4cb36f7bb26c6c3ea, type: 2}
+  NextLevelSceneBuildIndex: 0

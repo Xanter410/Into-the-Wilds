@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7548461c64b1a40a258dc8183613fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _questProgressEvent: {fileID: 11400000, guid: d32d404b5d522ba47909159c0ccc0ba3, type: 2}
 --- !u!114 &1652428133458916122
 MonoBehaviour:
   m_ObjectHideFlags: 0

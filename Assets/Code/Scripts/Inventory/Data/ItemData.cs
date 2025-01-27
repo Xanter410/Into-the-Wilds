@@ -7,6 +7,7 @@ namespace IntoTheWilds.Inventory
     public class ItemData : ScriptableObject
     {
         public int UniqueID;
+        public ResourceType Resourcetype;
 
         public int MaxStack = 3;
 

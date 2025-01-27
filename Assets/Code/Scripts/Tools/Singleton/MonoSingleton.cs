@@ -49,7 +49,7 @@ namespace Tools.Singleton
 
         protected virtual void OnDestroy()
         {
-            _applicationIsQuitting = true;
+            //_applicationIsQuitting = true;
         }
     }
 }
