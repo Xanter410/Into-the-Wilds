@@ -10,12 +10,14 @@ namespace IntoTheWilds
         public readonly IState IdleState;
         public readonly IState MoveState;
         public readonly IState AttackState;
+        public readonly IState DeadState;
 
-        public PlayerStateMachine(PlayerInput playerInput, Rigidbody2D rigidbody2D)
+        public PlayerStateMachine(PlayerInput playerInput, Rigidbody2D rigidbody2D, HealthComponent healthComponent)
         {
             IdleState = new PlayerIdleState(1, this, playerInput, rigidbody2D);
             MoveState = new PlayerMoveState(2, this, playerInput, rigidbody2D);
             AttackState = new PlayerAttackState(3, this, playerInput, rigidbody2D);
+            DeadState = new PlayerDeadState(4, this, playerInput, rigidbody2D, healthComponent);
         }
 
         void IStartable.Start()
@@ -31,6 +33,5 @@ namespace IntoTheWilds
         {
             FixedUpdateState(Time.fixedDeltaTime);
         }
-
     }
 }

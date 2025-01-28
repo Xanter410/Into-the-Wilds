@@ -36,6 +36,14 @@ namespace IntoTheWilds
         public void Constuct(InventoryHud inventoryHud)
         {
             _inventoryHud = inventoryHud;
+
+            // TODO: Временное решение проблемы.
+            // После перезагрузки уровня (например, в случае смерти персонажа)
+            // метод OnEnable не проигрывается снова.
+            // _inputActions остается актуальным как и подписки,
+            // а вот _inputActions.Player.Enable() не вызывается
+            // (т.к. он был выключен в другом месте перед перезагрузкой)
+            _inputActions.Player.Enable(); 
         }
 
         public Vector2 RetrieveMoveInput()
@@ -65,8 +73,22 @@ namespace IntoTheWilds
 
         void IStunble.Stun(bool isStunned)
         {
-            return; // Заглушка, в данный момент не предполагается
-                    // возможность застанить игрока
+            // TODO: Заглушка.
+            // В данный момент не предполагается
+            // возможность застанить игрока
+            return; 
+        }
+
+        public void SetEnabled(bool value)
+        {
+            if (value)
+            {
+                _inputActions.Player.Enable();
+            }
+            else
+            {
+                _inputActions.Player.Disable();
+            }
         }
     }
 }

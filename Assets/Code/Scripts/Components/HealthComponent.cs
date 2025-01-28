@@ -6,8 +6,9 @@ namespace IntoTheWilds
 {
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField]
-        private int maxHealthPoints;
+        [SerializeField] private int maxHealthPoints;
+
+        private bool _isAlreadyDead = false;
 
         public int MaxHealthPoints
         {
@@ -29,6 +30,11 @@ namespace IntoTheWilds
 
         public void Increment(int addHealthPoint)
         {
+            if (_isAlreadyDead == true)
+            {
+                return;
+            }
+
             if (HealthPoints + addHealthPoint < MaxHealthPoints)
             {
                 HealthPoints += addHealthPoint;
@@ -43,6 +49,11 @@ namespace IntoTheWilds
 
         public void Decrement(int removeHealthPoint)
         {
+            if (_isAlreadyDead == true)
+            {
+                return;
+            }
+
             if (HealthPoints - removeHealthPoint > 0)
             {
                 HealthPoints -= removeHealthPoint;
@@ -54,6 +65,7 @@ namespace IntoTheWilds
                 HealthPoints = 0;
 
                 _onDead?.Invoke();
+                _isAlreadyDead = true;
             }
 
             _onHealthChanged?.Invoke(HealthPoints);
