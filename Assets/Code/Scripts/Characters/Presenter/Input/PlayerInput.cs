@@ -14,6 +14,7 @@ namespace IntoTheWilds
         private event Action _attackPressed;
 
         private InventoryHud _inventoryHud;
+        private GameMenuPresenter _gameMenuHud;
 
         private void OnEnable()
         {
@@ -33,9 +34,10 @@ namespace IntoTheWilds
         }
 
         [Inject]
-        public void Constuct(InventoryHud inventoryHud)
+        public void Constuct(InventoryHud inventoryHud, GameMenuPresenter gameMenuHud)
         {
             _inventoryHud = inventoryHud;
+            _gameMenuHud = gameMenuHud;
 
             // TODO: ¬ременное решение проблемы.
             // ѕосле перезагрузки уровн€ (например, в случае смерти персонажа)
@@ -53,7 +55,7 @@ namespace IntoTheWilds
 
         private void AttackPressed(InputAction.CallbackContext _)
         {
-            if (_inventoryHud.IsUiUnderPointer())
+            if (_inventoryHud.IsUiUnderPointer() || _gameMenuHud.IsUiUnderPointer())
             {
                 return;
             }

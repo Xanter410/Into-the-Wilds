@@ -58,7 +58,8 @@ public class SettingsMenuPresenter : MonoBehaviour
 
     private void Start()
     {
-        _settingsMenuModel.SetVolume(_volumeStartValue);
+
+        //_settingsMenuModel.SetVolume(_volumeStartValue);
         UpdateVolumeLable();
     }
 

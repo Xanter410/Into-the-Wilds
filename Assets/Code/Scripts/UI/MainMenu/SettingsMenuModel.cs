@@ -20,8 +20,10 @@ public class SettingsMenuModel
         _audioMixer = audioMixer;
         _isVolumeMuted = isMute;
         _volumeMaxValue = VolumeMax;
-        _volumeCurrentValue = 0;
+
+        _ = GetVolume();
     }
+
     public void SetVolumeMute(bool value)
     {
         if (value == true)
@@ -34,6 +36,15 @@ public class SettingsMenuModel
             _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
             _isVolumeMuted = false;
         }
+    }
+
+    public int GetVolume()
+    {
+        _audioMixer.GetFloat("MasterVolume", out float currentVolume);
+        var _volumeCurrentValueFloat = Mathf.Pow(10, currentVolume / 20);
+        _volumeCurrentValue = Mathf.RoundToInt(_volumeCurrentValueFloat * _volumeMaxValue);
+
+        return _volumeCurrentValue;
     }
 
     public void SetVolume(int value)

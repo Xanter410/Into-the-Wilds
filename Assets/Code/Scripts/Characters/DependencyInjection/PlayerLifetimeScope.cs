@@ -20,6 +20,7 @@ namespace IntoTheWilds
 
             builder.Register<PlayerInventory>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<InventoryHud>();
+            builder.RegisterComponentInHierarchy<GameMenuPresenter>();
 
             builder.RegisterComponent(_playerInput)
                 .AsSelf()
