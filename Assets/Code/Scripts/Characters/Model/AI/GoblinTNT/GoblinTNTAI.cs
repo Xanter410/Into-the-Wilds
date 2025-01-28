@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Tools.BehaviorTree;
 using UnityEngine;
@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace IntoTheWilds
 {
-    public class GoblinTorchAI : BehaviorTree, ITickable, IStartable, IMove, IAttack, IStunble
+    public class GoblinTntAI : BehaviorTree, ITickable, IStartable, IMove, IAttack, IStunble
     {
         private readonly Transform _transform;
         private Vector2 _spawnPoint;
@@ -16,34 +16,9 @@ namespace IntoTheWilds
 
         private event Action _attackPressed;
 
-        public GoblinTorchAI(Rigidbody2D unitRigidbody2D)
+        public GoblinTntAI(Rigidbody2D rigidbody2D)
         {
-            _transform = unitRigidbody2D.transform;
-        }
-
-        public Vector2 RetrieveMoveInput()
-        {
-            return _moveInput;
-        }
-        public void AttackPressed()
-        {
-            SetMoveInput(Vector2.zero);
-
-            _attackPressed?.Invoke();
-        }
-
-        public void SetMoveInput(Vector2 moveDirection)
-        {
-            _moveInput = moveDirection;
-        }
-        public void RegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed += callbackHandler;
-        }
-
-        public void UnRegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed -= callbackHandler;
+            _transform = rigidbody2D.transform;
         }
 
         protected override Node SetupTree()
@@ -58,14 +33,14 @@ namespace IntoTheWilds
                     {
                         new Sequence(new List<Node>
                         {
-                            new AI_CheckPlayerInRange(_transform, 1f),
-                            new AI_Attack(this, 1f)
+                            new AI_CheckPlayerInRange(_transform, 3f),
+                            new AI_Attack(this, 5f)
                         }),
 
                         new Sequence(new List<Node>
                         {
                             new AI_CheckDistanceToSpawnPoint(_transform, _spawnPoint, 10f, 5f),
-                            new AI_MoveToTarget(this, _transform, 0.7f)
+                            new AI_MoveToTarget(this, _transform, 2.7f)
                         })
                     })
 
@@ -77,19 +52,28 @@ namespace IntoTheWilds
             return root;
         }
 
+        public void AttackPressed()
+        {
+            SetMoveInput(Vector2.zero);
+
+            _attackPressed?.Invoke();
+        }
+
+        public Vector2 RetrieveMoveInput()
+        {
+            return _moveInput;
+        }
+
+        public void SetMoveInput(Vector2 moveDirection)
+        {
+            _moveInput = moveDirection;
+        }
+
         void IStartable.Start()
         {
             _spawnPoint = _transform.position;
 
             Setup();
-        }
-
-        void ITickable.Tick()
-        {
-            if (_isStunned != true)
-            {
-                Update();
-            }
         }
 
         void IStunble.Stun(bool isStunned)
@@ -103,6 +87,24 @@ namespace IntoTheWilds
             {
                 _isStunned = false;
             }
+        }
+
+        void ITickable.Tick()
+        {
+            if (_isStunned != true)
+            {
+                Update();
+            }
+        }
+
+        public void RegisterCallbackAttack(Action callbackHandler)
+        {
+            _attackPressed += callbackHandler;
+        }
+
+        public void UnRegisterCallbackAttack(Action callbackHandler)
+        {
+            _attackPressed -= callbackHandler;
         }
     }
 }

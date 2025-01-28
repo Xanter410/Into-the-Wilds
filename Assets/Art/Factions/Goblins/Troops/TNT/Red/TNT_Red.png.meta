@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -160,20 +160,20 @@ TextureImporter:
       name: TNT_Red_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 440
-        width: 88
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8d703c3146a6ce710800000000000000
-      internalID: 1723869735436879832
+      spriteID: d1857f5bb91438a47966e312221e458e
+      internalID: -153809365
       vertices: []
       indices: 
       edges: []
@@ -182,20 +182,20 @@ TextureImporter:
       name: TNT_Red_1
       rect:
         serializedVersion: 2
-        x: 250
-        y: 440
-        width: 85
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1b8e0c629ebbf70c0800000000000000
-      internalID: -4575732086333183823
+      spriteID: d23fc108f704f2d47a6cccae14aa6bae
+      internalID: 1649362692
       vertices: []
       indices: 
       edges: []
@@ -204,20 +204,20 @@ TextureImporter:
       name: TNT_Red_2
       rect:
         serializedVersion: 2
-        x: 443
-        y: 440
-        width: 85
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c9c4e818494866980800000000000000
-      internalID: -8545997469525324644
+      spriteID: 12ac25547d764c54786a7e24d8237dc4
+      internalID: 1903760316
       vertices: []
       indices: 
       edges: []
@@ -226,20 +226,20 @@ TextureImporter:
       name: TNT_Red_3
       rect:
         serializedVersion: 2
-        x: 634
-        y: 440
-        width: 88
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d3fe362efddde8600800000000000000
-      internalID: 472558964566126397
+      spriteID: 2bffb3649aaeca54bac7c6ea2344b3bd
+      internalID: 407504974
       vertices: []
       indices: 
       edges: []
@@ -248,20 +248,20 @@ TextureImporter:
       name: TNT_Red_4
       rect:
         serializedVersion: 2
-        x: 824
-        y: 440
-        width: 88
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 768
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 76bcc2c709b7592d0800000000000000
-      internalID: -3272573693725979801
+      spriteID: 5b01e7fa0e62714468900f5023c384c5
+      internalID: -1555634195
       vertices: []
       indices: 
       edges: []
@@ -270,20 +270,20 @@ TextureImporter:
       name: TNT_Red_5
       rect:
         serializedVersion: 2
-        x: 1016
-        y: 440
-        width: 84
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 960
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 79f101b6b71c88830800000000000000
-      internalID: 4073718598777970583
+      spriteID: 2404ed141cdb3424a93f6add9461310c
+      internalID: -2028786744
       vertices: []
       indices: 
       edges: []
@@ -292,20 +292,20 @@ TextureImporter:
       name: TNT_Red_6
       rect:
         serializedVersion: 2
-        x: 1099
-        y: 487
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 471668854ed6356e0800000000000000
-      internalID: -1850014194413969036
+      spriteID: 583995b70fcc66641a115ad0d2a1fdac
+      internalID: 1265723649
       vertices: []
       indices: 
       edges: []
@@ -314,20 +314,20 @@ TextureImporter:
       name: TNT_Red_7
       rect:
         serializedVersion: 2
-        x: 59
-        y: 250
-        width: 82
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6b6b890f846b8a060800000000000000
-      internalID: 6965017248118912694
+      spriteID: 545913aa24940b544a87bd8af5e5e9f7
+      internalID: 1113233848
       vertices: []
       indices: 
       edges: []
@@ -336,20 +336,20 @@ TextureImporter:
       name: TNT_Red_8
       rect:
         serializedVersion: 2
-        x: 252
-        y: 250
-        width: 82
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ca3bb3528c1526fc0800000000000000
-      internalID: -3503147640080845908
+      spriteID: 62791b998ee7e2542baa2b5eb5deff2d
+      internalID: -476312169
       vertices: []
       indices: 
       edges: []
@@ -358,20 +358,20 @@ TextureImporter:
       name: TNT_Red_9
       rect:
         serializedVersion: 2
-        x: 443
-        y: 250
-        width: 85
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9547e4fce83c88820800000000000000
-      internalID: 2920799376480564313
+      spriteID: 87244846be4329549bb31acbae608acb
+      internalID: 780400508
       vertices: []
       indices: 
       edges: []
@@ -380,20 +380,20 @@ TextureImporter:
       name: TNT_Red_10
       rect:
         serializedVersion: 2
-        x: 633
-        y: 250
-        width: 87
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 768
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1143cc49d804477b0800000000000000
-      internalID: -5227482290639326191
+      spriteID: 49a6eebeb68a0a048b3be760ff88f579
+      internalID: 949296928
       vertices: []
       indices: 
       edges: []
@@ -402,20 +402,20 @@ TextureImporter:
       name: TNT_Red_11
       rect:
         serializedVersion: 2
-        x: 824
-        y: 250
-        width: 84
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 960
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b98aa25c9bed76950800000000000000
-      internalID: 6442362681435007131
+      spriteID: c4d6a7cff14778a448468e803b7d8be4
+      internalID: -1841892428
       vertices: []
       indices: 
       edges: []
@@ -424,20 +424,20 @@ TextureImporter:
       name: TNT_Red_12
       rect:
         serializedVersion: 2
-        x: 1017
-        y: 250
-        width: 82
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e8b02193b916c5280800000000000000
-      internalID: -9053253831616230514
+      spriteID: 8923671a67d91a842b1b857d6bf3a945
+      internalID: -1826139582
       vertices: []
       indices: 
       edges: []
@@ -446,20 +446,20 @@ TextureImporter:
       name: TNT_Red_13
       rect:
         serializedVersion: 2
-        x: 54
-        y: 56
-        width: 79
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9ccf2f078b0f0fb80800000000000000
-      internalID: -8362919833067389751
+      spriteID: 640d58d87dfd9214ca3fb67a88f7a292
+      internalID: -840515683
       vertices: []
       indices: 
       edges: []
@@ -468,20 +468,20 @@ TextureImporter:
       name: TNT_Red_14
       rect:
         serializedVersion: 2
-        x: 242
-        y: 56
-        width: 78
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 714b4ebb6c9c3ce80800000000000000
-      internalID: -8159456244472171497
+      spriteID: 883db3b99510fbb4d8347cf523c69a19
+      internalID: -1636125438
       vertices: []
       indices: 
       edges: []
@@ -490,20 +490,20 @@ TextureImporter:
       name: TNT_Red_15
       rect:
         serializedVersion: 2
-        x: 439
-        y: 56
-        width: 77
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7ceb6e309722d9270800000000000000
-      internalID: 8258795194819198663
+      spriteID: 4611e91c6bc6eec41bfc4202bb59bf63
+      internalID: -1345170892
       vertices: []
       indices: 
       edges: []
@@ -512,20 +512,20 @@ TextureImporter:
       name: TNT_Red_16
       rect:
         serializedVersion: 2
-        x: 633
-        y: 56
-        width: 76
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a6423b210ae71fe20800000000000000
-      internalID: 3382624021105550442
+      spriteID: c3100a9ed536c534096711b85ab83539
+      internalID: 1745568652
       vertices: []
       indices: 
       edges: []
@@ -534,20 +534,20 @@ TextureImporter:
       name: TNT_Red_17
       rect:
         serializedVersion: 2
-        x: 824
-        y: 56
-        width: 75
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 960
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d8b1b70624d914810800000000000000
-      internalID: 1747851038808546189
+      spriteID: 5ed7f0eecc0d0884d812ffbaa1647704
+      internalID: 825986606
       vertices: []
       indices: 
       edges: []
@@ -556,42 +556,20 @@ TextureImporter:
       name: TNT_Red_18
       rect:
         serializedVersion: 2
-        x: 1014
-        y: 56
-        width: 66
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1152
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0d4d2923e84d290f0800000000000000
-      internalID: -1111592450808163120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TNT_Red_19
-      rect:
-        serializedVersion: 2
-        x: 1210
-        y: 56
-        width: 68
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d18a89a120186b30800000000000000
-      internalID: 4280689182580048338
+      spriteID: ad1725bdcb6224541b03ec8d30065480
+      internalID: -300095048
       vertices: []
       indices: 
       edges: []
@@ -600,7 +578,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ab53db4ae572dd0469f179455890446a
     internalID: 0
     vertices: []
     indices: 
@@ -610,26 +588,25 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TNT_Red_0: 1723869735436879832
-      TNT_Red_1: -4575732086333183823
-      TNT_Red_10: -5227482290639326191
-      TNT_Red_11: 6442362681435007131
-      TNT_Red_12: -9053253831616230514
-      TNT_Red_13: -8362919833067389751
-      TNT_Red_14: -8159456244472171497
-      TNT_Red_15: 8258795194819198663
-      TNT_Red_16: 3382624021105550442
-      TNT_Red_17: 1747851038808546189
-      TNT_Red_18: -1111592450808163120
-      TNT_Red_19: 4280689182580048338
-      TNT_Red_2: -8545997469525324644
-      TNT_Red_3: 472558964566126397
-      TNT_Red_4: -3272573693725979801
-      TNT_Red_5: 4073718598777970583
-      TNT_Red_6: -1850014194413969036
-      TNT_Red_7: 6965017248118912694
-      TNT_Red_8: -3503147640080845908
-      TNT_Red_9: 2920799376480564313
+      TNT_Red_0: -153809365
+      TNT_Red_1: 1649362692
+      TNT_Red_10: 949296928
+      TNT_Red_11: -1841892428
+      TNT_Red_12: -1826139582
+      TNT_Red_13: -840515683
+      TNT_Red_14: -1636125438
+      TNT_Red_15: -1345170892
+      TNT_Red_16: 1745568652
+      TNT_Red_17: 825986606
+      TNT_Red_18: -300095048
+      TNT_Red_2: 1903760316
+      TNT_Red_3: 407504974
+      TNT_Red_4: -1555634195
+      TNT_Red_5: -2028786744
+      TNT_Red_6: 1265723649
+      TNT_Red_7: 1113233848
+      TNT_Red_8: -476312169
+      TNT_Red_9: 780400508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

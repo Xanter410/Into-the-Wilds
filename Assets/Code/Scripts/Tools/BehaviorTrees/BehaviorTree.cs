@@ -2,6 +2,7 @@ namespace Tools.BehaviorTree
 {
     public abstract class BehaviorTree
     {
+        public Node RootNode => _root;
         private Node _root = null;
 
         protected void Setup()

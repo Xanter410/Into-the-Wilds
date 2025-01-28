@@ -1,3 +1,4 @@
+using Tools.BehaviorTree;
 using Tools.StateMachine;
 using UnityEngine;
 using VContainer;
@@ -5,7 +6,7 @@ using VContainer.Unity;
 
 namespace IntoTheWilds
 {
-    public class GoblinTorchLifetimeScope : LifetimeScope
+    public class GoblinTNTLifetimeScope : LifetimeScope
     {
         [SerializeField] private Rigidbody2D _unitRigidbody2D;
         protected override void Configure(IContainerBuilder builder)
@@ -14,7 +15,7 @@ namespace IntoTheWilds
 
             builder.UseEntryPoints(entryPoints =>
             {
-                entryPoints.Add<GoblinTorchAI>().As<IMove, IAttack>();
+                entryPoints.Add<GoblinTntAI>().As<IMove, IAttack, BehaviorTree>();
 
                 entryPoints.Add<GoblinStateMachine>().As<StateMachine>();
             });

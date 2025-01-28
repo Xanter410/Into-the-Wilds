@@ -16,7 +16,6 @@ namespace IntoTheWilds
         private static class AnimatorParameters
         {
             public const string State = "state";
-            public const string StateChanged = "stateChanged";
         }
 
         [Inject]
@@ -45,7 +44,6 @@ namespace IntoTheWilds
         public void OnStateChanged(IState state)
         {
             _animator.SetInteger(AnimatorParameters.State, state.ID);
-            _animator.SetTrigger(AnimatorParameters.StateChanged);
         }
 
         public void TimeToSpawnTriggerForAttack()

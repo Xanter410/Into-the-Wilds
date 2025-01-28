@@ -35,6 +35,7 @@ namespace IntoTheWilds
             {
                 healthComponent.Decrement(_damagePower);
             }
+
             if (collision.gameObject.TryGetComponent(out HitAndStunHandler hitAndStunHandler))
             {
                 hitAndStunHandler.ApplyHitAndStun(_parent.transform.position);
