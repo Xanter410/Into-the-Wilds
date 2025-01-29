@@ -1,6 +1,6 @@
 using UnityEngine;
-using System.Linq;
 using IntoTheWilds.Quest;
+
 namespace IntoTheWilds
 {
     public class LevelManager : MonoBehaviour
@@ -8,7 +8,7 @@ namespace IntoTheWilds
         public LevelData CurrentLevelData;
         public QuestSystem QuestSystem { get; private set; }
 
-        void Awake()
+        void Start()
         {
             QuestSystem = GetComponent<QuestSystem>();
             InitializeLevel();
@@ -28,13 +28,11 @@ namespace IntoTheWilds
 
         private void HandleAllQuestsCompletion()
         {
-            Debug.Log("Все квесты завершены");
             CompleteLevel();
         }
 
         private void CompleteLevel()
         {
-            Debug.Log($"Уровень {CurrentLevelData.LevelName} завершён.");
             LoadNextLevel();
         }
 

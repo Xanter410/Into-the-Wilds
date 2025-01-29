@@ -1,32 +1,32 @@
-using IntoTheWilds;
-using IntoTheWilds.Quest;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class QuestHudPresenter : MonoBehaviour
+namespace IntoTheWilds.Quest
 {
-    [SerializeField] private VisualTreeAsset _questPanel;
-    [SerializeField] private VisualTreeAsset _objectiveElement;
-
-    private UIDocument _uiDocument;
-    private LevelManager _levelManager;
-
-    private List<QuestHudModel> _questModelsHud = new();
-    private List<VisualElement> _questPanels = new();
-
-    private void Awake()
+    public class QuestHudPresenter : MonoBehaviour
     {
-        _uiDocument = GetComponent<UIDocument>();
-        _levelManager = GetComponent<LevelManager>();
-    }
+        [SerializeField] private VisualTreeAsset _questPanel;
+        [SerializeField] private VisualTreeAsset _objectiveElement;
 
-    private void Start()
-    {
-        List<IQuest> quests = _levelManager.QuestSystem.GetListActiveQuests();
+        private GroupBox _questBoxGroup;
 
-        foreach (IQuest quest in quests)
+        private UIDocument _uiDocument;
+        private QuestSystem _questSystem;
+
+        private List<QuestHudModel> _questModelsHud = new();
+
+        private void Awake()
+        {
+            _uiDocument = GetComponent<UIDocument>();
+            _questSystem = GetComponent<QuestSystem>();
+
+            _questBoxGroup = _uiDocument.rootVisualElement.Q<GroupBox>("QuestList");
+
+            _questSystem.OnNewActiveQuestAdded += NewQuestAdded;
+        }
+
+        private void NewQuestAdded(IQuest quest)
         {
             VisualElement questPanel = _questPanel.CloneTree();
 
@@ -36,24 +36,12 @@ public class QuestHudPresenter : MonoBehaviour
 
             _questModelsHud.Add(questHudModel);
 
-            _questPanels.Add(questPanel);
+            _questBoxGroup.Add(questPanel);
         }
 
-        AddListToVisualTree();
-    }
-
-    private void AddListToVisualTree()
-    {
-        GroupBox questBox = _uiDocument.rootVisualElement.Q<GroupBox>("QuestList");
-
-        foreach (var quest in _questPanels)
+        private void QuestComplited(QuestHudModel questHudModel)
         {
-            questBox.Add(quest);
+            questHudModel._questPanel.AddToClassList("questComplite");
         }
-    }
-
-    private void QuestComplited(QuestHudModel questHudModel)
-    {
-        questHudModel._questPanel.AddToClassList("questComplite");
     }
 }

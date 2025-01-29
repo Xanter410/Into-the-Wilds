@@ -16,4 +16,5 @@ MonoBehaviour:
   Quests:
   - {fileID: 11400000, guid: eabda607e463c114b8a7baa9b158719c, type: 2}
   - {fileID: 11400000, guid: c91a535495cd18a4cb36f7bb26c6c3ea, type: 2}
+  - {fileID: 11400000, guid: d8b0b98f8bba5344e8389fd85082cf58, type: 2}
   NextLevelSceneBuildIndex: 0

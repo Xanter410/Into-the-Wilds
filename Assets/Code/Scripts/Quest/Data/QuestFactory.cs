@@ -18,12 +18,15 @@ namespace IntoTheWilds.Quest
                     case ObjectiveType.Collect:
                         objectives.Add(new CollectObjective(objData.Description, objData.TargetAmount, objData.ResourceType));
                         break;
+                    case ObjectiveType.Find:
+                        objectives.Add(new FindObjective(objData.Description, objData.TargetAmount));
+                        break;
                     default:
                         throw new System.NotImplementedException($"Объект квеста типа: {objData.Type} не поддерживается!");
                 }
             }
 
-            return new QuestBase(questData.QuestName, questData.Description, objectives);
+            return new QuestBase(questData.QuestName, questData.Description, objectives, questData.ConditionsActivation);
         }
     }
 }

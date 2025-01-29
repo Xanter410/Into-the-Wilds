@@ -11,6 +11,9 @@ namespace IntoTheWilds.Quest
         string Description { get; }
         bool IsCompleted { get; }
         IReadOnlyList<IObjective> Objectives { get; }
+
+        List<string> ConditionsActivation { get; }
+
         void Initialize();
         event Action<IQuest> OnQuestCompleted;
     }
@@ -22,15 +25,18 @@ namespace IntoTheWilds.Quest
         public IReadOnlyList<IObjective> Objectives => _objectives.AsReadOnly();
         public bool IsCompleted => Objectives.All(o => o.IsCompleted);
 
+        public List<string> ConditionsActivation { get; private set; }
+
         private List<IObjective> _objectives;
 
         public event Action<IQuest> OnQuestCompleted;
 
-        public QuestBase(string questName, string description, List<IObjective> objectives)
+        public QuestBase(string questName, string description, List<IObjective> objectives, List<string> conditions)
         {
             QuestName = questName;
             Description = description;
             _objectives = objectives;
+            ConditionsActivation = conditions;
 
             foreach (var objective in _objectives)
             {

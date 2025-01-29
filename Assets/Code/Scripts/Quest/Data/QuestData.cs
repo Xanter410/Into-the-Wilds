@@ -9,6 +9,7 @@ namespace IntoTheWilds.Quest
         public string QuestName;
         public string Description;
         public List<ObjectiveData> Objectives;
+        public List<string> ConditionsActivation;
     }
 
     [System.Serializable]

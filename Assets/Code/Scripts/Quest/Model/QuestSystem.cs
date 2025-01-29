@@ -7,10 +7,14 @@ namespace IntoTheWilds.Quest
     public class QuestSystem : MonoBehaviour
     {
         public event Action OnAllQuestsCompleted;
+        public event Action<IQuest> OnNewActiveQuestAdded;
 
         [SerializeField] private GameEventQuestProgress _OnQuestProggress;
-        private List<IQuest> activeQuests = new List<IQuest>();
-        
+
+        private List<IQuest> _activeQuests = new();
+        private List<IQuest> _queueQuests = new();
+        private List<string> _complitedQuests = new();
+
 
         private void OnEnable()
         {
@@ -22,23 +26,29 @@ namespace IntoTheWilds.Quest
             _OnQuestProggress.RemoveListener(UpdateObjectiveProgress);
         }
 
-        public List<IQuest> GetListActiveQuests()
-        {
-            return activeQuests;
-        }
-
         public void AddQuest(IQuest quest)
         {
             quest.OnQuestCompleted += HandleQuestCompleted;
             quest.Initialize();
-            activeQuests.Add(quest);
+
+            
+            if (quest.ConditionsActivation.Count == 0 || CheckConditions(quest) == true)
+            {
+                _activeQuests.Add(quest);
+
+                OnNewActiveQuestAdded?.Invoke(quest);
+            }
+            else
+            {
+                _queueQuests.Add(quest);
+            }
         }
 
         public void UpdateObjectiveProgress(QuestProgressData progressData)
         {
-            for (int i = activeQuests.Count - 1; i >= 0; i--)
+            for (int i = _activeQuests.Count - 1; i >= 0; i--)
             {
-                var quest = activeQuests[i];
+                var quest = _activeQuests[i];
 
                 foreach (var objective in quest.Objectives)
                 {
@@ -52,6 +62,11 @@ namespace IntoTheWilds.Quest
                     {
                         objective.UpdateProgress(progressData.Amount);
                     }
+
+                    if (objective is FindObjective && progressData.ObjectiveType == ObjectiveType.Find)
+                    {
+                        objective.UpdateProgress(progressData.Amount);
+                    }
                 }
             }
 
@@ -60,7 +75,7 @@ namespace IntoTheWilds.Quest
 
         private void CheckIsAllListQuestsCompleted()
         {
-            if (activeQuests.Count == 0)
+            if (_activeQuests.Count == 0)
             {
                 _OnQuestProggress.RemoveListener(UpdateObjectiveProgress);
 
@@ -70,9 +85,46 @@ namespace IntoTheWilds.Quest
 
         private void HandleQuestCompleted(IQuest completedQuest)
         {
-            Debug.Log($" вест завершЄн: {completedQuest.QuestName}");
-            activeQuests.Remove(completedQuest);
+            _complitedQuests.Add(completedQuest.QuestName);
+            _activeQuests.Remove(completedQuest);
+
+            CheckQueueQuests();
         }
 
+        private void CheckQueueQuests()
+        {
+            for (int i = _queueQuests.Count - 1; i >= 0; i--)
+            {
+                var quest = _queueQuests[i];
+
+                if (CheckConditions(quest) == true)
+                {
+                    _activeQuests.Add(quest);
+
+                    OnNewActiveQuestAdded?.Invoke(quest);
+
+                    _queueQuests.Remove(_queueQuests[i]);
+                }
+            }
+        }
+
+        private bool CheckConditions(IQuest quest)
+        {
+            bool IsConditionsTrue = false;
+
+            foreach (var Condition in quest.ConditionsActivation)
+            {
+                if (_complitedQuests.Contains(Condition))
+                {
+                    IsConditionsTrue = true;
+                }
+                else
+                {
+                    IsConditionsTrue = false;
+                }
+            }
+
+            return IsConditionsTrue;
+        }
     }
 }
