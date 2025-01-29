@@ -429,6 +429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 4197410288884973435, guid: e8125316bf435b54586e0c2ef5f0962f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2454,7 +2458,7 @@ Tilemap:
       - {fileID: 1315802450, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1531484912, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1756515619, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: -2, z: 0}
@@ -2769,7 +2773,7 @@ Tilemap:
       - {fileID: 1315802450, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1531484912, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1756515619, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 9, y: 1, z: 0}
@@ -3129,7 +3133,7 @@ Tilemap:
       - {fileID: 1315802450, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1531484912, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1756515619, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -1, y: 6, z: 0}
@@ -3339,7 +3343,7 @@ Tilemap:
       - {fileID: 1315802450, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1531484912, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1756515619, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 7, y: 8, z: 0}
@@ -3354,7 +3358,7 @@ Tilemap:
       - {fileID: 1315802450, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1531484912, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
       - {fileID: 1756515619, guid: b833b0b161e36dc4db79a9d446f80c50, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 8, y: 8, z: 0}
@@ -30360,8 +30364,52 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2140783240778183568, guid: 669be7bf5b81ae446aae0fb166379597, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4652426854114521936}
+    - targetCorrespondingSourceObject: {fileID: 2140783240778183568, guid: 669be7bf5b81ae446aae0fb166379597, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4652426854114521935}
   m_SourcePrefab: {fileID: 100100000, guid: 669be7bf5b81ae446aae0fb166379597, type: 3}
+--- !u!1 &4652426854114521934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2140783240778183568, guid: 669be7bf5b81ae446aae0fb166379597, type: 3}
+  m_PrefabInstance: {fileID: 4652426854114521933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4652426854114521935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652426854114521934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1500fa8c9b7250b4fac3a9f985a97bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questPanel: {fileID: 9197481963319205126, guid: f1899f3dc3598c244bf53af99890effb, type: 3}
+  _objectiveElement: {fileID: 9197481963319205126, guid: cea307191a278ea40a5ddcf3bbeb515e, type: 3}
+--- !u!114 &4652426854114521936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652426854114521934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: c8bb2e11e8d81324b9b2e5a69fc23138, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: a0f7375fe6eb60049a82c26c434bd16d, type: 3}
+  m_SortingOrder: 3
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!1001 &6013459771650653420
 PrefabInstance:
   m_ObjectHideFlags: 0

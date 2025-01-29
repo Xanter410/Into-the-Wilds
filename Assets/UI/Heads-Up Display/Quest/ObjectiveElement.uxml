@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Objective" style="flex-grow: 1; flex-direction: row; justify-content: center; position: relative; width: 170px; height: 35px;">
+        <engine:Label text="Дерево" name="ObjectiveDescription" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); font-size: 16px; -unity-font-style: bold; -unity-text-align: middle-left;" />
+        <engine:Label text=" 1 / 3" name="ObjectiveAmount" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 16px; -unity-font-style: bold; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 1px; color: rgb(255, 255, 255); -unity-text-align: middle-left;" />
+    </engine:VisualElement>
+</engine:UXML>

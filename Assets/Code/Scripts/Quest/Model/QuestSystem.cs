@@ -22,6 +22,11 @@ namespace IntoTheWilds.Quest
             _OnQuestProggress.RemoveListener(UpdateObjectiveProgress);
         }
 
+        public List<IQuest> GetListActiveQuests()
+        {
+            return activeQuests;
+        }
+
         public void AddQuest(IQuest quest)
         {
             quest.OnQuestCompleted += HandleQuestCompleted;

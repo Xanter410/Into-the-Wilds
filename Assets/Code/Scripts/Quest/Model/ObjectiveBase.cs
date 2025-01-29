@@ -6,10 +6,13 @@ namespace IntoTheWilds.Quest
     public interface IObjective
     {
         string Description { get; }
+        int TargetAmount { get; }
+        int CurrentAmount { get; }
         bool IsCompleted { get; }
         void Initialize();
         void UpdateProgress(int amount);
         event Action<IObjective> OnObjectiveCompleted;
+        event Action OnObjectiveAmountChanged;
     }
     public abstract class ObjectiveBase : IObjective
     {
@@ -19,6 +22,8 @@ namespace IntoTheWilds.Quest
         public bool IsCompleted => CurrentAmount >= TargetAmount;
 
         public event Action<IObjective> OnObjectiveCompleted;
+
+        public event Action OnObjectiveAmountChanged;
 
         public ObjectiveBase(string description, int targetAmount)
         {
@@ -36,6 +41,9 @@ namespace IntoTheWilds.Quest
             if (IsCompleted) return;
 
             CurrentAmount += amount;
+
+            OnObjectiveAmountChanged?.Invoke();
+
             if (IsCompleted)
             {
                 OnObjectiveCompleted?.Invoke(this);

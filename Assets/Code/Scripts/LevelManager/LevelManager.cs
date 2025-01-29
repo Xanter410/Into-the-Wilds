@@ -6,11 +6,11 @@ namespace IntoTheWilds
     public class LevelManager : MonoBehaviour
     {
         public LevelData CurrentLevelData;
-        private QuestSystem questSystem;
+        public QuestSystem QuestSystem { get; private set; }
 
-        void Start()
+        void Awake()
         {
-            questSystem = GetComponent<QuestSystem>();
+            QuestSystem = GetComponent<QuestSystem>();
             InitializeLevel();
         }
 
@@ -20,10 +20,10 @@ namespace IntoTheWilds
             {
                 var quest = QuestFactory.CreateQuest(questData);
 
-                questSystem.AddQuest(quest);
+                QuestSystem.AddQuest(quest);
             }
 
-            questSystem.OnAllQuestsCompleted += HandleAllQuestsCompletion;
+            QuestSystem.OnAllQuestsCompleted += HandleAllQuestsCompletion;
         }
 
         private void HandleAllQuestsCompletion()
