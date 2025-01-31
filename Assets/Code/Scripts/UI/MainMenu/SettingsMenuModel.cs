@@ -12,7 +12,7 @@ public class SettingsMenuModel
     public int VolumeMaxValue => _volumeMaxValue;
     private int _volumeMaxValue;
 
-    public int VolumeCurrentValue => _volumeCurrentValue;
+    public int VolumeCurrentValue => GetVolume();
     private int _volumeCurrentValue;
 
     public SettingsMenuModel(AudioMixer audioMixer, bool isMute, int VolumeMax)
@@ -21,7 +21,7 @@ public class SettingsMenuModel
         _isVolumeMuted = isMute;
         _volumeMaxValue = VolumeMax;
 
-        _ = GetVolume();
+        //_ = GetVolume();
     }
 
     public void SetVolumeMute(bool value)

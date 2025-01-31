@@ -1,3 +1,4 @@
+using IntoTheWilds;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UIElements;
@@ -5,6 +6,7 @@ using UnityEngine.UIElements;
 public class SettingsMenuPresenter : MonoBehaviour
 {
     private UIDocument _uiDocument;
+    private PlayAudioEffectComponent _audioEffectComponent;
 
     private Button _volumeButton;
     private Button _plusButton;
@@ -20,11 +22,11 @@ public class SettingsMenuPresenter : MonoBehaviour
     [SerializeField] AudioMixer _audioMixer;
     [SerializeField] private bool _isVolumeMuted = false;
     [SerializeField] private int _volumeMaxValue;
-    [SerializeField] private int _volumeStartValue;
 
     private void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
+        _audioEffectComponent = GetComponent<PlayAudioEffectComponent>();
 
         var root = _uiDocument.rootVisualElement;
 
@@ -56,15 +58,14 @@ public class SettingsMenuPresenter : MonoBehaviour
         _minusButton.clicked -= MinusButtonClicked;
     }
 
-    private void Start()
+    public void MenuOpen()
     {
-
-        //_settingsMenuModel.SetVolume(_volumeStartValue);
         UpdateVolumeLable();
     }
 
     private void VolumeButtonClicked()
     {
+        _audioEffectComponent.PlayShotAudio();
         if (_isVolumeMuted == true)
         {
             SetMute(false);
@@ -97,6 +98,7 @@ public class SettingsMenuPresenter : MonoBehaviour
         SetMute(false);
         _settingsMenuModel.ChangeVolume(1);
         UpdateVolumeLable();
+        _audioEffectComponent.PlayShotAudio();
     }
 
     private void MinusButtonClicked()
@@ -104,6 +106,7 @@ public class SettingsMenuPresenter : MonoBehaviour
         SetMute(false);
         _settingsMenuModel.ChangeVolume(-1);
         UpdateVolumeLable();
+        _audioEffectComponent.PlayShotAudio();
     }
 
     private void UpdateVolumeLable()

@@ -8,11 +8,13 @@ namespace IntoTheWilds
     {
         public IState IdleState;
         public IState MoveState;
+        public IState DeadState;
 
-        public SheepStateMachine(SheepAI sheepInput, Rigidbody2D rigidbody2D)
+        public SheepStateMachine(SheepAI sheepInput, Rigidbody2D rigidbody2D, HealthComponent healthComponent)
         {
             IdleState = new SheepIdleState(1, this, sheepInput, rigidbody2D);
             MoveState = new SheepMoveState(2, this, sheepInput, rigidbody2D);
+            DeadState = new SheepDeadState(3, this, rigidbody2D, healthComponent);
         }
 
         void IStartable.Start()

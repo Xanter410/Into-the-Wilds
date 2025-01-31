@@ -6,6 +6,11 @@ using VContainer;
 public class DropItemTrigger : MonoBehaviour
 {
     [SerializeField] private GameEventQuestProgress _questProgressEvent;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip[] _pickupSounds;
+    [SerializeField, Range(0f, 1f)] protected float _volumeClips = 1f;
+
     private PlayerInventory _inventory;
 
     private DropItemInstance _dropItemInstance;
@@ -49,6 +54,8 @@ public class DropItemTrigger : MonoBehaviour
     {
         if (_inventory.IsAndTakeItem(Item) == true)
         {
+            PlayShotAudio();
+
             _questProgressEvent.TriggerEvent(
                 new QuestProgressData
                 {
@@ -62,5 +69,14 @@ public class DropItemTrigger : MonoBehaviour
             _dropItemInstance = null;
             _isStayOnItem = false;
         }
+    }
+    private void PlayShotAudio()
+    {
+        _audioSource.PlayOneShot(RandomClip(_pickupSounds), _volumeClips);
+    }
+
+    private AudioClip RandomClip(AudioClip[] audioClips)
+    {
+        return audioClips[Random.Range(0, audioClips.Length)];
     }
 }

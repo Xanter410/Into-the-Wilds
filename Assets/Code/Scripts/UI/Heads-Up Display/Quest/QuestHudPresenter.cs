@@ -9,6 +9,8 @@ namespace IntoTheWilds.Quest
         [SerializeField] private VisualTreeAsset _questPanel;
         [SerializeField] private VisualTreeAsset _objectiveElement;
 
+        [SerializeField] private PlayAudioEffectComponent _playAudioEffect;
+
         private GroupBox _questBoxGroup;
 
         private UIDocument _uiDocument;
@@ -20,6 +22,7 @@ namespace IntoTheWilds.Quest
         {
             _uiDocument = GetComponent<UIDocument>();
             _questSystem = GetComponent<QuestSystem>();
+            _playAudioEffect = GetComponent<PlayAudioEffectComponent>();
 
             _questBoxGroup = _uiDocument.rootVisualElement.Q<GroupBox>("QuestList");
 
@@ -42,6 +45,7 @@ namespace IntoTheWilds.Quest
         private void QuestComplited(QuestHudModel questHudModel)
         {
             questHudModel._questPanel.AddToClassList("questComplite");
+            _playAudioEffect.PlayShotAudio();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace IntoTheWilds
         private static class AnimatorParameters
         {
             public const string isWalk = "walk";
+            public const string isDead = "isDead";
         }
 
         [Inject]
@@ -45,6 +46,10 @@ namespace IntoTheWilds
                     break;
                 case 2:
                     _animator.SetBool(AnimatorParameters.isWalk, true);
+                    break;
+                case 3:
+                    _animator.SetBool(AnimatorParameters.isWalk, false);
+                    _animator.SetBool(AnimatorParameters.isDead, true);
                     break;
                 default:
                     _animator.SetBool(AnimatorParameters.isWalk, false);

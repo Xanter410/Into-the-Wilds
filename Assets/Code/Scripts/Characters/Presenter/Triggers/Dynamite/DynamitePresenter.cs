@@ -1,3 +1,4 @@
+using IntoTheWilds;
 using UnityEngine;
 
 public class DynamitePresenter : MonoBehaviour
@@ -10,6 +11,8 @@ public class DynamitePresenter : MonoBehaviour
 
     [SerializeField] GameObject _explosionTrigger;
 
+    private PlayAudioEffectComponent _audioComponent;
+
     private Animator _animator;
     private Material _material;
 
@@ -17,8 +20,12 @@ public class DynamitePresenter : MonoBehaviour
     private float _flashTimer;
     private bool _isPlaying;
 
+    private float _destroyDelayTimer;
+    private bool _isReadyDestroy;
+
     private void OnEnable()
     {
+        _audioComponent = GetComponent<PlayAudioEffectComponent>();
         _animator = GetComponent<Animator>();
         _isPlaying = true;
 
@@ -30,7 +37,6 @@ public class DynamitePresenter : MonoBehaviour
     }
     private void Update()
     {
-
         if (_timeBeforeExplosion > 0)
         {
             UpdateFlashEffect();
@@ -39,6 +45,16 @@ public class DynamitePresenter : MonoBehaviour
         else if (_isPlaying == true)
         {
             Explode();
+        }
+
+        if (_isReadyDestroy == true)
+        {
+            if ( _destroyDelayTimer <= 0 )
+            {
+                Destroy(gameObject);
+            }
+            
+            _destroyDelayTimer -= Time.deltaTime;
         }
     }
     private void UpdateFlashEffect()
@@ -60,9 +76,12 @@ public class DynamitePresenter : MonoBehaviour
         _isPlaying = false;
         _explosionTrigger.SetActive(true);
         _animator.SetTrigger("boom");
+        _audioComponent.PlayShotAudio();
+
     }
     public void DestroyDynamite()
     {
-        Destroy(gameObject);
+        _destroyDelayTimer = 0.25f;
+        _isReadyDestroy = true;
     }
 }

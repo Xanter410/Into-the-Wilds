@@ -16,6 +16,9 @@ namespace IntoTheWilds.Inventory
             _slot = new();
 
             _slot.Add(_itemData.UniqueID, _itemCount, out _);
+
+            PlayAudioEffectComponent audioComponent = GetComponent<PlayAudioEffectComponent>();
+            audioComponent.PlayShotAudio();
         }
 
         private void Update()

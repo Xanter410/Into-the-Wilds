@@ -54,6 +54,8 @@ GameObject:
   - component: {fileID: 4373534918533920820}
   - component: {fileID: 3129089173706468786}
   - component: {fileID: 7935302510722639096}
+  - component: {fileID: 8003425661126903887}
+  - component: {fileID: 770184852817902785}
   m_Layer: 0
   m_Name: Goblin_TNT
   m_TagString: Untagged
@@ -173,6 +175,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 4951271060124798599}
   _unitRigidbody2D: {fileID: 7760991891361044218}
+  _healthComponent: {fileID: 2940433169417187158}
 --- !u!50 &7760991891361044218
 Rigidbody2D:
   serializedVersion: 5
@@ -236,13 +239,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 0
+  maxHealthPoints: 4
   _onDead:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 770184852817902785}
+        m_TargetAssemblyTypeName: IntoTheWilds.CharacterAudioEffects, Assembly-CSharp
+        m_MethodName: PlayShotAudioDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 873691820329790814}
+        m_TargetAssemblyTypeName: IntoTheWilds.DropComponent, Assembly-CSharp
+        m_MethodName: DropItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8649905625633914056}
+        m_TargetAssemblyTypeName: IntoTheWilds.DestroyComponent, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8893574210504266238}
+        m_TargetAssemblyTypeName: QuestProgressComponent, Assembly-CSharp
+        m_MethodName: ToCountProgress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onTakeHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 770184852817902785}
+        m_TargetAssemblyTypeName: IntoTheWilds.CharacterAudioEffects, Assembly-CSharp
+        m_MethodName: PlayShotAudioTakeHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8893574210504266238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,8 +457,135 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c325dd6b4ad8895489d2664d050ed455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftSpawnPointDynamite: {fileID: 7301160801735420149}
-  _rightSpawnPointDynamite: {fileID: 3607021780172608518}
+  _leftSpawnPointDynamite: {fileID: 8332103993301330503}
+  _rightSpawnPointDynamite: {fileID: 4590543012341691375}
+  _dynamitePrefab: {fileID: 1163153704232577661, guid: df51f2cde2ef84143b86c564b8520218, type: 3}
+--- !u!82 &8003425661126903887
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4951271060124798599}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a7061d33f18cefc48aad76eae874e279, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 4
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &770184852817902785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4951271060124798599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3f2e824682e944381a152560436725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSourceEffects: {fileID: 8003425661126903887}
+  _audioClipMove:
+  - {fileID: 8300000, guid: d9cfca66cf0bab14cadbfbe2d7a1010c, type: 3}
+  - {fileID: 8300000, guid: 423df442682dcd9419784f09bdf6b0e0, type: 3}
+  - {fileID: 8300000, guid: fa4f6cb2be7e891429bfa1f2f4454305, type: 3}
+  - {fileID: 8300000, guid: 8f63bc04db12b1e4ea0915c9cd4f320c, type: 3}
+  _volumeMove: 1
+  _audioClipAttack:
+  - {fileID: 8300000, guid: ccd8417c5ac2d9c47916bc4071632f51, type: 3}
+  _volumeAttack: 1
+  _audioClipTakeHit:
+  - {fileID: 8300000, guid: fe0da975b78fedb41af88877eb127404, type: 3}
+  - {fileID: 8300000, guid: a7d517df30cd06142a80dcfdbf38f9da, type: 3}
+  - {fileID: 8300000, guid: 614eaf84a2248664ab0492e1b89b7dfd, type: 3}
+  _volumeTakeHit: 0.8
+  _audioClipDead: {fileID: 8300000, guid: bb60efbbe2f6bda44acfb4433decd1fd, type: 3}
+  _volumeDead: 0.7
 --- !u!1 &7301160801735420149
 GameObject:
   m_ObjectHideFlags: 0

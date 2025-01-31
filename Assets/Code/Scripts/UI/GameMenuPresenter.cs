@@ -1,3 +1,4 @@
+using IntoTheWilds;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,11 +7,13 @@ using UnityEngine.UIElements;
 public class GameMenuPresenter : MonoBehaviour
 {
     private UIDocument _uiDocument;
+    private PlayAudioEffectComponent _audioEffectComponent;
 
     private Button _continueButton;
     private Button _settingsButton;
     private Button _exitToMainMenuButton;
 
+    private SettingsMenuPresenter _settingsPresenter;
     private VisualElement _settingsMenu;
     private bool _isSettingsMenuOpen;
 
@@ -23,6 +26,7 @@ public class GameMenuPresenter : MonoBehaviour
     private void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
+        _audioEffectComponent = GetComponent<PlayAudioEffectComponent>();
 
         var root = _uiDocument.rootVisualElement;
         _root = root;
@@ -30,6 +34,7 @@ public class GameMenuPresenter : MonoBehaviour
         _settingsButton = root.Q<Button>("Button_Settings");
         _exitToMainMenuButton = root.Q<Button>("Button_Exit");
 
+        _settingsPresenter = GetComponent<SettingsMenuPresenter>();
         _settingsMenu = root.Q<VisualElement>("Settings");
         _gameMenu = root.Q<VisualElement>("Menu");
     }
@@ -123,11 +128,13 @@ public class GameMenuPresenter : MonoBehaviour
 
     private void ContinueButtonClicked()
     {
+        _audioEffectComponent.PlayShotAudio();
         SetVisible(false);
     }
 
     private void SettingsButtonClicked()
     {
+        _audioEffectComponent.PlayShotAudio();
         if (_isSettingsMenuOpen == true)
         {
             _settingsMenu.SetEnabled(false);
@@ -135,6 +142,7 @@ public class GameMenuPresenter : MonoBehaviour
         }
         else
         {
+            _settingsPresenter.MenuOpen();
             _settingsMenu.SetEnabled(true);
             _isSettingsMenuOpen = true;
         }
@@ -142,6 +150,7 @@ public class GameMenuPresenter : MonoBehaviour
 
     private void ExitToMainMenuButtonClicked()
     {
+        _audioEffectComponent.PlayShotAudio();
         SceneTransition.SwitchToScene(0);
     }
 }
