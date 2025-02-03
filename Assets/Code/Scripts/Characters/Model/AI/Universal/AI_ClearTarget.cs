@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using Tools.BehaviorTree;
-using UnityEngine;
 
 namespace IntoTheWilds
 {
-    public class AI_ClearTrigger : Node
+    public class AI_ClearTarget : Node
     {
-        public AI_ClearTrigger() { }
+        private NodeState _returnValue;
+
+        public AI_ClearTarget(NodeState returnValue) 
+        { 
+            _returnValue = returnValue;
+        }
 
         public override NodeState Evaluate()
         {
@@ -17,8 +19,7 @@ namespace IntoTheWilds
                 ClearData("target");
             }
 
-            state = NodeState.SUCCESS;
-            return state;
+            return _returnValue;
         }
     }
 }

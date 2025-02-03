@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace IntoTheWilds
 {
-    public class AI_CheckPlayerInRange : Node
+    public class AI_CheckTargetInRange : Node
     {
         private float _range;
 
         private Transform _transform;
 
-        public AI_CheckPlayerInRange(Transform transform, float range)
+        public AI_CheckTargetInRange(Transform transform, float range)
         {
             _transform = transform;
             _range = range;
@@ -21,7 +21,11 @@ namespace IntoTheWilds
 
             Transform targetTransform = (Transform)target;
 
-            if (Vector2.Distance((Vector2)targetTransform.position, (Vector2)_transform.position) <= _range)
+            float distanceToTarget = Vector2.Distance(
+                (Vector2)targetTransform.position, 
+                (Vector2)_transform.position);
+
+            if (distanceToTarget <= _range)
             {
                 state = NodeState.SUCCESS;
                 return state;

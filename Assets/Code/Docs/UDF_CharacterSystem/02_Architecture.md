@@ -42,9 +42,8 @@
     - **AI_MoveToTarget <sup>Node</sup>** - устанавливает ввод движения, работает в связке с системой `Pathfinding` 
     - **AI_CheckDistanceToSpawnPoint <sup>Node</sup>** - проверяет что персонаж не ушел от точки появления дальше положенного
     - **AI_FindPlayerInRange <sup>Node</sup>** - поиск главного героя в указанном радиусе от персонажа
-    - **AI_CheckPlayerInRange <sup>Node</sup>** - проверяет что главный герой находится в определенном радиусе от персонажа
-    - **AI_ClearTrigger <sup>Node</sup>** - удаляет данные о таргете (например, если он вышел из радиуса агрессии)
-    - **AI_FindAndCheckPlayerInRadius <sup>Node</sup>** - Объединение AI_FindPlayerInRange, AI_CheckPlayerInRange, AI_ClearTrigger
+    - **AI_CheckTargetInRange <sup>Node</sup>** - проверяет что таргет находится в определенном радиусе от персонажа
+    - **AI_ClearTarget <sup>Node</sup>** - удаляет данные о таргете (например, если он вышел из радиуса агрессии)
     - **AI_IdleWalkNearSpawn <sup>Node</sup>** - базовая реализация бездействия персонажа. Ходит в некотором радиусе вокруг спавна,  
       устанавливает ввод движения, работает в связке с системой `Pathfinding` 
 

@@ -52,13 +52,19 @@ namespace IntoTheWilds
             {
                 new Sequence(new List<Node>
                 {
-                    new AI_FindAndCheckPlayerInRadius(_transform, 4f),
+                    new AI_FindPlayerInRange(_transform, 3f),
+
+                    new Selector(new List<Node>
+                    {
+                        new AI_CheckTargetInRange(_transform, 4f),
+                        new AI_ClearTarget(NodeState.FAILURE)
+                    }),
 
                     new Selector(new List<Node>
                     {
                         new Sequence(new List<Node>
                         {
-                            new AI_CheckPlayerInRange(_transform, 1f),
+                            new AI_CheckTargetInRange(_transform, 1f),
                             new AI_Attack(this, 1f)
                         }),
 
@@ -72,7 +78,7 @@ namespace IntoTheWilds
                 }),
 
                 new AI_IdleWalkNearSpawn(this, _transform, _spawnPoint)
-            });
+            }); 
 
             return root;
         }

@@ -27,14 +27,20 @@ namespace IntoTheWilds
             {
                 new Sequence(new List<Node>
                 {
-                    new AI_FindAndCheckPlayerInRadius(_transform, 4f),
+                    new AI_FindPlayerInRange(_transform, 3f),
+
+                    new Selector(new List<Node>
+                    {
+                        new AI_CheckTargetInRange(_transform, 4f),
+                        new AI_ClearTarget(NodeState.FAILURE)
+                    }),
 
                     new Selector(new List<Node>
                     {
                         new Sequence(new List<Node>
                         {
-                            new AI_CheckPlayerInRange(_transform, 3f),
-                            new AI_Attack(this, 5f)
+                            new AI_CheckTargetInRange(_transform, 2.5f),
+                            new AI_Attack(this, 4f)
                         }),
 
                         new Sequence(new List<Node>
