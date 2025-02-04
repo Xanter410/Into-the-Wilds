@@ -6,9 +6,9 @@ namespace IntoTheWilds
 {
     public class SheepStateMachine : StateMachine, ITickable, IStartable, IFixedTickable
     {
-        public IState IdleState;
-        public IState MoveState;
-        public IState DeadState;
+        public readonly IState IdleState;
+        public readonly IState MoveState;
+        public readonly IState DeadState;
 
         public SheepStateMachine(SheepAI sheepInput, Rigidbody2D rigidbody2D, HealthComponent healthComponent)
         {

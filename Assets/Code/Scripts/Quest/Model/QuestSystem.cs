@@ -11,10 +11,9 @@ namespace IntoTheWilds.Quest
 
         [SerializeField] private GameEventQuestProgress _OnQuestProggress;
 
-        private List<IQuest> _activeQuests = new();
-        private List<IQuest> _queueQuests = new();
-        private List<string> _complitedQuests = new();
-
+        private readonly List<IQuest> _activeQuests = new();
+        private readonly List<IQuest> _queueQuests = new();
+        private readonly List<string> _complitedQuests = new();
 
         private void OnEnable()
         {
@@ -48,9 +47,9 @@ namespace IntoTheWilds.Quest
         {
             for (int i = _activeQuests.Count - 1; i >= 0; i--)
             {
-                var quest = _activeQuests[i];
+                IQuest quest = _activeQuests[i];
 
-                foreach (var objective in quest.Objectives)
+                foreach (IObjective objective in quest.Objectives)
                 {
                     if (objective is CollectObjective collectObjective &&
                         collectObjective.ResourceType == progressData.ResourceType)
@@ -86,7 +85,7 @@ namespace IntoTheWilds.Quest
         private void HandleQuestCompleted(IQuest completedQuest)
         {
             _complitedQuests.Add(completedQuest.QuestName);
-            _activeQuests.Remove(completedQuest);
+            _ = _activeQuests.Remove(completedQuest);
 
             CheckQueueQuests();
         }
@@ -95,7 +94,7 @@ namespace IntoTheWilds.Quest
         {
             for (int i = _queueQuests.Count - 1; i >= 0; i--)
             {
-                var quest = _queueQuests[i];
+                IQuest quest = _queueQuests[i];
 
                 if (CheckConditions(quest) == true)
                 {
@@ -103,7 +102,7 @@ namespace IntoTheWilds.Quest
 
                     OnNewActiveQuestAdded?.Invoke(quest);
 
-                    _queueQuests.Remove(_queueQuests[i]);
+                    _ = _queueQuests.Remove(_queueQuests[i]);
                 }
             }
         }
@@ -112,7 +111,7 @@ namespace IntoTheWilds.Quest
         {
             bool IsConditionsTrue = false;
 
-            foreach (var Condition in quest.ConditionsActivation)
+            foreach (string Condition in quest.ConditionsActivation)
             {
                 if (_complitedQuests.Contains(Condition))
                 {

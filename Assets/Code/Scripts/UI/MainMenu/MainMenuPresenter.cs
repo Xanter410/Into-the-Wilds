@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class MainMenuPresenter : MonoBehaviour
 {
     private UIDocument _uiDocument;
-    private PlayAudioEffectComponent _audioEffectComponent;
+    private PlayAudioClipsComponent _audioEffectComponent;
 
     private Button _startButton;
     private Button _settingsButton;
@@ -18,9 +18,9 @@ public class MainMenuPresenter : MonoBehaviour
     private void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
-        _audioEffectComponent = GetComponent<PlayAudioEffectComponent>();
+        _audioEffectComponent = GetComponent<PlayAudioClipsComponent>();
 
-        var root = _uiDocument.rootVisualElement;
+        VisualElement root = _uiDocument.rootVisualElement;
 
         _startButton = root.Q<Button>("Button_Play");
         _settingsButton = root.Q<Button>("Button_Settings");

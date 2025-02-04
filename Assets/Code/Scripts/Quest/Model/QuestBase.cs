@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using UnityEngine;
 
 namespace IntoTheWilds.Quest
 {
@@ -27,7 +26,7 @@ namespace IntoTheWilds.Quest
 
         public List<string> ConditionsActivation { get; private set; }
 
-        private List<IObjective> _objectives;
+        private readonly List<IObjective> _objectives;
 
         public event Action<IQuest> OnQuestCompleted;
 
@@ -38,7 +37,7 @@ namespace IntoTheWilds.Quest
             _objectives = objectives;
             ConditionsActivation = conditions;
 
-            foreach (var objective in _objectives)
+            foreach (IObjective objective in _objectives)
             {
                 objective.OnObjectiveCompleted += HandleObjectiveCompleted;
             }
@@ -46,7 +45,7 @@ namespace IntoTheWilds.Quest
 
         public void Initialize()
         {
-            foreach (var objective in _objectives)
+            foreach (IObjective objective in _objectives)
             {
                 objective.Initialize();
             }
@@ -61,5 +60,3 @@ namespace IntoTheWilds.Quest
         }
     }
 }
-
-

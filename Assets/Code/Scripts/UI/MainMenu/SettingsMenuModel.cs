@@ -1,16 +1,13 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SettingsMenuModel
 {
-    private AudioMixer _audioMixer;
+    private readonly AudioMixer _audioMixer;
 
-    public bool IsVolumeMuted => _isVolumeMuted;
-    private bool _isVolumeMuted;
+    public bool IsVolumeMuted { get; private set; }
 
-    public int VolumeMaxValue => _volumeMaxValue;
-    private int _volumeMaxValue;
+    public int VolumeMaxValue { get; }
 
     public int VolumeCurrentValue => GetVolume();
     private int _volumeCurrentValue;
@@ -18,56 +15,54 @@ public class SettingsMenuModel
     public SettingsMenuModel(AudioMixer audioMixer, bool isMute, int VolumeMax)
     {
         _audioMixer = audioMixer;
-        _isVolumeMuted = isMute;
-        _volumeMaxValue = VolumeMax;
-
-        //_ = GetVolume();
+        IsVolumeMuted = isMute;
+        VolumeMaxValue = VolumeMax;
     }
 
     public void SetVolumeMute(bool value)
     {
         if (value == true)
         {
-            _audioMixer.SetFloat("MasterVolume", -80);
-            _isVolumeMuted = true;
+            _ = _audioMixer.SetFloat("MasterVolume", -80);
+            IsVolumeMuted = true;
         }
         else
         {
-            _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
-            _isVolumeMuted = false;
+            _ = _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
+            IsVolumeMuted = false;
         }
     }
 
     public int GetVolume()
     {
-        _audioMixer.GetFloat("MasterVolume", out float currentVolume);
-        var _volumeCurrentValueFloat = Mathf.Pow(10, currentVolume / 20);
-        _volumeCurrentValue = Mathf.RoundToInt(_volumeCurrentValueFloat * _volumeMaxValue);
+        _ = _audioMixer.GetFloat("MasterVolume", out float currentVolume);
+        float _volumeCurrentValueFloat = Mathf.Pow(10, currentVolume / 20);
+        _volumeCurrentValue = Mathf.RoundToInt(_volumeCurrentValueFloat * VolumeMaxValue);
 
         return _volumeCurrentValue;
     }
 
     public void SetVolume(int value)
     {
-        _volumeCurrentValue = Mathf.Clamp(value, 0, _volumeMaxValue);
-        _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
+        _volumeCurrentValue = Mathf.Clamp(value, 0, VolumeMaxValue);
+        _ = _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
     }
 
     public void ChangeVolume(int deltaVolume)
     {
         int newVolume = _volumeCurrentValue + deltaVolume;
 
-        _volumeCurrentValue = Mathf.Clamp(newVolume, 0, _volumeMaxValue);
+        _volumeCurrentValue = Mathf.Clamp(newVolume, 0, VolumeMaxValue);
 
-        if (_isVolumeMuted == false)
+        if (IsVolumeMuted == false)
         {
-            _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
+            _ = _audioMixer.SetFloat("MasterVolume", GetLogarithmicCurrentVolume());
         }
     }
 
     private float GetLogarithmicCurrentVolume()
     {
-        float linearValue = (float)_volumeCurrentValue / _volumeMaxValue;
+        float linearValue = (float)_volumeCurrentValue / VolumeMaxValue;
 
         return Mathf.Log10(Mathf.Clamp(linearValue, 0.0001f, 1)) * 20;
     }

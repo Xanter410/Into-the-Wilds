@@ -1,6 +1,5 @@
 using Tools.StateMachine;
 using UnityEngine;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 
 namespace IntoTheWilds
 {
@@ -28,17 +27,17 @@ namespace IntoTheWilds
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
-            _inputAttack.RegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed += Input_AttackPressed;
         }
 
-        public void Exit()
+        void IState.Exit()
         {
-            _inputAttack.UnRegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed -= Input_AttackPressed;
         }
 
-        public void FixedUpdate(float fixedDeltaTime)
+        void IState.FixedUpdate(float fixedDeltaTime)
         {
             _velocity = _rigidbody2D.linearVelocity;
             float _maxSpeedChange = _maxAcceleration * Time.fixedDeltaTime;
@@ -47,7 +46,7 @@ namespace IntoTheWilds
             _rigidbody2D.linearVelocity = _velocity;
         }
 
-        public void Update(float deltaTime)
+        void IState.Update(float deltaTime)
         {
             Vector2 _direction = _inputMove.RetrieveMoveInput();
             _desiredVelocity = _direction * _maxSpeed;
@@ -68,7 +67,7 @@ namespace IntoTheWilds
             return false;
         }
 
-        private void AttackPressed()
+        private void Input_AttackPressed()
         {
             _stateMachine.TransitionTo(_stateMachine.AttackState);
         }

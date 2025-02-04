@@ -8,42 +8,18 @@ namespace IntoTheWilds
 {
     public class GoblinTorchAI : BehaviorTree, ITickable, IStartable, IMove, IAttack, IStunble
     {
+        public event Action AttackPressed;
+
         private readonly Transform _transform;
+
         private Vector2 _spawnPoint;
         private bool _isStunned = false;
 
         private Vector2 _moveInput = Vector2.zero;
 
-        private event Action _attackPressed;
-
         public GoblinTorchAI(Rigidbody2D unitRigidbody2D)
         {
             _transform = unitRigidbody2D.transform;
-        }
-
-        public Vector2 RetrieveMoveInput()
-        {
-            return _moveInput;
-        }
-        public void AttackPressed()
-        {
-            SetMoveInput(Vector2.zero);
-
-            _attackPressed?.Invoke();
-        }
-
-        public void SetMoveInput(Vector2 moveDirection)
-        {
-            _moveInput = moveDirection;
-        }
-        public void RegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed += callbackHandler;
-        }
-
-        public void UnRegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed -= callbackHandler;
         }
 
         protected override Node SetupTree()
@@ -77,10 +53,27 @@ namespace IntoTheWilds
 
                 }),
 
-                new AI_IdleWalkNearSpawn(this, _transform, _spawnPoint)
+                new AI_IdleWalkNearSpawn(this, _transform, _spawnPoint, 3f, 3f)
             }); 
 
             return root;
+        }
+
+        public Vector2 RetrieveMoveInput()
+        {
+            return _moveInput;
+        }
+
+        void IAttack.OnAttackPressed()
+        {
+            ((IMove)this).SetMoveInput(Vector2.zero);
+
+            AttackPressed?.Invoke();
+        }
+
+        void IMove.SetMoveInput(Vector2 moveDirection)
+        {
+            _moveInput = moveDirection;
         }
 
         void IStartable.Start()
@@ -103,7 +96,7 @@ namespace IntoTheWilds
             if (isStunned == true)
             {
                 _isStunned = true;
-                SetMoveInput(Vector2.zero);
+                ((IMove)this).SetMoveInput(Vector2.zero);
             }
             else
             {

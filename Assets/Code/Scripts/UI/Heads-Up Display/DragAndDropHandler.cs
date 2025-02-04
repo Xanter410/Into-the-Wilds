@@ -77,7 +77,7 @@ namespace IntoTheWilds.UI
 
         private void SetDraggableElement(int ItemID, int Count)
         {
-            var sprite = ItemsDatabase.Instance.GetInventoryIcon(ItemID);
+            Sprite sprite = ItemsDatabase.Instance.GetInventoryIcon(ItemID);
             _draggableElementIcon.style.backgroundImage = new StyleBackground(sprite);
 
             _draggableElementCountLabel.text = Count.ToString();
@@ -85,9 +85,9 @@ namespace IntoTheWilds.UI
 
         private void PointerDownOnSlot(PointerDownEvent pointerDownEvent)
         {
-            if (TryGetSlotUnderPointer(pointerDownEvent.position, out var hudSlotModel) == true)
+            if (TryGetSlotUnderPointer(pointerDownEvent.position, out HudInventorySlot hudSlotModel) == true)
             {
-                var slotModel = _playerInventory.Inventory.GetSlotData(hudSlotModel.ID);
+                ItemSlot slotModel = _playerInventory.Inventory.GetSlotData(hudSlotModel.ID);
 
                 if (slotModel.ItemID != 0)
                 {
@@ -118,13 +118,13 @@ namespace IntoTheWilds.UI
         }
         private void PointerUp(PointerUpEvent pointerDownEvent)
         {
-            var inventoryGridBounds = _inventoryGrid.worldBound;
+            Rect inventoryGridBounds = _inventoryGrid.worldBound;
 
             if (inventoryGridBounds.Contains(pointerDownEvent.position))
             {
-                if (TryGetSlotUnderPointer(pointerDownEvent.position, out var newSlot) == true)
+                if (TryGetSlotUnderPointer(pointerDownEvent.position, out HudInventorySlot newSlot) == true)
                 {
-                    var newSlotModel = _playerInventory.Inventory.GetSlotData(newSlot.ID);
+                    ItemSlot newSlotModel = _playerInventory.Inventory.GetSlotData(newSlot.ID);
 
                     if (newSlotModel.ItemID == 0)
                     {
@@ -134,7 +134,7 @@ namespace IntoTheWilds.UI
                     }
                     else
                     {
-                        var oldSlotModel = _playerInventory.Inventory.GetSlotData(_oldSlotIdDraggedItem);
+                        ItemSlot oldSlotModel = _playerInventory.Inventory.GetSlotData(_oldSlotIdDraggedItem);
 
                         if (oldSlotModel.ItemID == 0)
                         {
@@ -153,7 +153,7 @@ namespace IntoTheWilds.UI
 
         private bool TryGetSlotUnderPointer(Vector2 pointerPosition, out HudInventorySlot HudSlot)
         {
-            foreach (var slot in _inventoryHud.GetHudInventorySlots())
+            foreach (HudInventorySlot slot in _inventoryHud.GetHudInventorySlots())
             {
                 if (slot.VisualElement.worldBound.Contains(pointerPosition))
                 {

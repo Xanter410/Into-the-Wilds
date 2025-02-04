@@ -7,12 +7,12 @@ namespace IntoTheWilds
 {
     public class AI_IdleWalkNearSpawn : Node
     {
-        private IMove _tree;
-        private Transform _transform;
-        private Vector2 _spawnPoint;
+        private readonly IMove _tree;
+        private readonly Transform _transform;
+        private readonly Vector2 _spawnPoint;
 
-        private float _walkRadius = 3f;
-        private float _waitTime = 3f;
+        private readonly float _walkRadius;
+        private readonly float _waitTime;
         private float _waitCounter = 0f;
 
         private bool _isWaiting = false;
@@ -22,11 +22,14 @@ namespace IntoTheWilds
         private List<Vector2> _pathToTarget = new();
         private Vector2 _subTarget;
 
-        public AI_IdleWalkNearSpawn(IMove tree, Transform transform, Vector2 spawnPoint)
+        public AI_IdleWalkNearSpawn(IMove tree, Transform transform, Vector2 spawnPoint, float walkRadius, float waitTime)
         {
             _tree = tree;
             _transform = transform;
             _spawnPoint = spawnPoint;
+
+            _walkRadius = walkRadius;
+            _waitTime = waitTime;
         }
 
         public override NodeState Evaluate()
@@ -52,11 +55,10 @@ namespace IntoTheWilds
                     _isTargetSet = true;
                 }
 
+                // ≈сли от текущего положени€ до цели меньше половины клетки.
+                // —читаем что главна€ цель достигнута.
                 if (Vector2.Distance(_transform.position, _mainTarget) < 0.5f)
                 {
-                    // ќт текущего положени€ до цели меньше половины клетки.
-                    // —читаем что главна€ цель достигнута.
-
                     _pathToTarget.Clear();
                     _mainTarget = Vector2.zero;
                     _subTarget = Vector2.zero;
@@ -66,7 +68,7 @@ namespace IntoTheWilds
                 }
                 else
                 {
-                    var distanceToSubTarget = Vector2.Distance(_subTarget, (Vector2)_transform.position);
+                    float distanceToSubTarget = Vector2.Distance(_subTarget, (Vector2)_transform.position);
 
                     if (distanceToSubTarget < 0.15f)
                     {

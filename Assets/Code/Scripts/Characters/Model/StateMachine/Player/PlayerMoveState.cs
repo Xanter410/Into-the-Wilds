@@ -8,7 +8,8 @@ namespace IntoTheWilds
         public int ID { get; }
 
         private readonly PlayerStateMachine _stateMachine;
-        private readonly PlayerInput _input;
+        private readonly IAttack _inputAttack;
+        private readonly IMove _inputMove;
         private readonly Rigidbody2D _rigidbody2D;
 
         private Vector2 _velocity = Vector2.zero;
@@ -17,26 +18,26 @@ namespace IntoTheWilds
         private readonly float _maxSpeed = 4f;
         private readonly float _maxAcceleration = 15f;
 
-
-        public PlayerMoveState(int id, PlayerStateMachine stateMachine, PlayerInput unitController, Rigidbody2D rigidbody2D)
+        public PlayerMoveState(int id, PlayerStateMachine stateMachine, IAttack inputAttack, IMove inputMove, Rigidbody2D rigidbody2D)
         {
             ID = id;
             _stateMachine = stateMachine;
-            _input = unitController;
+            _inputAttack = inputAttack;
+            _inputMove = inputMove;
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
-            _input.RegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed += Input_AttackPressed;
         }
 
-        public void Exit()
+        void IState.Exit()
         {
-            _input.UnRegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed -= Input_AttackPressed;
         }
 
-        public void FixedUpdate(float _)
+        void IState.FixedUpdate(float _)
         {
             _velocity = _rigidbody2D.linearVelocity;
             float _maxSpeedChange = _maxAcceleration * Time.fixedDeltaTime;
@@ -45,9 +46,9 @@ namespace IntoTheWilds
             _rigidbody2D.linearVelocity = _velocity;
         }
 
-        public void Update(float _)
+        void IState.Update(float _)
         {
-            Vector2 _direction = _input.RetrieveMoveInput();
+            Vector2 _direction = _inputMove.RetrieveMoveInput();
             _desiredVelocity = _direction * _maxSpeed;
 
             if (IsIdle())
@@ -58,14 +59,14 @@ namespace IntoTheWilds
 
         private bool IsIdle()
         {
-            if (_input.RetrieveMoveInput() == Vector2.zero)
+            if (_inputMove.RetrieveMoveInput() == Vector2.zero)
             {
                 return true;
             }
 
             return false;
         }
-        private void AttackPressed()
+        private void Input_AttackPressed()
         {
             _stateMachine.TransitionTo(_stateMachine.AttackState);
         }

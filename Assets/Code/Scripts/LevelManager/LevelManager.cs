@@ -5,8 +5,9 @@ namespace IntoTheWilds
 {
     public class LevelManager : MonoBehaviour
     {
-        public LevelData CurrentLevelData;
         public QuestSystem QuestSystem { get; private set; }
+
+        [SerializeField] private LevelData _currentLevelData;
 
         void Start()
         {
@@ -16,9 +17,9 @@ namespace IntoTheWilds
 
         private void InitializeLevel()
         {
-            foreach (var questData in CurrentLevelData.Quests)
+            foreach (QuestData questData in _currentLevelData.Quests)
             {
-                var quest = QuestFactory.CreateQuest(questData);
+                IQuest quest = QuestFactory.CreateQuest(questData);
 
                 QuestSystem.AddQuest(quest);
             }
@@ -38,7 +39,7 @@ namespace IntoTheWilds
 
         private void LoadNextLevel()
         {
-            SceneTransition.SwitchToScene(CurrentLevelData.NextLevelSceneBuildIndex);
+            SceneTransition.SwitchToScene(_currentLevelData.NextLevelSceneBuildIndex);
         }
     }
 }

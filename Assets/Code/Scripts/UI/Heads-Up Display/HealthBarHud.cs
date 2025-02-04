@@ -23,12 +23,12 @@ public class HealthBarHud : MonoBehaviour
         _healthLabel = _uiDocument.rootVisualElement.Q<Label>("HealthLabel");
         _healthBarMask = _uiDocument.rootVisualElement.Q<VisualElement>("HealthBarMask");
 
-        _healthComponent._onHealthChanged += OnHealthChanged;
+        _healthComponent.HealthChanged += OnHealthChanged;
     }
 
     private void OnDisable()
     {
-        _healthComponent._onHealthChanged -= OnHealthChanged;
+        _healthComponent.HealthChanged -= OnHealthChanged;
     }
 
     private void Start()
@@ -38,10 +38,10 @@ public class HealthBarHud : MonoBehaviour
 
     private void OnHealthChanged(int healthPoints)
     {
-        var healthPercent = (float)healthPoints / _healthComponent.MaxHealthPoints * 100;
+        float healthPercent = (float)healthPoints / _healthComponent.MaxHealthPoints * 100;
         _healthLabel.text = $"{healthPercent}%";
 
-        var healthMaskPercent = Mathf.Lerp(8, 92, ((float)healthPoints / _healthComponent.MaxHealthPoints));
+        float healthMaskPercent = Mathf.Lerp(8, 92, (float)healthPoints / _healthComponent.MaxHealthPoints);
         _healthBarMask.style.width = Length.Percent(healthMaskPercent);
     }
 }

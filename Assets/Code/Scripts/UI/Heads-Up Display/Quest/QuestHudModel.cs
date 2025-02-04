@@ -7,14 +7,14 @@ public class QuestHudModel
 {
     public Action<QuestHudModel> OnQuestComplited;
 
-    private List<ObjectiveHudModel> _objectiveHudModels = new();
-    private List<VisualElement> _objectiveElements = new();
+    private readonly List<ObjectiveHudModel> _objectiveHudModels = new();
+    private readonly List<VisualElement> _objectiveElements = new();
 
     public VisualElement _questPanel;
-    private Label _nameLabel;
-    private Label _descriptionLabel;
+    private readonly Label _nameLabel;
+    private readonly Label _descriptionLabel;
 
-    private IQuest _targetModel;
+    private readonly IQuest _targetModel;
 
     public QuestHudModel(IQuest quest, VisualElement questPanel, VisualTreeAsset objectiveElement)
     {
@@ -24,7 +24,7 @@ public class QuestHudModel
         _nameLabel = questPanel.Q<Label>("QuestName");
         _descriptionLabel = questPanel.Q<Label>("QuestDisctiption");
 
-        foreach (var objective in quest.Objectives)
+        foreach (IObjective objective in quest.Objectives)
         {
             VisualElement objectiveElementHud = objectiveElement.CloneTree();
             _objectiveHudModels.Add(new ObjectiveHudModel(objective, objectiveElementHud));
@@ -44,7 +44,7 @@ public class QuestHudModel
     {
         GroupBox objectiveBox = _questPanel.Q<GroupBox>("QuestObjectives");
 
-        foreach (var objective in _objectiveElements)
+        foreach (VisualElement objective in _objectiveElements)
         {
             objectiveBox.Add(objective);
         }

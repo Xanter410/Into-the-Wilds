@@ -29,15 +29,15 @@ namespace IntoTheWilds
 
         void OnEnable()
         {
-            _unitStateMachine.StateChanged += OnStateChanged;
+            _unitStateMachine.StateChanged += StateMachine_StateChanged;
         }
 
         void OnDisable()
         {
-            _unitStateMachine.StateChanged -= OnStateChanged;
+            _unitStateMachine.StateChanged -= StateMachine_StateChanged;
         }
 
-        private void OnStateChanged(IState state)
+        private void StateMachine_StateChanged(IState state)
         {
             switch (state.ID)
             {

@@ -8,30 +8,32 @@ namespace IntoTheWilds
         public int ID { get; }
 
         private readonly PlayerStateMachine _stateMachine;
-        private readonly PlayerInput _inputActions;
+        private readonly IAttack _inputAttack;
+        private readonly IMove _inputMove;
         private readonly Rigidbody2D _rigidbody2D;
 
         private readonly float _maxAcceleration = 15f;
 
-        public PlayerIdleState(int id, PlayerStateMachine stateMachine, PlayerInput inputActions, Rigidbody2D rigidbody2D)
+        public PlayerIdleState(int id, PlayerStateMachine stateMachine, IAttack inputAttack, IMove inputMove, Rigidbody2D rigidbody2D)
         {
             ID = id;
             _stateMachine = stateMachine;
-            _inputActions = inputActions;
+            _inputAttack = inputAttack;
+            _inputMove = inputMove;
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
-            _inputActions.RegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed += Input_AttackPressed;
         }
 
-        public void Exit()
+        void IState.Exit()
         {
-            _inputActions.UnRegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed -= Input_AttackPressed;
         }
 
-        public void FixedUpdate(float _)
+        void IState.FixedUpdate(float _)
         {
             if (_rigidbody2D.linearVelocity != Vector2.zero)
             {
@@ -43,7 +45,7 @@ namespace IntoTheWilds
             }
         }
 
-        public void Update(float _)
+        void IState.Update(float _)
         {
             if (IsMoved())
             {
@@ -53,7 +55,7 @@ namespace IntoTheWilds
 
         private bool IsMoved()
         {
-            if (_inputActions.RetrieveMoveInput() != Vector2.zero)
+            if (_inputMove.RetrieveMoveInput() != Vector2.zero)
             {
                 return true;
             }
@@ -61,10 +63,9 @@ namespace IntoTheWilds
             return false;
         }
 
-        private void AttackPressed()
+        private void Input_AttackPressed()
         {
             _stateMachine.TransitionTo(_stateMachine.AttackState);
         }
-
     }
 }

@@ -239,46 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 4
-  _onDead:
+  ObjectDied:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 770184852817902785}
-        m_TargetAssemblyTypeName: IntoTheWilds.CharacterAudioEffects, Assembly-CSharp
-        m_MethodName: PlayShotAudioDead
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 873691820329790814}
-        m_TargetAssemblyTypeName: IntoTheWilds.DropComponent, Assembly-CSharp
-        m_MethodName: DropItems
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8649905625633914056}
-        m_TargetAssemblyTypeName: IntoTheWilds.DestroyComponent, Assembly-CSharp
-        m_MethodName: Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8893574210504266238}
         m_TargetAssemblyTypeName: QuestProgressComponent, Assembly-CSharp
         m_MethodName: ToCountProgress
@@ -291,7 +254,43 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onTakeHit:
+      - m_Target: {fileID: 8649905625633914056}
+        m_TargetAssemblyTypeName: IntoTheWilds.DestroyComponent, Assembly-CSharp
+        m_MethodName: DestroyWithTimer
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 873691820329790814}
+        m_TargetAssemblyTypeName: IntoTheWilds.DropComponent, Assembly-CSharp
+        m_MethodName: DropItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 770184852817902785}
+        m_TargetAssemblyTypeName: IntoTheWilds.CharacterAudioEffects, Assembly-CSharp
+        m_MethodName: PlayShotAudioDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ObjectTakeHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 770184852817902785}
@@ -306,6 +305,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <MaxHealthPoints>k__BackingField: 6
 --- !u!114 &8893574210504266238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,14 +333,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64a0996b34b89048a11e6530a8ea6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPositionOffsetY: 0
-  dropItems:
+  _spawnPositionOffsetY: -0.25
+  _dropItems:
   - ItemPrefab: {fileID: 8648809436062204648, guid: 3cf79e7e880327a4b9806970727b2bde, type: 3}
-    minAmount: 1
-    maxAmount: 3
+    MinAmount: 1
+    MaxAmount: 3
     DropChance: 1
-  minDropAmount: 1
-  maxDropAmount: 1
+  MinDropAmount: 1
+  MaxDropAmount: 1
 --- !u!114 &8649905625633914056
 MonoBehaviour:
   m_ObjectHideFlags: 0

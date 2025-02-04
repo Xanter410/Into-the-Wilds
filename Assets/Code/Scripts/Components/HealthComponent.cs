@@ -6,22 +6,15 @@ namespace IntoTheWilds
 {
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField] private int maxHealthPoints;
+        public UnityEvent ObjectDied;
+        public UnityEvent ObjectTakeHit;
+        public Action<int> HealthChanged;
+
+        [field: SerializeField] public int MaxHealthPoints { get; private set; }
+
+        [HideInInspector] public int HealthPoints { get; private set; }
 
         private bool _isAlreadyDead = false;
-
-        public int MaxHealthPoints
-        {
-            get => maxHealthPoints;
-            private set => maxHealthPoints = value;
-        }
-
-        [HideInInspector]
-        public int HealthPoints { get; private set; }
-
-        public UnityEvent _onDead;
-        public UnityEvent _onTakeHit;
-        public Action<int> _onHealthChanged;
 
         private void OnEnable()
         {
@@ -44,7 +37,7 @@ namespace IntoTheWilds
                 HealthPoints = MaxHealthPoints;
             }
 
-            _onHealthChanged?.Invoke(HealthPoints);
+            HealthChanged?.Invoke(HealthPoints);
         }
 
         public void Decrement(int removeHealthPoint)
@@ -58,17 +51,17 @@ namespace IntoTheWilds
             {
                 HealthPoints -= removeHealthPoint;
 
-                _onTakeHit?.Invoke();
+                ObjectTakeHit?.Invoke();
             }
             else
             {
                 HealthPoints = 0;
 
-                _onDead?.Invoke();
+                ObjectDied?.Invoke();
                 _isAlreadyDead = true;
             }
 
-            _onHealthChanged?.Invoke(HealthPoints);
+            HealthChanged?.Invoke(HealthPoints);
         }
     }
 }

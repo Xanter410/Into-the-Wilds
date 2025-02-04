@@ -6,15 +6,15 @@ using UnityEngine.UIElements;
 public class SettingsMenuPresenter : MonoBehaviour
 {
     private UIDocument _uiDocument;
-    private PlayAudioEffectComponent _audioEffectComponent;
+    private PlayAudioClipsComponent _audioEffectComponent;
 
     private Button _volumeButton;
     private Button _plusButton;
     private Button _minusButton;
     
     private VisualElement _volumeIcon;
-    private static string _volumeIconStyleOn = "volumeIconOn";
-    private static string _volumeIconStyleOff = "volumeIconOff";
+    private static readonly string _volumeIconStyleOn = "volumeIconOn";
+    private static readonly string _volumeIconStyleOff = "volumeIconOff";
 
     private Label _volumeLabel;
 
@@ -26,9 +26,9 @@ public class SettingsMenuPresenter : MonoBehaviour
     private void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
-        _audioEffectComponent = GetComponent<PlayAudioEffectComponent>();
+        _audioEffectComponent = GetComponent<PlayAudioClipsComponent>();
 
-        var root = _uiDocument.rootVisualElement;
+        VisualElement root = _uiDocument.rootVisualElement;
 
         _volumeButton = root.Q<Button>("Settings_Button_Volume");
         _plusButton = root.Q<Button>("Settings_Button_Plus");

@@ -1,6 +1,5 @@
 using UnityEngine;
 using Tools.StateMachine;
-using UnityEngine.InputSystem;
 using VContainer.Unity;
 
 namespace IntoTheWilds
@@ -12,11 +11,11 @@ namespace IntoTheWilds
         public readonly IState AttackState;
         public readonly IState DeadState;
 
-        public PlayerStateMachine(PlayerInput playerInput, Rigidbody2D rigidbody2D, HealthComponent healthComponent)
+        public PlayerStateMachine(PlayerInput playerInput, IAttack playerInputAttack, IMove playerInputMove, Rigidbody2D rigidbody2D, HealthComponent healthComponent)
         {
-            IdleState = new PlayerIdleState(1, this, playerInput, rigidbody2D);
-            MoveState = new PlayerMoveState(2, this, playerInput, rigidbody2D);
-            AttackState = new PlayerAttackState(3, this, playerInput, rigidbody2D);
+            IdleState = new PlayerIdleState(1, this, playerInputAttack, playerInputMove, rigidbody2D);
+            MoveState = new PlayerMoveState(2, this, playerInputAttack, playerInputMove, rigidbody2D);
+            AttackState = new PlayerAttackState(3, this, playerInputAttack, rigidbody2D);
             DeadState = new PlayerDeadState(4, this, playerInput, rigidbody2D, healthComponent);
         }
 
@@ -29,6 +28,7 @@ namespace IntoTheWilds
         {
             UpdateState(Time.deltaTime);
         }
+
         void IFixedTickable.FixedTick()
         {
             FixedUpdateState(Time.fixedDeltaTime);

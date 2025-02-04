@@ -17,16 +17,6 @@ namespace IntoTheWilds
             _transform = unitRigidbody2D.transform;        
         }
 
-        public Vector2 RetrieveMoveInput()
-        {
-            return _moveInput;
-        }
-
-        public void SetMoveInput(Vector2 moveDirection)
-        {
-            _moveInput = moveDirection;
-        }
-
         protected override Node SetupTree()
         {
             Node root = new Selector(new List<Node>
@@ -40,6 +30,16 @@ namespace IntoTheWilds
             });
 
             return root;
+        }
+
+        Vector2 IMove.RetrieveMoveInput()
+        {
+            return _moveInput;
+        }
+
+        void IMove.SetMoveInput(Vector2 moveDirection)
+        {
+            _moveInput = moveDirection;
         }
 
         void IStartable.Start()
@@ -60,7 +60,7 @@ namespace IntoTheWilds
             if (isStunned == true)
             {
                 _isStunned = true;
-                SetMoveInput(Vector2.zero);
+                ((IMove)this).SetMoveInput(Vector2.zero);
             }
             else
             {

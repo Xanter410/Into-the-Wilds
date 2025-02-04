@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace IntoTheWilds.Quest
 {
@@ -38,7 +37,10 @@ namespace IntoTheWilds.Quest
 
         public virtual void UpdateProgress(int amount)
         {
-            if (IsCompleted) return;
+            if (IsCompleted)
+            {
+                return;
+            }
 
             CurrentAmount += amount;
 

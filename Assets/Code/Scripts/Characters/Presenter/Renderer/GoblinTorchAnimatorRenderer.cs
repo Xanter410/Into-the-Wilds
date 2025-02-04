@@ -10,8 +10,8 @@ namespace IntoTheWilds
         private Animator _animator;
         private UnitSpriteRenderer _spriteRenderer;
 
-        [SerializeField] public GameObject _leftAttackTrigger;
-        [SerializeField] public GameObject _rightAttackTrigger;
+        [SerializeField] private GameObject _leftAttackTrigger;
+        [SerializeField] private GameObject _rightAttackTrigger;
 
         private static class AnimatorParameters
         {
@@ -32,21 +32,20 @@ namespace IntoTheWilds
 
         void OnEnable()
         {
-            _unitStateMachine.StateChanged += OnStateChanged;
+            _unitStateMachine.StateChanged += StateMachine_StateChanged;
         }
 
         void OnDisable()
         {
-            _unitStateMachine.StateChanged -= OnStateChanged;
+            _unitStateMachine.StateChanged -= StateMachine_StateChanged;
         }
 
-
-        public void OnStateChanged(IState state)
+        public void StateMachine_StateChanged(IState state)
         {
             _animator.SetInteger(AnimatorParameters.State, state.ID);
         }
 
-        public void TimeToSpawnTriggerForAttack()
+        public void Animator_SpawnTriggerForAttack()
         {
             if (_spriteRenderer.FaceDirections == FaceDirections.ToRight)
             {

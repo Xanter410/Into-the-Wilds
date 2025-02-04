@@ -115,9 +115,9 @@
   Книга Роберта Найстрома, посвящённая паттернам проектирования в разработке игр, помогает создавать масштабируемые и поддерживаемые архитектуры игровых систем.  
   *Ссылка: [Game Programming Patterns](https://gameprogrammingpatterns.com/)*
 
-- **C# at Google Style Guide**  
-  Руководство по стилю для C#, разработанное в Google.  
-  *Ссылка: [C# at Google Style Guide](https://google.github.io/styleguide/csharp-style.html)*
+- **C# at Unity Style Guide**  
+  Руководство по стилю для C#, описанное в электронной книге.  
+  *Ссылка: [C# style guide](https://unity.com/resources/create-code-c-sharp-style-guide-e-book)*
 
 - **Официальная документация UnityEngine**  
   Подробная документация по API Unity.  

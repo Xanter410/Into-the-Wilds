@@ -1,5 +1,4 @@
 using IntoTheWilds;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -7,7 +6,7 @@ using UnityEngine.UIElements;
 public class GameMenuPresenter : MonoBehaviour
 {
     private UIDocument _uiDocument;
-    private PlayAudioEffectComponent _audioEffectComponent;
+    private PlayAudioClipsComponent _audioEffectComponent;
 
     private Button _continueButton;
     private Button _settingsButton;
@@ -26,9 +25,9 @@ public class GameMenuPresenter : MonoBehaviour
     private void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
-        _audioEffectComponent = GetComponent<PlayAudioEffectComponent>();
+        _audioEffectComponent = GetComponent<PlayAudioClipsComponent>();
 
-        var root = _uiDocument.rootVisualElement;
+        VisualElement root = _uiDocument.rootVisualElement;
         _root = root;
         _continueButton = root.Q<Button>("Button_Play");
         _settingsButton = root.Q<Button>("Button_Settings");
@@ -41,8 +40,6 @@ public class GameMenuPresenter : MonoBehaviour
 
     private void OnEnable()
     {
-        //CallbackRegisterOnOff(true);
-
         CallbackRegisterOnOff(true);
 
         _settingsMenu.SetEnabled(false);
@@ -97,15 +94,11 @@ public class GameMenuPresenter : MonoBehaviour
         if (value == true)
         {
             _root.visible = true;
-            //_gameMenu.visible = true;
-            //_settingsMenu.visible = true;
             _isGameMenuOpen = true;
         }
         else
         {
             _root.visible = false;
-            //_settingsMenu.visible = false;
-            //_gameMenu.visible = false;
             _isGameMenuOpen = false;
         }
     }

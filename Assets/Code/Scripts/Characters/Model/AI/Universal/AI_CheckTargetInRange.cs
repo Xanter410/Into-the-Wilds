@@ -5,9 +5,8 @@ namespace IntoTheWilds
 {
     public class AI_CheckTargetInRange : Node
     {
-        private float _range;
-
-        private Transform _transform;
+        private readonly Transform _transform;
+        private readonly float _range;
 
         public AI_CheckTargetInRange(Transform transform, float range)
         {

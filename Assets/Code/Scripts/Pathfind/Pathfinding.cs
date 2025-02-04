@@ -1,30 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
-//using static MultiTilemapPathfinding;
 
 namespace IntoTheWilds.AI
 {
     static public class Pathfinding
     {
-        //  ласс дл€ хранени€ информации о €чейке во врем€ работы A*
         private class PathNode
         {
             public GridNode node;
             public PathNode parent;
             public float gCost;       // ÷ена пути от старта до этого узла
             public float hCost;       // √ипотетическа€ цена пути до цели
-            public float FCost => gCost + hCost; // ќбща€ стоимость
+            public float FCost => gCost + hCost;
         }
 
         public static List<Vector2> FindPath(Vector2 startPosition, Vector2 targetPosition)
         {
-            var GridMap = GridPathMapping.Instance;
+            GridPathMapping GridMap = GridPathMapping.Instance;
 
             Vector2Int startCoords = WorldToGridCoords(GridMap, startPosition);
             Vector2Int targetCoords = WorldToGridCoords(GridMap, targetPosition);
 
             GridNode startNode = GridMap.Grid[startCoords.x, startCoords.y];
-            GridNode targetNode = GridMap.Grid[targetCoords.x, targetCoords.y];
+            //GridNode targetNode = GridMap.Grid[targetCoords.x, targetCoords.y];
+
+            if (GridMap.TryGetGridNode(targetCoords, out GridNode targetNode) == false)
+            {
+                return null;
+            }
 
             if (!startNode.isWalkable || !targetNode.isWalkable)
             {

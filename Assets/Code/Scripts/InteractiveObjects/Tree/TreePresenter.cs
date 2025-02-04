@@ -16,7 +16,7 @@ namespace IntoTheWilds
         {
             _animator.enabled = false;
 
-            var spriteRenderer = GetComponent<SpriteRenderer>();
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = _deadSprite;
         }
 

@@ -12,13 +12,13 @@ namespace IntoTheWilds
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_unitRigidbody2D);
-            builder.RegisterComponent(_healthComponent);
+            _ = builder.RegisterComponent(_unitRigidbody2D);
+            _ = builder.RegisterComponent(_healthComponent);
 
             builder.UseEntryPoints(entryPoints =>
             {
-                entryPoints.Add<SheepAI>().AsSelf();
-                entryPoints.Add<SheepStateMachine>().As<StateMachine>();
+                _ = entryPoints.Add<SheepAI>().AsSelf();
+                _ = entryPoints.Add<SheepStateMachine>().As<StateMachine>();
             });
         }
     }

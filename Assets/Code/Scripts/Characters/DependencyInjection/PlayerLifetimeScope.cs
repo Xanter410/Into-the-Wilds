@@ -15,20 +15,20 @@ namespace IntoTheWilds
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_playerRigidbody2D);
-            builder.RegisterComponent(_healthComponent);
+            _ = builder.RegisterComponent(_playerRigidbody2D);
+            _ = builder.RegisterComponent(_healthComponent);
 
-            builder.Register<PlayerInventory>(Lifetime.Singleton);
-            builder.RegisterComponentInHierarchy<InventoryHud>();
-            builder.RegisterComponentInHierarchy<GameMenuPresenter>();
+            _ = builder.Register<PlayerInventory>(Lifetime.Singleton);
+            _ = builder.RegisterComponentInHierarchy<InventoryHud>();
+            _ = builder.RegisterComponentInHierarchy<GameMenuPresenter>();
 
-            builder.RegisterComponent(_playerInput)
+            _ = builder.RegisterComponent(_playerInput)
                 .AsSelf()
                 .AsImplementedInterfaces();
 
             builder.UseEntryPoints(entryPoints =>
             {
-                entryPoints.Add<PlayerStateMachine>().As<StateMachine>();
+                _ = entryPoints.Add<PlayerStateMachine>().As<StateMachine>();
             });
         }
     }

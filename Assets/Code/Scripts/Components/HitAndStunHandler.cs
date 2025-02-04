@@ -47,7 +47,7 @@ namespace IntoTheWilds
         {
             if (_isStunned && _isStunnedAfterHit)
             {
-                var velocity = _unitRigidbody2D.linearVelocity;
+                Vector2 velocity = _unitRigidbody2D.linearVelocity;
                 float _maxSpeedChange = _maxAcceleration * Time.fixedDeltaTime;
 
                 velocity = Vector2.MoveTowards(velocity, _desiredVelocity, _maxSpeedChange);

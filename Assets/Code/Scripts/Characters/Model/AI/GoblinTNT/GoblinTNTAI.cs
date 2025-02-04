@@ -8,13 +8,14 @@ namespace IntoTheWilds
 {
     public class GoblinTntAI : BehaviorTree, ITickable, IStartable, IMove, IAttack, IStunble
     {
+        public event Action AttackPressed;
+
         private readonly Transform _transform;
+
         private Vector2 _spawnPoint;
         private bool _isStunned = false;
 
         private Vector2 _moveInput = Vector2.zero;
-
-        private event Action _attackPressed;
 
         public GoblinTntAI(Rigidbody2D rigidbody2D)
         {
@@ -52,25 +53,25 @@ namespace IntoTheWilds
 
                 }),
 
-                new AI_IdleWalkNearSpawn(this, _transform, _spawnPoint)
+                new AI_IdleWalkNearSpawn(this, _transform, _spawnPoint, 3f, 3f)
             });
 
             return root;
         }
 
-        public void AttackPressed()
+        void IAttack.OnAttackPressed()
         {
-            SetMoveInput(Vector2.zero);
+            ((IMove)this).SetMoveInput(Vector2.zero);
 
-            _attackPressed?.Invoke();
+            AttackPressed?.Invoke();
         }
 
-        public Vector2 RetrieveMoveInput()
+        Vector2 IMove.RetrieveMoveInput()
         {
             return _moveInput;
         }
 
-        public void SetMoveInput(Vector2 moveDirection)
+        void IMove.SetMoveInput(Vector2 moveDirection)
         {
             _moveInput = moveDirection;
         }
@@ -87,7 +88,7 @@ namespace IntoTheWilds
             if (isStunned == true)
             {
                 _isStunned = true;
-                SetMoveInput(Vector2.zero);
+                ((IMove)this).SetMoveInput(Vector2.zero);
             }
             else
             {
@@ -101,16 +102,6 @@ namespace IntoTheWilds
             {
                 Update();
             }
-        }
-
-        public void RegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed += callbackHandler;
-        }
-
-        public void UnRegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed -= callbackHandler;
         }
     }
 }

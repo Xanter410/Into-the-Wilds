@@ -4,7 +4,7 @@ namespace IntoTheWilds
 {
     public class AI_ClearTarget : Node
     {
-        private NodeState _returnValue;
+        private readonly NodeState _returnValue;
 
         public AI_ClearTarget(NodeState returnValue) 
         { 

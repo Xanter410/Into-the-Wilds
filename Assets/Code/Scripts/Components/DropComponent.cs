@@ -7,12 +7,12 @@ namespace IntoTheWilds
     public class DropComponent : MonoBehaviour
     {
         [SerializeField] private float _spawnPositionOffsetY = 0f;
-        [SerializeField] private List<DropItem> dropItems = new();
+        [SerializeField] private List<DropItem> _dropItems = new();
 
         [Range(0, 100)]
-        public int minDropAmount = 1;  // Минимальное количество выпадаемых предметов
+        public int MinDropAmount = 1;  // Минимальное количество выпадаемых предметов
         [Range(0, 100)]
-        public int maxDropAmount = 3;  // Максимальное количество выпадаемых предметов
+        public int MaxDropAmount = 3;  // Максимальное количество выпадаемых предметов
 
         public void DropItems()
         {
@@ -20,15 +20,15 @@ namespace IntoTheWilds
 
             int totalDropped = 0;
 
-            while (totalDropped < maxDropAmount)
+            while (totalDropped < MaxDropAmount)
             {
-                dropItems.Shuffle();
+                _dropItems.Shuffle();
 
-                foreach (DropItem dropItem in dropItems)
+                foreach (DropItem dropItem in _dropItems)
                 {
                     if (Random.value <= dropItem.DropChance)
                     {
-                        int amountToDrop = Random.Range(dropItem.minAmount, dropItem.maxAmount + 1);
+                        int amountToDrop = Random.Range(dropItem.MinAmount, dropItem.MaxAmount + 1);
 
                         // TODO: Нужно переделать механику, так чтобы amountToDrop обозначал количество элементов в стаке,
                         //       а не количество заспавненых экземпляров объекта.
@@ -44,7 +44,7 @@ namespace IntoTheWilds
 
                         //for (int i = 0; i < amountToDrop && totalDropped < maxDropAmount; i++)
                         //{
-                        Vector3 spawnPoint = new Vector3(
+                        Vector3 spawnPoint = new(
                             transform.position.x,
                             transform.position.y + _spawnPositionOffsetY,
                             transform.position.z);
@@ -54,18 +54,18 @@ namespace IntoTheWilds
                         //}
                     }
 
-                    if (totalDropped >= maxDropAmount)
+                    if (totalDropped >= MaxDropAmount)
                     {
                         break;
                     }
                 }
 
-                if (totalDropped < minDropAmount)
+                if (totalDropped < MinDropAmount)
                 {
                     continue;
                 }
 
-                if (totalDropped >= minDropAmount)
+                if (totalDropped >= MinDropAmount)
                 {
                     break;
                 }
