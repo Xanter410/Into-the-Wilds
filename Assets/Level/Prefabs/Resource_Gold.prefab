@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 4204882692619629698}
   - component: {fileID: 4052639585133633846}
   - component: {fileID: 1984268005074870424}
-  - component: {fileID: -7603296193215529273}
   - component: {fileID: -8020524484415224934}
+  - component: {fileID: 617461500091026305}
   m_Layer: 7
   m_Name: Resource_Gold
   m_TagString: Untagged
@@ -195,22 +195,6 @@ MonoBehaviour:
   _resourceTypes: 2
   _itemCount: 3
   _timeIgnoreModeBeforeSpawn: 0.6
---- !u!114 &-7603296193215529273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8648809436062204648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96dc4e5c0d5f9849b6f9fa5b5b61696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSourceEffects: {fileID: -8020524484415224934}
-  _audioClips:
-  - {fileID: 8300000, guid: 052a5d1661f762e4eb395754a0d18cf7, type: 3}
-  _volumeClips: 1
 --- !u!82 &-8020524484415224934
 AudioSource:
   m_ObjectHideFlags: 0
@@ -308,3 +292,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &617461500091026305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648809436062204648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f4e0568bcdc8f448f561f9bcab9612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSourceEffects: {fileID: -8020524484415224934}
+  audioClips:
+  - {fileID: 8300000, guid: 052a5d1661f762e4eb395754a0d18cf7, type: 3}
+  _volumeClips: 1

@@ -104,5 +104,3 @@ namespace Tools.BehaviorTree
         public virtual NodeState Evaluate() => NodeState.FAILURE;
     }
 }
-
-

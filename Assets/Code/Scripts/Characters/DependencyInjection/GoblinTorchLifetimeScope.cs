@@ -12,14 +12,14 @@ namespace IntoTheWilds
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_unitRigidbody2D);
-            builder.RegisterComponent(_healthComponent);
+            _ = builder.RegisterComponent(_unitRigidbody2D);
+            _ = builder.RegisterComponent(_healthComponent);
 
             builder.UseEntryPoints(entryPoints =>
             {
-                entryPoints.Add<GoblinTorchAI>().As<IMove, IAttack>();
+                _ = entryPoints.Add<GoblinTorchAI>().As<IMove, IAttack>();
 
-                entryPoints.Add<GoblinStateMachine>().As<StateMachine>();
+                _ = entryPoints.Add<GoblinStateMachine>().As<StateMachine>();
             });
         }
     }

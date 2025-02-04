@@ -73,7 +73,7 @@ namespace IntoTheWilds.UI
         public List<HudInventorySlot> GetHudInventorySlots()
         {
             List<HudInventorySlot> slots = new();
-            foreach (var slot in _inventoryHud)
+            foreach (KeyValuePair<int, HudInventorySlot> slot in _inventoryHud)
             {
                 slots.Add(slot.Value);
             }
@@ -89,7 +89,7 @@ namespace IntoTheWilds.UI
                 Debug.LogWarning("Error: slot не найден в инвентаре PlayerInventory. SlotID = " + SlotID);
             }
 
-            if (_inventoryHud.TryGetValue(SlotID, out var hud) == true)
+            if (_inventoryHud.TryGetValue(SlotID, out HudInventorySlot hud) == true)
             {
                 if (slot.ItemID == 0)
                 {
@@ -99,7 +99,7 @@ namespace IntoTheWilds.UI
                 }
 
                 hud.CountLabel.text = slot.Count.ToString();
-                var sprite = ItemsDatabase.Instance.GetInventoryIcon(slot.ItemID);
+                Sprite sprite = ItemsDatabase.Instance.GetInventoryIcon(slot.ItemID);
                 hud.Icon.style.backgroundImage = new StyleBackground(sprite);
             }
             else

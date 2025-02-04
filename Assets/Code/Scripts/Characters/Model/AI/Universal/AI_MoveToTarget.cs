@@ -7,9 +7,9 @@ namespace IntoTheWilds
 {
     public class AI_MoveToTarget : Node
     {
-        private Transform _transform;
-        private IMove _treeMoveble;
-        private float _deltaAroundTargetPosition;
+        private readonly Transform _transform;
+        private readonly IMove _treeMoveble;
+        private readonly float _deltaAroundTargetPosition;
 
         private List<Vector2> _pathToTarget = new();
         private Vector2 _oldMainTargetPosition;
@@ -24,7 +24,7 @@ namespace IntoTheWilds
 
         public override NodeState Evaluate()
         {
-            Vector2 moveDirection = Vector2.zero;
+            Vector2 moveDirection;
 
             Transform mainTarget = (Transform)GetData("target");
 
@@ -40,7 +40,7 @@ namespace IntoTheWilds
                 return state;
             }
 
-            var deltaMainTargetPosition = _oldMainTargetPosition - (Vector2)mainTarget.position;
+            Vector2 deltaMainTargetPosition = _oldMainTargetPosition - (Vector2)mainTarget.position;
 
             if (deltaMainTargetPosition.x > 1 || deltaMainTargetPosition.y > 1 ||
                 deltaMainTargetPosition.x < -1 || deltaMainTargetPosition.y < -1)

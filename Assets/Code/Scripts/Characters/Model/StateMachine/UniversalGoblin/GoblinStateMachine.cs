@@ -6,10 +6,10 @@ namespace IntoTheWilds
 {
     public class GoblinStateMachine : StateMachine, ITickable, IStartable, IFixedTickable
     {
-        public IState IdleState;
-        public IState MoveState;
-        public IState AttackState;
-        public IState DeadState;
+        public readonly IState IdleState;
+        public readonly IState MoveState;
+        public readonly IState AttackState;
+        public readonly IState DeadState;
 
         public GoblinStateMachine(IMove goblinInputMove, IAttack goblinInputAttack, Rigidbody2D rigidbody2D, HealthComponent healthComponent)
         {

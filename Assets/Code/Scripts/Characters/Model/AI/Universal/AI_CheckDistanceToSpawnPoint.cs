@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Tools.BehaviorTree;
 using UnityEngine;
 
@@ -7,11 +5,11 @@ namespace IntoTheWilds
 {
     public class AI_CheckDistanceToSpawnPoint : Node
     {
-        private Transform _transform;
-        private Vector2 _spawnPoint;
+        private readonly Transform _transform;
+        private readonly Vector2 _spawnPoint;
 
-        private float _maxDistanceMove;
-        private float _maxDistanceAggress;
+        private readonly float _maxDistanceMove;
+        private readonly float _maxDistanceAggress;
 
         private bool _isComebackMove = false;
 

@@ -37,23 +37,22 @@ namespace IntoTheWilds
 
         void OnEnable()
         {
-            _unitStateMachine.StateChanged += OnStateChanged;
+            _unitStateMachine.StateChanged += StateMachine_StateChanged;
         }
 
         void OnDisable()
         {
-            _unitStateMachine.StateChanged -= OnStateChanged;
+            _unitStateMachine.StateChanged -= StateMachine_StateChanged;
         }
 
-
-        public void OnStateChanged(IState state)
+        public void StateMachine_StateChanged(IState state)
         {
             _animator.SetInteger(AnimatorParameters.State, state.ID);
         }
 
-        public void TimeToSpawnDynamite()
+        public void Animator_TimeToSpawnDynamite()
         {
-            var target = _aiTree.RootNode.GetData("target");
+            object target = _aiTree.RootNode.GetData("target");
 
             Transform targetTransform = (Transform)target;
 

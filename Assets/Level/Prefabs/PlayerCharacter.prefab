@@ -265,6 +265,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questProgressEvent: {fileID: 11400000, guid: d32d404b5d522ba47909159c0ccc0ba3, type: 2}
+  _audioSource: {fileID: 9200716919172094717}
+  _pickupSounds:
+  - {fileID: 8300000, guid: 5b1d4a235cead3845b9d519dc4872046, type: 3}
+  - {fileID: 8300000, guid: 5dfdb9277b3016a4480dceaab36ed344, type: 3}
+  - {fileID: 8300000, guid: bffb8d50094fb094fa8b5a2bf6ba5a21, type: 3}
+  _volumeClips: 0.8
 --- !u!114 &1652428133458916122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,10 +283,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 10
-  _onDead:
+  ObjectDied:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8642766053676357880}
+        m_TargetAssemblyTypeName: IntoTheWilds.CharacterAudioEffects, Assembly-CSharp
+        m_MethodName: PlayShotAudioDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4543375089618973804}
         m_TargetAssemblyTypeName: IntoTheWilds.ReloadSceneComponent, Assembly-CSharp
         m_MethodName: RestartScene
@@ -289,13 +306,26 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 2
+          m_FloatArgument: 2.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onTakeHit:
+  ObjectTakeHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8642766053676357880}
+        m_TargetAssemblyTypeName: IntoTheWilds.CharacterAudioEffects, Assembly-CSharp
+        m_MethodName: PlayShotAudioTakeHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <MaxHealthPoints>k__BackingField: 10
 --- !u!114 &4543375089618973804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,12 +416,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 032b8d734ecfb3541b42779b393ec575, type: 3}
   - {fileID: 8300000, guid: 9e1bd5de2d7d010469bb545a2f340037, type: 3}
   _volumeMove: 0.25
-  _audioClipAttack: []
-  _volumeAttack: 1
-  _audioClipTakeHit: []
-  _volumeTakeHit: 1
-  _audioClipDead: {fileID: 0}
-  _volumeDead: 1
+  _audioClipAttack:
+  - {fileID: 8300000, guid: 0cecbf7733a761c4a8f04760467020e4, type: 3}
+  - {fileID: 8300000, guid: 55d77cac6f0b40f4eab575c4a64a4652, type: 3}
+  - {fileID: 8300000, guid: be15739bc90d19d4383f0ddcaefb5ce7, type: 3}
+  _volumeAttack: 0.6
+  _audioClipTakeHit:
+  - {fileID: 8300000, guid: 7cd056c2f2e30f943a80f9ef1965be1b, type: 3}
+  _volumeTakeHit: 0.8
+  _audioClipDead: {fileID: 8300000, guid: b164e0a600bbf34439b7b4224c6d2bcf, type: 3}
+  _volumeDead: 0.7
 --- !u!82 &9200716919172094717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -569,7 +603,6 @@ MonoBehaviour:
   _audioMixer: {fileID: 24100000, guid: a7061d33f18cefc48aad76eae874e279, type: 2}
   _isVolumeMuted: 0
   _volumeMaxValue: 10
-  _volumeStartValue: 0
 --- !u!1 &3546188922670516840
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Tools.BehaviorTree;
 using IntoTheWilds.AI;
 
@@ -54,11 +52,10 @@ namespace IntoTheWilds
                     _isTargetSet = true;
                 }
 
+                // ≈сли от текущего положени€ до цели меньше половины клетки.
+                // —читаем что главна€ цель достигнута.
                 if (Vector2.Distance(_transform.position, _mainTarget) < 0.5f)
                 {
-                    // ќт текущего положени€ до цели меньше половины клетки.
-                    // —читаем что главна€ цель достигнута.
-
                     _pathToTarget.Clear();
                     _mainTarget = Vector2.zero;
                     _subTarget = Vector2.zero;
@@ -68,7 +65,7 @@ namespace IntoTheWilds
                 }
                 else
                 {
-                    var distanceToSubTarget = Vector2.Distance(_subTarget, (Vector2)_transform.position);
+                    float distanceToSubTarget = Vector2.Distance(_subTarget, (Vector2)_transform.position);
 
                     if (distanceToSubTarget < 0.15f)
                     {
@@ -98,7 +95,7 @@ namespace IntoTheWilds
                 }
             }
 
-            _tree.SetMoveInput(moveDirection);
+            ((IMove)_tree).SetMoveInput(moveDirection);
 
             state = NodeState.RUNNING;
             return state;
@@ -125,4 +122,3 @@ namespace IntoTheWilds
         }
     }
 }
-

@@ -1,13 +1,12 @@
 using IntoTheWilds.Quest;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class ObjectiveHudModel
 {
-    private Label _descriptionLabel;
-    private Label _amount;
+    private readonly Label _descriptionLabel;
+    private readonly Label _amount;
 
-    private IObjective _targetObjective;
+    private readonly IObjective _targetObjective;
 
     public ObjectiveHudModel(IObjective objective, VisualElement objectiveElementHud)
     {

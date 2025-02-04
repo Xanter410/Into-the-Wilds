@@ -19,20 +19,20 @@ namespace IntoTheWilds
             _stateMachine = stateMachine;
             _inputActions = inputActions;
             _rigidbody2D = rigidbody2D;
-            healthComponent._onDead.AddListener(OnPlayerDead);
+            healthComponent.ObjectDied.AddListener(OnPlayerDead);
         }
 
-        public void Enter()
+        void IState.Enter()
         {
             _inputActions.SetEnabled(false);
         }
 
-        public void Exit()
+        void IState.Exit()
         {
             _inputActions.SetEnabled(true);
         }
 
-        public void FixedUpdate(float _)
+        void IState.FixedUpdate(float _)
         {
             if (_rigidbody2D.linearVelocity != Vector2.zero)
             {
@@ -44,7 +44,7 @@ namespace IntoTheWilds
             }
         }
 
-        public void Update(float deltaTime)
+        void IState.Update(float deltaTime)
         {
             return;
         }

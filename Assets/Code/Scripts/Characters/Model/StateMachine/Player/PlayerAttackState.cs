@@ -8,15 +8,15 @@ namespace IntoTheWilds
         public int ID { get; }
 
         private readonly PlayerStateMachine _stateMachine;
-        private readonly PlayerInput _input;
+        private readonly IAttack _input;
         private readonly Rigidbody2D _rigidbody2D;
 
-        private float _timeAttackDuration = 0.45f;
+        private readonly float _timeAttackDuration = 0.45f;
         private float _currentTimeAttackDuration;
 
         private readonly float _maxAcceleration = 15f;
 
-        public PlayerAttackState(int id, PlayerStateMachine stateMachine, PlayerInput unitInput, Rigidbody2D rigidbody2D)
+        public PlayerAttackState(int id, PlayerStateMachine stateMachine, IAttack unitInput, Rigidbody2D rigidbody2D)
         {
             ID = id;
             _stateMachine = stateMachine;
@@ -24,21 +24,21 @@ namespace IntoTheWilds
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
             _currentTimeAttackDuration = _timeAttackDuration;
 
-            _input.RegisterCallbackAttack(AttackPressed);
+            _input.AttackPressed += Input_AttackPressed;
         }
 
-        public void Exit()
+        void IState.Exit()
         {
             _currentTimeAttackDuration = 0;
 
-            _input.UnRegisterCallbackAttack(AttackPressed);
+            _input.AttackPressed -= Input_AttackPressed;
         }
 
-        public void FixedUpdate(float _)
+        void IState.FixedUpdate(float _)
         {
             if (_rigidbody2D.linearVelocity != Vector2.zero)
             {
@@ -50,7 +50,7 @@ namespace IntoTheWilds
             }
         }
 
-        public void Update(float deltaTime)
+        void IState.Update(float deltaTime)
         {
             if (IsAttackEnded(deltaTime))
             {
@@ -70,7 +70,7 @@ namespace IntoTheWilds
             return false;
         }
 
-        private void AttackPressed()
+        private void Input_AttackPressed()
         {
             _currentTimeAttackDuration = _timeAttackDuration;
         }

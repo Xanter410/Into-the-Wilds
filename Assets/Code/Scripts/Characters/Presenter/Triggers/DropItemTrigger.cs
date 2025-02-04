@@ -28,7 +28,7 @@ public class DropItemTrigger : MonoBehaviour
         {
             _dropItemInstance = collision.gameObject.GetComponent<DropItemInstance>();
 
-            if (_dropItemInstance.TryGetItem(out var Item) == true)
+            if (_dropItemInstance.TryGetItem(out ItemSlot Item) == true)
             {
                 TakeItem(Item);
             } 
@@ -43,7 +43,7 @@ public class DropItemTrigger : MonoBehaviour
     {
         if (_isStayOnItem)
         {
-            if (_dropItemInstance.TryGetItem(out var Item) == true)
+            if (_dropItemInstance.TryGetItem(out ItemSlot Item) == true)
             {
                 TakeItem(Item);
             }

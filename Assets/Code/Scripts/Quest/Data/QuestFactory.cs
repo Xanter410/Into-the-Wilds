@@ -8,7 +8,7 @@ namespace IntoTheWilds.Quest
         {
             var objectives = new List<IObjective>();
 
-            foreach (var objData in questData.Objectives)
+            foreach (ObjectiveData objData in questData.Objectives)
             {
                 switch (objData.Type)
                 {

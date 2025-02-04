@@ -156,22 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a16ca864f54842a1b698abe122825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 4
-  _onDead:
+  ObjectDied:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 82194433049807288}
-        m_TargetAssemblyTypeName: IntoTheWilds.TreePresenter, Assembly-CSharp
-        m_MethodName: OnTreeDead
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 749814784342280047}
         m_TargetAssemblyTypeName: IntoTheWilds.DropComponent, Assembly-CSharp
         m_MethodName: DropItems
@@ -184,12 +171,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onTakeHit:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 82194433049807288}
         m_TargetAssemblyTypeName: IntoTheWilds.TreePresenter, Assembly-CSharp
-        m_MethodName: TakeHit
+        m_MethodName: OnTreeDead
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -199,8 +183,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ObjectTakeHit:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 349205701301678237}
-        m_TargetAssemblyTypeName: IntoTheWilds.PlayAudioEffectComponent, Assembly-CSharp
+        m_TargetAssemblyTypeName: IntoTheWilds.PlayAudioClipsComponent, Assembly-CSharp
         m_MethodName: PlayShotAudio
         m_Mode: 1
         m_Arguments:
@@ -211,6 +198,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <MaxHealthPoints>k__BackingField: 5
 --- !u!114 &749814784342280047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,13 +212,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPositionOffsetY: -1
-  dropItems:
+  _dropItems:
   - ItemPrefab: {fileID: 1891609809001830162, guid: 3570af685f23b594595c6eb8a1eb2e2b, type: 3}
-    minAmount: 1
-    maxAmount: 3
+    MinAmount: 1
+    MaxAmount: 2
     DropChance: 1
-  minDropAmount: 1
-  maxDropAmount: 1
+  MinDropAmount: 1
+  MaxDropAmount: 1
 --- !u!70 &5980163967520954559
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -295,17 +283,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6682274943606772270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96dc4e5c0d5f9849b6f9fa5b5b61696, type: 3}
+  m_Script: {fileID: 11500000, guid: 02f4e0568bcdc8f448f561f9bcab9612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSourceEffects: {fileID: 1986410390460702751}
-  _audioClips:
-  - {fileID: 8300000, guid: cbb9d323de73ce1409992d45573c6a7c, type: 3}
-  - {fileID: 8300000, guid: f43619ad46e7a1a479ef031201196269, type: 3}
-  - {fileID: 8300000, guid: d80b4b50bc9669e41a5c19008e28ee5f, type: 3}
-  - {fileID: 8300000, guid: 3b8fce98e30532f4bb29f1b0b40a8654, type: 3}
+  audioClips:
   - {fileID: 8300000, guid: 1b4ac1a2547a87f4bba89a8b5ca65cc9, type: 3}
-  _volumeClips: 0.5
+  - {fileID: 8300000, guid: 3b8fce98e30532f4bb29f1b0b40a8654, type: 3}
+  - {fileID: 8300000, guid: d80b4b50bc9669e41a5c19008e28ee5f, type: 3}
+  - {fileID: 8300000, guid: f43619ad46e7a1a479ef031201196269, type: 3}
+  - {fileID: 8300000, guid: cbb9d323de73ce1409992d45573c6a7c, type: 3}
+  _volumeClips: 1
 --- !u!82 &1986410390460702751
 AudioSource:
   m_ObjectHideFlags: 0

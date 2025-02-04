@@ -23,17 +23,17 @@ namespace IntoTheWilds
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
-            _inputAttack.RegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed += Input_AttackPressed;
         }
 
-        public void Exit()
+        void IState.Exit()
         {
-            _inputAttack.UnRegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed -= Input_AttackPressed;
         }
 
-        public void FixedUpdate(float _)
+        void IState.FixedUpdate(float _)
         {
             if (_rigidbody2D.linearVelocity != Vector2.zero)
             {
@@ -45,7 +45,7 @@ namespace IntoTheWilds
             }
         }
 
-        public void Update(float _)
+        void IState.Update(float _)
         {
             if (IsMoved())
             {
@@ -62,7 +62,7 @@ namespace IntoTheWilds
 
             return false;
         }
-        private void AttackPressed()
+        private void Input_AttackPressed()
         {
             _stateMachine.TransitionTo(_stateMachine.AttackState);
         }

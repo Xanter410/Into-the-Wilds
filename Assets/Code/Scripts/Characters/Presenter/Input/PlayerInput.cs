@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
 
-
 namespace IntoTheWilds
 {
     [CreateAssetMenu(fileName = "PlayerInputAction", menuName = "InputPresenter/PlayerInputAction")]
-    public class PlayerInput : ScriptableObject, IStunble
+    public class PlayerInput : ScriptableObject, IStunble, IAttack, IMove
     {
         private InputSystem_Actions _inputActions;
-        private event Action _attackPressed;
+        public event Action AttackPressed;
 
         private InventoryHud _inventoryHud;
         private GameMenuPresenter _gameMenuHud;
@@ -20,14 +19,14 @@ namespace IntoTheWilds
         {
             _inputActions = new InputSystem_Actions();
 
-            _inputActions.Player.Attack.started += AttackPressed;
+            _inputActions.Player.Attack.started += InputAction_AttackStarted;
 
             _inputActions.Player.Enable();
         }
 
         private void OnDisable()
         {
-            _inputActions.Player.Attack.started -= AttackPressed;
+            _inputActions.Player.Attack.started -= InputAction_AttackStarted;
 
             _inputActions.Player.Disable();
             _inputActions = null;
@@ -48,29 +47,24 @@ namespace IntoTheWilds
             _inputActions.Player.Enable(); 
         }
 
-        public Vector2 RetrieveMoveInput()
+        void IMove.SetMoveInput(Vector2 _)
+        {
+            
+        }
+
+        Vector2 IMove.RetrieveMoveInput()
         {
             return _inputActions.Player.Move.ReadValue<Vector2>();
         }
 
-        private void AttackPressed(InputAction.CallbackContext _)
+        void IAttack.OnAttackPressed()
         {
             if (_inventoryHud.IsUiUnderPointer() || _gameMenuHud.IsUiUnderPointer())
             {
                 return;
             }
 
-            _attackPressed?.Invoke();
-        }
-
-        public void RegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed += callbackHandler;
-        }
-
-        public void UnRegisterCallbackAttack(Action callbackHandler)
-        {
-            _attackPressed -= callbackHandler;
+            AttackPressed?.Invoke();
         }
 
         void IStunble.Stun(bool isStunned)
@@ -91,6 +85,11 @@ namespace IntoTheWilds
             {
                 _inputActions.Player.Disable();
             }
+        }
+
+        private void InputAction_AttackStarted(InputAction.CallbackContext _)
+        {
+            ((IAttack)this).OnAttackPressed();
         }
     }
 }

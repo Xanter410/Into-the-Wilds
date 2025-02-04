@@ -18,24 +18,23 @@ public class SceneTransition : MonoBehaviour
     private UIDocument _uiDocument;
     private VisualElement _transitionFigure;
 
-    private static string _styleOpeningStart = "openingStart";
-    private static string _styleOpeningEnd = "openingEnd";
-    private static string _styleEndingStart = "endingStart";
-    private static string _styleEndingEnd = "endingEnd";
+    private static readonly string _styleOpeningStart = "openingStart";
+    private static readonly string _styleOpeningEnd = "openingEnd";
+    private static readonly string _styleEndingStart = "endingStart";
+    private static readonly string _styleEndingEnd = "endingEnd";
 
     public static void SwitchToScene(int sceneIndex)
     {
-        float volume;
-        _instance._audioMixer.GetFloat("MasterVolume", out volume);
+        _ = _instance._audioMixer.GetFloat("MasterVolume", out float volume);
         _musicVolume = Mathf.Pow(10, volume / 20);
 
-        _instance.StartCoroutine(FadeMixerGroup.StartFade(_instance._audioMixer, "MasterVolume", 1f, 0f));
+        _ = _instance.StartCoroutine(FadeMixerGroup.StartFade(_instance._audioMixer, "MasterVolume", 1f, 0f));
 
-        _instance.StartCoroutine(EndingAnimation(_instance._transitionFigure, _instance._playAudioSceneTransition));
+        _ = _instance.StartCoroutine(EndingAnimation(_instance._transitionFigure, _instance._playAudioSceneTransition));
 
-        _instance._loadingSceneOperation = SceneManager.LoadSceneAsync(sceneIndex);
+        _ = _instance._loadingSceneOperation = SceneManager.LoadSceneAsync(sceneIndex);
 
-        _instance._loadingSceneOperation.allowSceneActivation = false;
+        _ = _instance._loadingSceneOperation.allowSceneActivation = false;
     }
 
     private void Start()
@@ -54,9 +53,9 @@ public class SceneTransition : MonoBehaviour
 
         if (_shouldPlayOpeningAnimation)
         {
-            _instance.StartCoroutine(FadeMixerGroup.StartFade(_instance._audioMixer, "MasterVolume", 1f, _musicVolume));
+            _ = _instance.StartCoroutine(FadeMixerGroup.StartFade(_instance._audioMixer, "MasterVolume", 1f, _musicVolume));
 
-            _instance.StartCoroutine(OpeningAnimation(_transitionFigure, _playAudioSceneTransition));
+            _ = _instance.StartCoroutine(OpeningAnimation(_transitionFigure, _playAudioSceneTransition));
 
             _shouldPlayOpeningAnimation = false;
         }

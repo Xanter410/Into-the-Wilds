@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4629564525185885325}
   - component: {fileID: 681215778562513296}
   - component: {fileID: 7557994813824910}
-  - component: {fileID: 1391678897434641121}
+  - component: {fileID: 6016560582679175011}
   m_Layer: 0
   m_Name: Dynamite
   m_TagString: Untagged
@@ -390,7 +390,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1391678897434641121
+--- !u!114 &6016560582679175011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,10 +399,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163153704232577661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96dc4e5c0d5f9849b6f9fa5b5b61696, type: 3}
+  m_Script: {fileID: 11500000, guid: 02f4e0568bcdc8f448f561f9bcab9612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSourceEffects: {fileID: 7557994813824910}
-  _audioClips:
+  audioClips:
   - {fileID: 8300000, guid: c56e08d1f6c9ee1458a9eaaee4757541, type: 3}
-  _volumeClips: 0.7
+  _volumeClips: 0.6

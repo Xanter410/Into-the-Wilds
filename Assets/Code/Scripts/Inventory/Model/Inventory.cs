@@ -8,25 +8,25 @@ namespace IntoTheWilds.Inventory
 
         public event Action<int> SlotChanged;
 
-        private ItemSlot[] Slots;
+        private readonly ItemSlot[] _slots;
 
         public Inventory(int maxCountSlots)
         {
-            Slots = new ItemSlot[maxCountSlots];
+            _slots = new ItemSlot[maxCountSlots];
 
             Length = maxCountSlots - 1;
 
-            for (int i = 0; i < Slots.Length; i++) 
+            for (int i = 0; i < _slots.Length; i++) 
             {
-                Slots[i] = new ItemSlot();
+                _slots[i] = new ItemSlot();
             }
         }
 
         public ItemSlot GetSlotData(int slotID)
         {
-            if (slotID >= 0 && slotID < Slots.Length)
+            if (slotID >= 0 && slotID < _slots.Length)
             {
-                return Slots[slotID];
+                return _slots[slotID];
             }
 
             return null;
@@ -42,7 +42,7 @@ namespace IntoTheWilds.Inventory
 
                 if (slotForAdd != -1)
                 {
-                    Slots[slotForAdd].Add(itemSlot.ItemID, itemSlot.Count, out int excessCount);
+                    _slots[slotForAdd].Add(itemSlot.ItemID, itemSlot.Count, out int excessCount);
 
                     SlotChanged?.Invoke(slotForAdd);
 
@@ -65,8 +65,8 @@ namespace IntoTheWilds.Inventory
 
         public void AddSlot(int slotIndex, ItemSlot itemSlot)
         {
-            Slots[slotIndex].Clear();
-            Slots[slotIndex].Add(itemSlot.ItemID, itemSlot.Count, out _);
+            _slots[slotIndex].Clear();
+            _slots[slotIndex].Add(itemSlot.ItemID, itemSlot.Count, out _);
             SlotChanged?.Invoke(slotIndex);
         }
 
@@ -76,7 +76,7 @@ namespace IntoTheWilds.Inventory
 
             int findedItemCount = 0;
             int indexItemSlot;
-            int[] findedItemIndexes = new int[Slots.Length];
+            int[] findedItemIndexes = new int[_slots.Length];
             int indexFindedItems = 0;
 
             while (findedItemCount < requestedItemSlot.Count)
@@ -85,7 +85,7 @@ namespace IntoTheWilds.Inventory
 
                 if (indexItemSlot != -1)
                 {
-                    findedItemCount += Slots[indexItemSlot].Count;
+                    findedItemCount += _slots[indexItemSlot].Count;
                     findedItemIndexes[indexFindedItems] = indexItemSlot;
                     indexFindedItems++;
                 }
@@ -99,7 +99,7 @@ namespace IntoTheWilds.Inventory
 
             for (int i = 0; i < findedItemIndexes.Length; i++) 
             {
-                NewItemCount += Slots[findedItemIndexes[i]].Remove(requestedItemSlot.Count - NewItemCount);
+                NewItemCount += _slots[findedItemIndexes[i]].Remove(requestedItemSlot.Count - NewItemCount);
 
                 SlotChanged?.Invoke(findedItemIndexes[i]);
 
@@ -120,9 +120,9 @@ namespace IntoTheWilds.Inventory
         {
             ItemSlot newItemSlot = new();
 
-            newItemSlot.Add(Slots[slotIndex].ItemID, Slots[slotIndex].Count, out _);
+            newItemSlot.Add(_slots[slotIndex].ItemID, _slots[slotIndex].Count, out _);
 
-            Slots[slotIndex].Clear();
+            _slots[slotIndex].Clear();
 
             SlotChanged?.Invoke(slotIndex);
 
@@ -131,9 +131,9 @@ namespace IntoTheWilds.Inventory
 
         private int FindIndexItemSlot(int itemID)
         {
-            for (int i = 0; i < Slots.Length; i++)
+            for (int i = 0; i < _slots.Length; i++)
             {
-                if (Slots[i].ItemID == itemID)
+                if (_slots[i].ItemID == itemID)
                 {
                     return i;
                 }
@@ -146,16 +146,16 @@ namespace IntoTheWilds.Inventory
         {
             int firstFreeSlot = -1;
 
-            for (int i = 0; i < Slots.Length; i++)
+            for (int i = 0; i < _slots.Length; i++)
             {
-                if (Slots[i].ItemID == itemID)
+                if (_slots[i].ItemID == itemID)
                 {
-                    if (!Slots[i].IsFull())
+                    if (!_slots[i].IsFull())
                     {
                         return i;
                     }
                 }
-                else if (firstFreeSlot == -1 && Slots[i].IsFree() == true)
+                else if (firstFreeSlot == -1 && _slots[i].IsFree() == true)
                 {
                     firstFreeSlot = i;
                 }

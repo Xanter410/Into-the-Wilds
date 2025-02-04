@@ -5,7 +5,7 @@ namespace Tools
 {
     public static class ListExtensions
     {
-        private static Random rng = new Random();
+        private static readonly Random rng = new();
 
         public static void Shuffle<T>(this IList<T> list)
         {

@@ -11,7 +11,7 @@ namespace IntoTheWilds
         private readonly IAttack _inputAttack;
         private readonly Rigidbody2D _rigidbody2D;
 
-        private float _timeAttackDuration = 0.52f;
+        private readonly float _timeAttackDuration = 0.52f;
         private float _currentTimeAttackDuration;
 
         private readonly float _maxAcceleration = 15f;
@@ -24,21 +24,21 @@ namespace IntoTheWilds
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
             _currentTimeAttackDuration = _timeAttackDuration;
 
-            _inputAttack.RegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed += Input_AttackPressed;
         }
 
-        public void Exit()
+        void IState.Exit()
         {
             _currentTimeAttackDuration = 0;
 
-            _inputAttack.UnRegisterCallbackAttack(AttackPressed);
+            _inputAttack.AttackPressed -= Input_AttackPressed;
         }
 
-        public void Update(float deltaTime)
+        void IState.Update(float deltaTime)
         {
             if (IsAttackEnded(deltaTime))
             {
@@ -46,7 +46,7 @@ namespace IntoTheWilds
             }
         }
 
-        public void FixedUpdate(float fixedDeltaTime)
+        void IState.FixedUpdate(float fixedDeltaTime)
         {
             if (_rigidbody2D.linearVelocity != Vector2.zero)
             {
@@ -69,7 +69,7 @@ namespace IntoTheWilds
             return false;
         }
 
-        private void AttackPressed()
+        private void Input_AttackPressed()
         {
             _currentTimeAttackDuration = _timeAttackDuration;
         }

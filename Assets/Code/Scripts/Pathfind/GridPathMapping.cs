@@ -21,7 +21,7 @@ namespace IntoTheWilds.AI
     public class GridPathMapping : Singleton<GridPathMapping>
     {
         public Tilemap[] Tilemaps; // Список Tilemap, которые участвуют в создании сетки
-        public float TileSize = 1f; // Размер одного тайла в Unity Units
+        public float TileSize = 1f;
 
         public GridNode[,] Grid { get; private set; } // Двумерный массив узлов сетки
         public Vector2Int GridSize { get; private set; } // Размеры объединенной сетки
@@ -77,6 +77,19 @@ namespace IntoTheWilds.AI
             }
         }
 
+        public bool TryGetGridNode(Vector2Int NodeCoord, out GridNode gridNode)
+        {
+            if (GridSize.y >= NodeCoord.y && GridSize.x >= NodeCoord.x)
+            {
+                gridNode = Grid[NodeCoord.x, NodeCoord.y];
+                return true;
+            }
+
+            gridNode = null;
+
+            return false;
+        }
+
         private BoundsInt CalculateCombinedBounds()
         {
             BoundsInt combinedBounds = Tilemaps[0].cellBounds;
@@ -102,11 +115,28 @@ namespace IntoTheWilds.AI
             // Пример имени: "Tile_T1R0B1L0"
             // T1 - Top (Верхняя сторона проходима)
             // R0 - Right (Правая сторона непроходима)
+            // B1 - Bottom (Нижняя сторона проходима)
+            // L0 - Left (Левая сторона неплоходима)
 
-            if (tileName.Contains("T1")) walkableSides[0] = true;
-            if (tileName.Contains("R1")) walkableSides[1] = true;
-            if (tileName.Contains("B1")) walkableSides[2] = true;
-            if (tileName.Contains("L1")) walkableSides[3] = true;
+            if (tileName.Contains("T1"))
+            {
+                walkableSides[0] = true;
+            }
+
+            if (tileName.Contains("R1"))
+            {
+                walkableSides[1] = true;
+            }
+
+            if (tileName.Contains("B1"))
+            {
+                walkableSides[2] = true;
+            }
+
+            if (tileName.Contains("L1"))
+            {
+                walkableSides[3] = true;
+            }
 
             return walkableSides;
         }

@@ -9,20 +9,20 @@ namespace IntoTheWilds.Quest
         [SerializeField] private VisualTreeAsset _questPanel;
         [SerializeField] private VisualTreeAsset _objectiveElement;
 
-        [SerializeField] private PlayAudioEffectComponent _playAudioEffect;
+        [SerializeField] private PlayAudioClipsComponent _playAudioEffect;
 
         private GroupBox _questBoxGroup;
 
         private UIDocument _uiDocument;
         private QuestSystem _questSystem;
 
-        private List<QuestHudModel> _questModelsHud = new();
+        private readonly List<QuestHudModel> _questModelsHud = new();
 
         private void Awake()
         {
             _uiDocument = GetComponent<UIDocument>();
             _questSystem = GetComponent<QuestSystem>();
-            _playAudioEffect = GetComponent<PlayAudioEffectComponent>();
+            _playAudioEffect = GetComponent<PlayAudioClipsComponent>();
 
             _questBoxGroup = _uiDocument.rootVisualElement.Q<GroupBox>("QuestList");
 
@@ -33,7 +33,7 @@ namespace IntoTheWilds.Quest
         {
             VisualElement questPanel = _questPanel.CloneTree();
 
-            QuestHudModel questHudModel = new QuestHudModel(quest, questPanel, _objectiveElement);
+            QuestHudModel questHudModel = new(quest, questPanel, _objectiveElement);
 
             questHudModel.OnQuestComplited += QuestComplited;
 

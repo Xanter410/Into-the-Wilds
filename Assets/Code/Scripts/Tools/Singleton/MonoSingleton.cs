@@ -6,7 +6,7 @@ namespace Tools.Singleton
     {
         private static T _instance;
         private static readonly object _lock = new();
-        private static bool _applicationIsQuitting = false;
+        private static readonly bool _applicationIsQuitting = false;
 
         public static T Instance
         {

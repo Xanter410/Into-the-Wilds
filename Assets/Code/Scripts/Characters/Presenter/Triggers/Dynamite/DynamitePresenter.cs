@@ -11,7 +11,7 @@ public class DynamitePresenter : MonoBehaviour
 
     [SerializeField] GameObject _explosionTrigger;
 
-    private PlayAudioEffectComponent _audioComponent;
+    private PlayAudioClipsComponent _audioComponent;
 
     private Animator _animator;
     private Material _material;
@@ -25,11 +25,11 @@ public class DynamitePresenter : MonoBehaviour
 
     private void OnEnable()
     {
-        _audioComponent = GetComponent<PlayAudioEffectComponent>();
+        _audioComponent = GetComponent<PlayAudioClipsComponent>();
         _animator = GetComponent<Animator>();
         _isPlaying = true;
 
-        var spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         _material = spriteRenderer.material;
         _material.SetColor("_FlashColor", _flashColor);
 

@@ -25,17 +25,17 @@ namespace IntoTheWilds
             _rigidbody2D = rigidbody2D;
         }
 
-        public void Enter()
+        void IState.Enter()
         {
             
         }
 
-        public void Exit()
+        void IState.Exit()
         {
             
         }
 
-        public void FixedUpdate(float fixedDeltaTime)
+        void IState.FixedUpdate(float fixedDeltaTime)
         {
             _velocity = _rigidbody2D.linearVelocity;
             float _maxSpeedChange = _maxAcceleration * Time.fixedDeltaTime;
@@ -44,9 +44,9 @@ namespace IntoTheWilds
             _rigidbody2D.linearVelocity = _velocity;
         }
 
-        public void Update(float deltaTime)
+        void IState.Update(float deltaTime)
         {
-            Vector2 _direction = _input.RetrieveMoveInput();
+            Vector2 _direction = ((IMove)_input).RetrieveMoveInput();
             _desiredVelocity = _direction * _maxSpeed;
 
             if (IsIdle())
@@ -57,7 +57,7 @@ namespace IntoTheWilds
 
         private bool IsIdle()
         {
-            if (_input.RetrieveMoveInput() == Vector2.zero)
+            if (((IMove)_input).RetrieveMoveInput() == Vector2.zero)
             {
                 return true;
             }

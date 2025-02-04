@@ -8,11 +8,11 @@ namespace IntoTheWilds.Inventory
     {
         [SerializeField] private ItemData[] _listOfItems;
 
-        private Dictionary<int, ItemData> _items = new Dictionary<int, ItemData>();
+        private readonly Dictionary<int, ItemData> _items = new();
 
         private void Awake()
         {
-            foreach (var item in _listOfItems)
+            foreach (ItemData item in _listOfItems)
             {
                 _items.Add(item.UniqueID, item);
             }
@@ -30,8 +30,6 @@ namespace IntoTheWilds.Inventory
 
         public Sprite GetInventoryIcon(int ItemID)
         {
-            //Sprite Icon = GetData(ItemID).InventoryIcon;
-            //Debug.Log(ItemID);
             return GetData(ItemID).InventoryIcon;
         }
 

@@ -2,17 +2,16 @@ namespace Tools.BehaviorTree
 {
     public abstract class BehaviorTree
     {
-        public Node RootNode => _root;
-        private Node _root = null;
+        public Node RootNode { get; private set; } = null;
 
         protected void Setup()
         {
-            _root = SetupTree();
+            RootNode = SetupTree();
         }
 
         protected void Update()
         {
-            _root?.Evaluate();
+            _ = RootNode?.Evaluate();
         }
 
         protected abstract Node SetupTree();
