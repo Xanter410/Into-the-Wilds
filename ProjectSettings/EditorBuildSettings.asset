@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/Gameplay/MainMenu.unity
     guid: b4f6d95de49c3a94fac07edb32774c90
   - enabled: 1
-    path: Assets/Level/Scenes/Gameplay/Level_Prefab.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Level/Scenes/Gameplay/Level_1.unity
+    guid: aec3a815eb825e74ea724ec368c594ec
+  - enabled: 1
+    path: Assets/Level/Scenes/Gameplay/Level_2.unity
+    guid: ef366ec827e39b6489f008067e4e87ea
+  - enabled: 1
+    path: Assets/Level/Scenes/Gameplay/Level_3.unity
+    guid: 28075f9b13926a34fb4965e3e8749530
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
