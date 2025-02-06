@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4590543012341691375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 7935302510722639096}
   - component: {fileID: 8003425661126903887}
   - component: {fileID: 770184852817902785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Goblin_TNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8332103993301330503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

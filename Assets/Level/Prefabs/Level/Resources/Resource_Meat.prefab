@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: d928d0deec1b8f349ad134fcac0e7dd2, type: 2}
   _resourceTypes: 2
-  _itemCount: 2
+  _itemCount: 1
   _timeIgnoreModeBeforeSpawn: 0.6
 --- !u!70 &8636954565557637340
 CapsuleCollider2D:

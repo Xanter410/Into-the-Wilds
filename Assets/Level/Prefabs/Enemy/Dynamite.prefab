@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f78f17b3dff2fa46bc34cdbd9ac5535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _triggerLayers:
+    serializedVersion: 2
+    m_Bits: 832
   _timeActive: 0.1
   _damagePower: 3
   _parent: {fileID: 1163153704232577661}

@@ -1,9 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace IntoTheWilds
 {
     public class AttackTrigger : MonoBehaviour
     {
+        [SerializeField] private LayerMask _triggerLayers;
+
         [SerializeField] private float _timeActive = 0.1f;
         [SerializeField] private int _damagePower = 1;
         [SerializeField] private GameObject _parent;
@@ -31,14 +35,17 @@ namespace IntoTheWilds
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out HealthComponent healthComponent))
+            if ((_triggerLayers & (1 << collision.gameObject.layer)) != 0)
             {
-                healthComponent.Decrement(_damagePower);
-            }
+                if (collision.gameObject.TryGetComponent(out HealthComponent healthComponent))
+                {
+                    healthComponent.Decrement(_damagePower);
+                }
 
-            if (collision.gameObject.TryGetComponent(out HitAndStunHandler hitAndStunHandler))
-            {
-                hitAndStunHandler.ApplyHitAndStun(_parent.transform.position);
+                if (collision.gameObject.TryGetComponent(out HitAndStunHandler hitAndStunHandler))
+                {
+                    hitAndStunHandler.ApplyHitAndStun(_parent.transform.position);
+                }
             }
         }
     }
