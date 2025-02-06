@@ -76,11 +76,13 @@ public class GameMenuPresenter : MonoBehaviour
     {
         if ( _isGameMenuOpen == true )
         {
-            Vector2 pointerPosition = new(
-            Pointer.current.position.value.x,
-            Screen.height - Pointer.current.position.value.y);
+            float scalePanel = _gameMenu.panel.scaledPixelsPerPoint;
 
-            if (_gameMenu.worldBound.Contains(pointerPosition))
+            Vector2 scaledPointerPosition = new(
+            Pointer.current.position.value.x / scalePanel,
+            (Screen.height - Pointer.current.position.value.y) / scalePanel);
+
+            if (_gameMenu.worldBound.Contains(scaledPointerPosition))
             {
                 return true;
             }

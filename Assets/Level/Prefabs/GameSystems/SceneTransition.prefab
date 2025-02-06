@@ -152,7 +152,7 @@ MonoBehaviour:
   _audioClipOpening: {fileID: 8300000, guid: 1523608732c7cd64e9ed2ae3a17a6c90, type: 3}
   _volumeOpening: 0.6
   _audioClipEnding: {fileID: 8300000, guid: 9000f71f5392fb34f93d01e2b6c9a41e, type: 3}
-  _volumeEnding: 1
+  _volumeEnding: 0.6
 --- !u!82 &3082235929000124469
 AudioSource:
   m_ObjectHideFlags: 0

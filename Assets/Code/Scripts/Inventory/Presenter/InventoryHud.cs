@@ -1,5 +1,6 @@
 using IntoTheWilds.Inventory;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -58,11 +59,13 @@ namespace IntoTheWilds.UI
 
         public bool IsUiUnderPointer()
         {
-            Vector2 pointerPosition = new(
-                Pointer.current.position.value.x,
-                Screen.height - Pointer.current.position.value.y);
+            float scalePanel = _inventoryGrid.panel.scaledPixelsPerPoint;
 
-            if (_inventoryGrid.worldBound.Contains(pointerPosition))
+            Vector2 scaledPointerPosition = new(
+                Pointer.current.position.value.x / scalePanel,
+                (Screen.height - Pointer.current.position.value.y) / scalePanel);
+
+            if (_inventoryGrid.worldBound.Contains(scaledPointerPosition))
             {
                 return true;
             }

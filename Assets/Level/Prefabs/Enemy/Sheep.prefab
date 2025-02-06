@@ -508,7 +508,7 @@ MonoBehaviour:
   _audioSourceEffects: {fileID: 7177156967141745361}
   _audioClipMove:
   - {fileID: 8300000, guid: b978d3ea9cd86a342ba5b1328b40e0ba, type: 3}
-  _volumeMove: 0.35
+  _volumeMove: 0.2
   _audioClipAttack: []
   _volumeAttack: 1
   _audioClipTakeHit:
