@@ -18,6 +18,8 @@
 
 ![](Presentation/IntoTheWildsScreenshot.png)
 
+[Видео игрового процесса](https://drive.google.com/file/d/14O7hBxkrBrsHoH9xGUjSOlAEnhFte4dD/view?usp=sharing)
+
 Проект выполнен в формате *вертикального среза* 2D игры с пиксельной top-down графикой.  
 Он включает реализацию нескольких ключевых компонентов:
 - Система персонажей
